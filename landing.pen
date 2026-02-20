@@ -1,0 +1,2466 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "ZA6XU",
+      "x": 7381,
+      "y": -2834,
+      "name": "Iglesia Comunitaria Landing",
+      "width": 1440,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "PthkU",
+          "name": "Navbar",
+          "width": "fill_container",
+          "height": 80,
+          "fill": "$bg-white",
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "7qcAi",
+              "name": "logoContainer",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "9KUJ2",
+                  "name": "logoIcon",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$primary-blue",
+                  "cornerRadius": 8
+                },
+                {
+                  "type": "text",
+                  "id": "nVFGA",
+                  "name": "logoText",
+                  "fill": "$text-primary",
+                  "content": "Iglesia Comunitaria de la Cristianización",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "U7MHq",
+              "name": "navLinks",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "q1Nht",
+                  "name": "navItem1",
+                  "fill": "$primary-blue",
+                  "content": "Inicio",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "8ViZv",
+                  "name": "navItem2",
+                  "fill": "$text-secondary",
+                  "content": "Campamento",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "9wKaH",
+                  "name": "navItem3",
+                  "fill": "$text-secondary",
+                  "content": "Nosotros",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "mCLFy",
+                  "name": "navItem4",
+                  "fill": "$text-secondary",
+                  "content": "Prédicas",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "wOnuI",
+                  "name": "navItem5",
+                  "fill": "$text-secondary",
+                  "content": "Iglesia Virtual",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fibZl",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "height": 600,
+          "fill": "$bg-light",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a9Gjw",
+              "name": "heroContent",
+              "width": 800,
+              "layout": "vertical",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "JvR9u",
+                  "name": "heroTitle",
+                  "fill": "$text-primary",
+                  "content": "Bienvenidos a Nuestra Comunidad de Fe",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 56,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "eFDqu",
+                  "name": "heroSubtitle",
+                  "fill": "$text-secondary",
+                  "content": "Unidos en Cristo, transformando vidas en Los Alcarrizos",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 22
+                },
+                {
+                  "type": "frame",
+                  "id": "pGiAG",
+                  "name": "heroSchedule",
+                  "gap": 32,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8yPo7",
+                      "name": "schedule1",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "kKk1g",
+                          "name": "scheduleIcon1",
+                          "width": 20,
+                          "height": 20,
+                          "iconFontName": "clock",
+                          "iconFontFamily": "lucide",
+                          "fill": "$primary-blue"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v6avl",
+                          "name": "scheduleText1",
+                          "fill": "$text-secondary",
+                          "content": "Domingos 9:00 AM y 11:00 AM",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t7vva",
+                      "name": "schedule2",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "liKMf",
+                          "name": "scheduleIcon2",
+                          "width": 20,
+                          "height": 20,
+                          "iconFontName": "calendar",
+                          "iconFontFamily": "lucide",
+                          "fill": "$primary-blue"
+                        },
+                        {
+                          "type": "text",
+                          "id": "0UxMS",
+                          "name": "scheduleText2",
+                          "fill": "$text-secondary",
+                          "content": "Estudios Bíblicos Miércoles 7:00 PM",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WziDJ",
+                  "name": "heroCTA",
+                  "fill": "$primary-red",
+                  "cornerRadius": 12,
+                  "padding": [
+                    16,
+                    40
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9q7iq",
+                      "name": "ctaText",
+                      "fill": "#FFFFFF",
+                      "content": "Conócenos",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mluir",
+          "name": "Campamento Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "KbKjm",
+              "name": "campHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "X3YTm",
+                  "name": "campTitle",
+                  "fill": "$text-primary",
+                  "content": "Campamento 2025",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "ubvnM",
+                  "name": "campSubtitle",
+                  "fill": "$text-secondary",
+                  "content": "Retiros espirituales para fortalecer tu fe",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rWfFq",
+              "name": "campCards",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "5hU8G",
+                  "name": "campCard1",
+                  "width": 380,
+                  "fill": "$bg-white",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "k6YVU",
+                      "name": "campImg1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "sizzzikova",
+                        "link": "https://unsplash.com/@sizzzikova",
+                        "author": "Kseniia Ilinykh"
+                      },
+                      "width": "fill_container",
+                      "height": 200,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1601187535512-c1b06485ab4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg4ODl8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        16,
+                        16,
+                        0,
+                        0
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "M1h6t",
+                      "name": "campContent1",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dc9i2",
+                          "name": "campCardTitle1",
+                          "fill": "$text-primary",
+                          "content": "Retiro de Jóvenes",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "K6li2",
+                          "name": "campCardDate1",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "JLI4V",
+                              "name": "dateIcon1",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "calendar",
+                              "iconFontFamily": "lucide",
+                              "fill": "$primary-red"
+                            },
+                            {
+                              "type": "text",
+                              "id": "r4Bwf",
+                              "name": "dateText1",
+                              "fill": "$text-secondary",
+                              "content": "15-17 Marzo 2025",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "8TzTB",
+                          "name": "campCardDesc1",
+                          "fill": "$text-secondary",
+                          "content": "Un fin de semana de conexión con Dios y otros jóvenes",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "8TQWn",
+                          "name": "campBtn1",
+                          "fill": "$primary-red",
+                          "cornerRadius": 8,
+                          "padding": [
+                            10,
+                            20
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wOm69",
+                              "name": "campBtnText1",
+                              "fill": "#FFFFFF",
+                              "content": "Inscribirse",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MI39H",
+                  "name": "campCard2",
+                  "width": 380,
+                  "fill": "$bg-white",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qTf2a",
+                      "name": "campImg2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "barnabaspiper",
+                        "link": "https://unsplash.com/@barnabaspiper",
+                        "author": "Barnabas Piper"
+                      },
+                      "width": "fill_container",
+                      "height": 200,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1761233976686-f43410a4f5d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg4ODl8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        16,
+                        16,
+                        0,
+                        0
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3aXPx",
+                      "name": "campContent2",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yYTFe",
+                          "name": "campCardTitle2",
+                          "fill": "$text-primary",
+                          "content": "Retiro Familiar",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "uUXI0",
+                          "name": "campCardDate2",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "y1gmX",
+                              "name": "dateIcon2",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "calendar",
+                              "iconFontFamily": "lucide",
+                              "fill": "$primary-red"
+                            },
+                            {
+                              "type": "text",
+                              "id": "eiXxA",
+                              "name": "dateText2",
+                              "fill": "$text-secondary",
+                              "content": "5-7 Abril 2025",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "keQDm",
+                          "name": "campCardDesc2",
+                          "fill": "$text-secondary",
+                          "content": "Fortalece los lazos familiares en un ambiente espiritual",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "efnEA",
+                          "name": "campBtn2",
+                          "fill": "$primary-red",
+                          "cornerRadius": 8,
+                          "padding": [
+                            10,
+                            20
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "okgo2",
+                              "name": "campBtnText2",
+                              "fill": "#FFFFFF",
+                              "content": "Inscribirse",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bMKLJ",
+                  "name": "campCard3",
+                  "width": 380,
+                  "fill": "$bg-white",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "5koLL",
+                      "name": "campImg3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "alexandermassph",
+                        "link": "https://unsplash.com/@alexandermassph",
+                        "author": "Alexander Mass"
+                      },
+                      "width": "fill_container",
+                      "height": 200,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1770217649348-efce89d20425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg4OTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        16,
+                        16,
+                        0,
+                        0
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WppcS",
+                      "name": "campContent3",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZbVJZ",
+                          "name": "campCardTitle3",
+                          "fill": "$text-primary",
+                          "content": "Retiro de Matrimonios",
+                          "fontFamily": "Inter",
+                          "fontSize": 20,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dIZKm",
+                          "name": "campCardDate3",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "uWXkX",
+                              "name": "dateIcon3",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "calendar",
+                              "iconFontFamily": "lucide",
+                              "fill": "$primary-red"
+                            },
+                            {
+                              "type": "text",
+                              "id": "C90vl",
+                              "name": "dateText3",
+                              "fill": "$text-secondary",
+                              "content": "10-12 Mayo 2025",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "8g7s9",
+                          "name": "campCardDesc3",
+                          "fill": "$text-secondary",
+                          "content": "Renueva tu matrimonio con principios bíblicos",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fBEZ6",
+                          "name": "campBtn3",
+                          "fill": "$primary-red",
+                          "cornerRadius": 8,
+                          "padding": [
+                            10,
+                            20
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7eJzA",
+                              "name": "campBtnText3",
+                              "fill": "#FFFFFF",
+                              "content": "Inscribirse",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Gn5m2",
+          "name": "About Section",
+          "width": "fill_container",
+          "fill": "$bg-light",
+          "gap": 60,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "djE6F",
+              "name": "aboutLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "C8M54",
+                  "name": "aboutTitle",
+                  "fill": "$text-primary",
+                  "content": "Acerca de Nosotros",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "g2leB",
+                  "name": "aboutMission",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Plm4H",
+                      "name": "missionLabel",
+                      "fill": "$primary-blue",
+                      "content": "Nuestra Misión",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vKHax",
+                      "name": "missionText",
+                      "fill": "$text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Somos una comunidad de fe comprometida con compartir el amor de Cristo y transformar vidas en Los Alcarrizos. Creemos en el poder de la comunidad, la oración y el servicio activo para hacer una diferencia real en las familias de nuestro barrio.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Pj9Kz",
+                  "name": "visionLabel",
+                  "fill": "$primary-blue",
+                  "content": "Nuestra Visión",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "3CV10",
+                  "name": "visionText",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Ser una iglesia que impacta positivamente a cada familia de nuestra comunidad, guiándolas hacia una relación personal con Jesucristo.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2sTNE",
+              "name": "aboutRight",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "9aYvI",
+                  "name": "teamLabel",
+                  "fill": "$text-primary",
+                  "content": "Equipo de Liderazgo",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "QzywI",
+                  "name": "teamGrid",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "4TP4V",
+                      "name": "leader1",
+                      "width": 180,
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ts73l",
+                          "name": "leaderImg1",
+                          "width": 80,
+                          "height": 80,
+                          "fill": "$primary-blue",
+                          "cornerRadius": 40
+                        },
+                        {
+                          "type": "text",
+                          "id": "7pCGo",
+                          "name": "leaderName1",
+                          "fill": "$text-primary",
+                          "content": "Pastor Juan Pérez",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Nh4HT",
+                          "name": "leaderRole1",
+                          "fill": "$text-secondary",
+                          "content": "Pastor Principal",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1Ix9Y",
+                      "name": "leader2",
+                      "width": 180,
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "CVONz",
+                          "name": "leaderImg2",
+                          "width": 80,
+                          "height": 80,
+                          "fill": "$primary-blue",
+                          "cornerRadius": 40
+                        },
+                        {
+                          "type": "text",
+                          "id": "5Ns2j",
+                          "name": "leaderName2",
+                          "fill": "$text-primary",
+                          "content": "Ana Martínez",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pxHO5",
+                          "name": "leaderRole2",
+                          "fill": "$text-secondary",
+                          "content": "Liderazgo Mujeres",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UbPjJ",
+                      "name": "leader3",
+                      "width": 180,
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "E17lt",
+                          "name": "leaderImg3",
+                          "width": 80,
+                          "height": 80,
+                          "fill": "$primary-blue",
+                          "cornerRadius": 40
+                        },
+                        {
+                          "type": "text",
+                          "id": "vIOg7",
+                          "name": "leaderName3",
+                          "fill": "$text-primary",
+                          "content": "Carlos Rodríguez",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "A7ntI",
+                          "name": "leaderRole3",
+                          "fill": "$text-secondary",
+                          "content": "Liderazgo Jóvenes",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kT8IL",
+                      "name": "leader4",
+                      "width": 180,
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zQSL1",
+                          "name": "leaderImg4",
+                          "width": 80,
+                          "height": 80,
+                          "fill": "$primary-blue",
+                          "cornerRadius": 40
+                        },
+                        {
+                          "type": "text",
+                          "id": "D3xK4",
+                          "name": "leaderName4",
+                          "fill": "$text-primary",
+                          "content": "María López",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "cgVCf",
+                          "name": "leaderRole4",
+                          "fill": "$text-secondary",
+                          "content": "Adoración",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9TlCh",
+          "name": "Predicas Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "fSWFW",
+              "name": "predicasHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "30C6L",
+                  "name": "predicasTitle",
+                  "fill": "$text-primary",
+                  "content": "Prédicas y Enseñanzas",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "XXxXH",
+                  "name": "predicasSubtitle",
+                  "fill": "$text-secondary",
+                  "content": "Mensajes que transforman vidas",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "myBES",
+              "name": "predicasGrid",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "iwWyN",
+                  "name": "predicaCard1",
+                  "width": 400,
+                  "fill": "$bg-white",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Vjoc4",
+                      "name": "predicaImg1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "sixteenmilesout",
+                        "link": "https://unsplash.com/@sixteenmilesout",
+                        "author": "Sixteen Miles Out"
+                      },
+                      "width": "fill_container",
+                      "height": 225,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1737381888501-8be197cfdd50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg5NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        12,
+                        12,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "paGVH",
+                          "name": "playIcon1",
+                          "width": 60,
+                          "height": 60,
+                          "fill": "#C41E3A",
+                          "cornerRadius": 30,
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "m2RqS",
+                              "name": "playIconInner1",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "play",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9CYOW",
+                      "name": "predicaContent1",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MgCLn",
+                          "name": "predicaTitle1",
+                          "fill": "$text-primary",
+                          "content": "El Poder de la Fe",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "uutBQ",
+                          "name": "predicaDate1",
+                          "fill": "$text-secondary",
+                          "content": "Pastor Juan Pérez • 16 Feb 2025",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "o6olo",
+                  "name": "predicaCard2",
+                  "width": 400,
+                  "fill": "$bg-white",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "y9uNS",
+                      "name": "predicaImg2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "brett_jordan",
+                        "link": "https://unsplash.com/@brett_jordan",
+                        "author": "Brett Jordan"
+                      },
+                      "width": "fill_container",
+                      "height": 225,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1649400851805-9f2877f266ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg5Nzl8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        12,
+                        12,
+                        0,
+                        0
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "tQRtE",
+                          "name": "playIcon2",
+                          "width": 60,
+                          "height": 60,
+                          "fill": "$primary-red",
+                          "cornerRadius": 30,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "sRJxe",
+                              "name": "playIconInner2",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "play",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1j9NV",
+                      "name": "predicaContent2",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NCCji",
+                          "name": "predicaTitle2",
+                          "fill": "$text-primary",
+                          "content": "Viviendo en Gracia",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "xP8vA",
+                          "name": "predicaDate2",
+                          "fill": "$text-secondary",
+                          "content": "Pastor Juan Pérez • 9 Feb 2025",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bja6H",
+                  "name": "predicaCard3",
+                  "width": 400,
+                  "fill": "$bg-white",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E7EB"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "M4IgK",
+                      "name": "predicaImg3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "samuelyongbo",
+                        "link": "https://unsplash.com/@samuelyongbo",
+                        "author": "Samuel Yongbo Kwon"
+                      },
+                      "width": "fill_container",
+                      "height": 225,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1731341711748-ef0596ae4959?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Mjg5ODB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": [
+                        12,
+                        12,
+                        0,
+                        0
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "15IMD",
+                          "name": "playIcon3",
+                          "width": 60,
+                          "height": 60,
+                          "fill": "$primary-red",
+                          "cornerRadius": 30,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "qxwhw",
+                              "name": "playIconInner3",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "play",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "8khsz",
+                      "name": "predicaContent3",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "7XMqf",
+                          "name": "predicaTitle3",
+                          "fill": "$text-primary",
+                          "content": "El Amor que Transforma",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Xo4dc",
+                          "name": "predicaDate3",
+                          "fill": "$text-secondary",
+                          "content": "Ana Martínez • 2 Feb 2025",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XkV9a",
+          "name": "Virtual Section",
+          "width": "fill_container",
+          "fill": "$primary-blue",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "bSb8M",
+              "name": "virtualHeader",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OIyQj",
+                  "name": "virtualTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Iglesia Virtual",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "KNhb1",
+                  "name": "virtualSubtitle",
+                  "fill": "#FFFFFF",
+                  "content": "Únete a nuestra transmisión en vivo",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Z9j8V",
+              "name": "virtualContent",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Yxd77",
+                  "name": "videoContainer",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yLq7k",
+                      "name": "videoPlayer",
+                      "width": "fill_container",
+                      "height": 400,
+                      "fill": "#000000",
+                      "cornerRadius": 16,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "XznjH",
+                          "name": "liveBadge",
+                          "fill": "$primary-red",
+                          "cornerRadius": 20,
+                          "gap": 8,
+                          "padding": [
+                            8,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "70q67",
+                              "name": "liveDot",
+                              "fill": "#FFFFFF",
+                              "width": 8,
+                              "height": 8
+                            },
+                            {
+                              "type": "text",
+                              "id": "4AWJI",
+                              "name": "liveText",
+                              "fill": "#FFFFFF",
+                              "content": "EN VIVO",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "t8ntk",
+                          "name": "playButton",
+                          "width": 80,
+                          "height": 80,
+                          "fill": "$primary-red",
+                          "cornerRadius": 40,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "JD6Si",
+                              "name": "playIconBig",
+                              "width": 32,
+                              "height": 32,
+                              "iconFontName": "play",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yB51t",
+                      "name": "videoControls",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "yk7Yu",
+                          "name": "viewersInfo",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "2mS5R",
+                              "name": "eyeIcon",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "eye",
+                              "iconFontFamily": "lucide",
+                              "fill": "#FFFFFF"
+                            },
+                            {
+                              "type": "text",
+                              "id": "F19mn",
+                              "name": "viewersText",
+                              "fill": "#FFFFFF",
+                              "content": "234 viendo ahora",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "uZMwu",
+                          "name": "serviceTime",
+                          "fill": "#FFFFFF",
+                          "content": "Domingos 9:00 AM y 11:00 AM",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nS6Hj",
+                  "name": "prayerPanel",
+                  "width": 350,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZcjZd",
+                      "name": "prayerTitle",
+                      "fill": "$text-primary",
+                      "content": "Peticiones de Oración",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NUfue",
+                      "name": "prayerDesc",
+                      "fill": "$text-secondary",
+                      "content": "Comparte tu petición y nuestro equipo de intercesión orará por ti.",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GuDu0",
+                      "name": "prayerInput",
+                      "width": "fill_container",
+                      "height": 100,
+                      "fill": "$bg-light",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E5E7EB"
+                      },
+                      "padding": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "L9rsJ",
+                          "name": "prayerPlaceholder",
+                          "fill": "$text-muted",
+                          "content": "Escribe tu petición aquí...",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GSRvo",
+                      "name": "prayerBtn",
+                      "fill": "$primary-red",
+                      "cornerRadius": 8,
+                      "padding": [
+                        12,
+                        24
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gQCa3",
+                          "name": "prayerBtnText",
+                          "fill": "#FFFFFF",
+                          "content": "Enviar Petición",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Hq2Pa",
+          "name": "CTA Section",
+          "width": "fill_container",
+          "height": 350,
+          "fill": "$bg-light",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 80,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Vydgf",
+              "name": "ctaTitle",
+              "fill": "$text-primary",
+              "content": "Sé Parte de Nuestra Comunidad",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 40,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "aZIND",
+              "name": "ctaDesc",
+              "fill": "$text-secondary",
+              "textGrowth": "fixed-width",
+              "width": 600,
+              "content": "Únete a nuestro canal de WhatsApp para recibir actualizaciones, versículos diarios y estar conectado con la familia de fe.",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "qfNDL",
+              "name": "ctaButton",
+              "fill": "#25D366",
+              "cornerRadius": 12,
+              "gap": 12,
+              "padding": [
+                20,
+                48
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "FmHuK",
+                  "name": "whatsappIcon",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "message-circle",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "PDBQ6",
+                  "name": "ctaButtonText",
+                  "fill": "#FFFFFF",
+                  "content": "Únete a nuestro canal de WhatsApp",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IwRFZ",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$primary-blue",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            60,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "HAmEY",
+              "name": "footerTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JQENv",
+                  "name": "footerBrand",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fO8l5",
+                      "name": "footerLogo",
+                      "fill": "#FFFFFF",
+                      "content": "Iglesia Comunitaria de la Cristianización",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MR18e",
+                      "name": "footerTagline",
+                      "fill": "#FFFFFF",
+                      "content": "Transformando vidas en Los Alcarrizos",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UL6C1",
+                  "name": "footerLinks",
+                  "gap": 80,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yBhwO",
+                      "name": "footerCol1",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TCqRF",
+                          "name": "col1Title",
+                          "fill": "#FFFFFF",
+                          "content": "Navegación",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "n6Wkb",
+                          "name": "col1Link1",
+                          "fill": "#FFFFFF",
+                          "content": "Inicio",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ujmQs",
+                          "name": "col1Link2",
+                          "fill": "#FFFFFF",
+                          "content": "Campamento",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ickqu",
+                          "name": "col1Link3",
+                          "fill": "#FFFFFF",
+                          "content": "Nosotros",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "PVOHN",
+                          "name": "col1Link4",
+                          "fill": "#FFFFFF",
+                          "content": "Prédicas",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MoMpk",
+                      "name": "footerCol2",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Wirpp",
+                          "name": "col2Title",
+                          "fill": "#FFFFFF",
+                          "content": "Contacto",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "z93pP",
+                          "name": "col2Address",
+                          "fill": "#FFFFFF",
+                          "content": "Los Alcarrizos, Santo Domingo",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "uck0e",
+                          "name": "col2Phone",
+                          "fill": "#FFFFFF",
+                          "content": "Tel: (809) 123-4567",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "3cHwL",
+                          "name": "col2Email",
+                          "fill": "#FFFFFF",
+                          "content": "info@iglesiacristianizacion.org",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ya0Z6",
+                      "name": "footerCol3",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "P6gxr",
+                          "name": "col3Title",
+                          "fill": "#FFFFFF",
+                          "content": "Síguenos",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "PXtIS",
+                          "name": "socialIcons",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "hfMTl",
+                              "name": "socialFb",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#FFFFFF",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "W24WX",
+                                  "name": "socialFbIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "facebook",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$primary-blue"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "6o04w",
+                              "name": "socialIg",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#FFFFFF",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "DsUlB",
+                                  "name": "socialIgIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "instagram",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$primary-blue"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "AiLWf",
+                              "name": "socialYt",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#FFFFFF",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "LUOrh",
+                                  "name": "socialYtIcon",
+                                  "width": 18,
+                                  "height": 18,
+                                  "iconFontName": "youtube",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$primary-blue"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "97Per",
+              "name": "footerBottom",
+              "width": "fill_container",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Vd6Wf",
+                  "name": "copyright",
+                  "fill": "#FFFFFF",
+                  "content": "© 2025 Iglesia Comunitaria de la Cristianización. Todos los derechos reservados.",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "themes": {
+    "Mode": [
+      "Light",
+      "Dark"
+    ]
+  },
+  "variables": {
+    "--sidebar": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E7E8E5"
+        },
+        {
+          "value": "#18181b",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#18181b"
+        },
+        {
+          "value": "#18181b",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#ffffff1a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2a2a30",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#18181b"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#71717a"
+        },
+        {
+          "value": "#71717a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--background": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--card": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FFFFFF"
+        },
+        {
+          "value": "#1A1A1A",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--card-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--popover": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FFFFFF"
+        },
+        {
+          "value": "#1A1A1A",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--popover-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FF8400"
+        },
+        {
+          "value": "#FF8400",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--secondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E7E8E5"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--secondary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--muted": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--muted-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#B8B9B6",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#F2F3F0",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--destructive": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#D93C15"
+        },
+        {
+          "value": "#FF5C33",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--input": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#666666",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--black": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "--font-primary": {
+      "type": "string",
+      "value": "JetBrains Mono"
+    },
+    "--font-secondary": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "--radius-none": {
+      "type": "number",
+      "value": 0
+    },
+    "--radius-pill": {
+      "type": "number",
+      "value": 999
+    },
+    "--color-success": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#DFE6E1"
+        },
+        {
+          "value": "#222924",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-success-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#004D1A"
+        },
+        {
+          "value": "#B6FFCE",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-warning": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E9E3D8"
+        },
+        {
+          "value": "#291C0F",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-warning-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#804200"
+        },
+        {
+          "value": "#FF8400",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-error": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E5DCDA"
+        },
+        {
+          "value": "#24100B",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-error-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#8C1C00"
+        },
+        {
+          "value": "#FF5C33",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-info": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#DFDFE6"
+        },
+        {
+          "value": "#222229",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-info-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000066"
+        },
+        {
+          "value": "#B2B2FF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--radius-m": {
+      "type": "number",
+      "value": 16
+    },
+    "bg-card": {
+      "type": "color",
+      "value": "#F6F7F8"
+    },
+    "bg-light": {
+      "type": "color",
+      "value": "#F8F9FA"
+    },
+    "bg-white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "primary-blue": {
+      "type": "color",
+      "value": "#1E3A5F"
+    },
+    "primary-red": {
+      "type": "color",
+      "value": "#C41E3A"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#9CA3AF"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#1A1A1A"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#6B7280"
+    }
+  }
+}
