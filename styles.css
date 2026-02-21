@@ -65,7 +65,7 @@ body {
 .logo-icon {
     width: 48px;
     height: 48px;
-    background: var(--primary-blue);
+    object-fit: contain;
     border-radius: 8px;
 }
 
@@ -118,27 +118,74 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-light);
     padding: 120px 20px 80px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Slideshow de fondo ─────────────────────────────────── */
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    will-change: opacity;
+}
+
+.hero-slideshow .slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(30, 58, 95, 0.7) 0%,
+        rgba(15, 36, 64, 0.8) 100%
+    );
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
     font-size: 56px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
     margin-bottom: 24px;
     line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
     font-size: 22px;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 32px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-schedule {
@@ -153,8 +200,12 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 16px;
+}
+
+.schedule-item .icon {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .icon {
@@ -243,6 +294,109 @@ body {
 .section-header.light h2,
 .section-header.light p {
     color: var(--bg-white);
+}
+
+/* ── Versículo del Día ──────────────────────────────────── */
+.daily-verse {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #0f2440 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-verse::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+}
+
+.verse-card {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    animation: verseFadeIn 1s ease-out;
+}
+
+.verse-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.verse-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.verse-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.verse-text {
+    font-size: 22px;
+    line-height: 1.8;
+    color: var(--bg-white);
+    font-style: italic;
+    font-weight: 400;
+    margin: 0 0 20px;
+    border: none;
+    padding: 0;
+    quotes: "\201C" "\201D";
+}
+
+.verse-text::before {
+    content: open-quote;
+    font-size: 40px;
+    line-height: 0;
+    vertical-align: -14px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-right: 4px;
+}
+
+.verse-text::after {
+    content: close-quote;
+    font-size: 40px;
+    line-height: 0;
+    vertical-align: -14px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-left: 4px;
+}
+
+.verse-reference {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: normal;
+    display: block;
+}
+
+.verse-text.loading {
+    opacity: 0.5;
+    font-style: normal;
+}
+
+@keyframes verseFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Campamento Section */
@@ -756,6 +910,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    .daily-verse {
+        padding: 40px 0;
+    }
+
+    .verse-card {
+        padding: 24px 16px;
+    }
+
+    .verse-text {
+        font-size: 18px;
+    }
+
     .nav-links {
         display: none;
         position: absolute;

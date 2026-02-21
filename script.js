@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ── Slideshow Hero ─────────────────────────────────────
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    if (slides.length > 1) {
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // cambia cada 5 segundos
+    }
+
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const navbar = document.querySelector('.navbar');
@@ -132,4 +143,99 @@ document.addEventListener('DOMContentLoaded', function() {
             liveViewers.textContent = `${viewers} viendo ahora`;
         }, 5000);
     }
+
+    // ── Versículo del Día (se actualiza a las 6 AM) ───────
+    async function loadDailyVerse() {
+        const verseContent = document.getElementById('verse-content');
+        const verseReference = document.getElementById('verse-reference');
+
+        if (!verseContent || !verseReference) return;
+
+        // Calcular la clave de fecha con reset a las 6 AM
+        function getDateKey() {
+            const now = new Date();
+            if (now.getHours() < 6) {
+                now.setDate(now.getDate() - 1);
+            }
+            return now.toISOString().split('T')[0];
+        }
+
+        const dateKey = getDateKey();
+
+        // Intentar leer del cache local primero
+        try {
+            const cached = JSON.parse(localStorage.getItem('dailyVerse'));
+            if (cached && cached.date === dateKey) {
+                verseContent.textContent = cached.content;
+                verseContent.classList.remove('loading');
+                verseReference.textContent = '— ' + cached.reference;
+                scheduleNextRefresh();
+                return;
+            }
+        } catch (e) { /* cache inválido, continuar */ }
+
+        // Fetch desde nuestro servidor proxy (nunca expone la API key)
+        verseContent.classList.add('loading');
+        try {
+            const response = await fetch('/api/daily-verse');
+            if (!response.ok) throw new Error('Error en respuesta');
+
+            const data = await response.json();
+
+            verseContent.textContent = data.content;
+            verseContent.classList.remove('loading');
+            verseReference.textContent = '— ' + data.reference;
+
+            // Guardar en localStorage
+            localStorage.setItem('dailyVerse', JSON.stringify({
+                content: data.content,
+                reference: data.reference,
+                date: data.date || dateKey
+            }));
+        } catch (error) {
+            console.warn('No se pudo cargar el versículo:', error.message);
+
+            // Fallback local si el servidor no está disponible
+            const fallbacks = [
+                { ref: 'Juan 3:16', text: 'Porque de tal manera amó Dios al mundo, que ha dado á su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.' },
+                { ref: 'Salmos 23:1', text: 'Jehová es mi pastor; nada me faltará.' },
+                { ref: 'Filipenses 4:13', text: 'Todo lo puedo en Cristo que me fortalece.' },
+                { ref: 'Romanos 8:28', text: 'Y sabemos que á los que á Dios aman, todas las cosas les ayudan á bien.' },
+                { ref: 'Isaías 41:10', text: 'No temas, que yo soy contigo; no desmayes, que yo soy tu Dios que te esfuerzo.' }
+            ];
+
+            const dayIndex = new Date().getDate() % fallbacks.length;
+            const fb = fallbacks[dayIndex];
+
+            verseContent.textContent = fb.text;
+            verseContent.classList.remove('loading');
+            verseReference.textContent = '— ' + fb.ref;
+        }
+
+        scheduleNextRefresh();
+    }
+
+    // Programar recarga automática a las 6 AM
+    function scheduleNextRefresh() {
+        const now = new Date();
+        const next6AM = new Date(now);
+        next6AM.setHours(6, 0, 0, 0);
+
+        // Si ya pasaron las 6 AM hoy, programar para mañana
+        if (now >= next6AM) {
+            next6AM.setDate(next6AM.getDate() + 1);
+        }
+
+        const msUntil6AM = next6AM - now;
+
+        // Solo programar si la pestaña permanecerá abierta (máx 24h)
+        if (msUntil6AM <= 86400000) {
+            setTimeout(() => {
+                localStorage.removeItem('dailyVerse');
+                loadDailyVerse();
+            }, msUntil6AM);
+        }
+    }
+
+    loadDailyVerse();
 });
