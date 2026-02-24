@@ -93,9 +93,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prayerForm) {
         prayerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            const nameInput = this.querySelector('input[name="nombre"]');
             const textarea = this.querySelector('textarea');
             const submitBtn = this.querySelector('button[type="submit"]');
+            const name = nameInput.value.trim();
             const message = textarea.value.trim();
+
+            if (!name) {
+                alert('Por favor, escribe tu nombre.');
+                return;
+            }
 
             if (!message) {
                 alert('Por favor, escribe tu petición de oración.');
@@ -109,11 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const response = await fetch(this.action, {
                     method: 'POST',
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ peticion: message })
+                    body: JSON.stringify({ nombre: name, peticion: message })
                 });
 
                 if (response.ok) {
                     alert('¡Gracias por tu petición! Nuestro equipo de intercesión estará orando por ti.');
+                    nameInput.value = '';
                     textarea.value = '';
                 } else {
                     alert('Hubo un error al enviar. Intenta de nuevo más tarde.');

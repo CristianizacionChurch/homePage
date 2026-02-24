@@ -1118,6 +1118,26 @@ img, video, iframe {
     background: var(--bg-light);
 }
 
+.prayer-panel input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    margin-bottom: 12px;
+    background: var(--bg-light);
+}
+
+.prayer-panel input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+.prayer-panel input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
 .prayer-panel textarea::placeholder {
     color: var(--text-muted);
 }
