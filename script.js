@@ -65,16 +65,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const prayerForm = document.getElementById('prayer-form');
     
     if (prayerForm) {
-        prayerForm.addEventListener('submit', function(e) {
+        prayerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const textarea = this.querySelector('textarea');
+            const submitBtn = this.querySelector('button[type="submit"]');
             const message = textarea.value.trim();
             
-            if (message) {
-                alert('¡Gracias por tu petición! Nuestro equipo de intercesión estará orando por ti.');
-                textarea.value = '';
-            } else {
+            if (!message) {
                 alert('Por favor, escribe tu petición de oración.');
+                return;
+            }
+
+            // Deshabilitar botón mientras envía
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ peticion: message })
+                });
+
+                if (response.ok) {
+                    alert('¡Gracias por tu petición! Nuestro equipo de intercesión estará orando por ti.');
+                    textarea.value = '';
+                } else {
+                    alert('Hubo un error al enviar. Intenta de nuevo más tarde.');
+                }
+            } catch (error) {
+                alert('No se pudo conectar. Verifica tu conexión a internet.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Petición';
             }
         });
     }
