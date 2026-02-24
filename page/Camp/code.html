@@ -52,10 +52,10 @@
 <body class="font-body bg-background-light dark:bg-background-dark text-stone-800 dark:text-stone-100 transition-colors duration-300">
 <nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-teal-200 dark:border-stone-800">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between h-20 items-center">
-<div class="flex items-center space-x-2">
-<img src="LOGO2.png" alt="MAYDAY Misión Rescate" class="h-14 w-auto drop-shadow-md" style="filter: brightness(0) saturate(100%);" />
-<span class="font-display text-2xl tracking-wider uppercase text-stone-900 dark:text-white">MAYDAY 2026</span>
+<div class="flex justify-between h-16 sm:h-20 items-center">
+<div class="flex items-center space-x-2 min-w-0">
+<img src="LOGO2.png" alt="MAYDAY Misión Rescate" class="h-10 sm:h-14 w-auto drop-shadow-md flex-shrink-0" style="filter: brightness(0) saturate(100%);" />
+<span class="font-display text-lg sm:text-2xl tracking-wider uppercase text-stone-900 dark:text-white truncate">MAYDAY 2026</span>
 </div>
 <div class="hidden md:flex space-x-8 items-center">
 <a class="hover:text-primary transition-colors font-medium" href="../../index.html">Inicio</a>
@@ -67,10 +67,19 @@
                     </span>
 </div>
 <div class="md:hidden flex items-center">
-<button class="text-stone-800 dark:text-white hover:text-primary">
-<span class="material-icons-outlined text-3xl">menu</span>
+<button id="mobileMenuBtn" class="text-stone-800 dark:text-white hover:text-primary p-2 -mr-2" aria-label="Abrir menú">
+<span id="menuIcon" class="material-icons-outlined text-3xl">menu</span>
 </button>
 </div>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden md:hidden bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-teal-200 dark:border-stone-800">
+<div class="px-4 py-4 space-y-1">
+<a class="block py-3 px-4 rounded-lg hover:bg-primary/10 text-stone-800 dark:text-white font-medium transition-colors" href="../../index.html">Inicio</a>
+<a class="block py-3 px-4 rounded-lg hover:bg-primary/10 text-stone-800 dark:text-white font-medium transition-colors" href="#experiencia" onclick="closeMobileMenu()">Experiencia</a>
+<a class="block py-3 px-4 rounded-lg hover:bg-primary/10 text-stone-800 dark:text-white font-medium transition-colors" href="#galeria" onclick="closeMobileMenu()">Galería</a>
+<a class="block py-3 px-4 rounded-lg hover:bg-primary/10 text-stone-800 dark:text-white font-medium transition-colors" href="#proximamente" onclick="closeMobileMenu()">Próximamente</a>
 </div>
 </div>
 </nav>
@@ -87,7 +96,7 @@
 </div>
 
 <!-- Music Toggle Button -->
-<button id="musicToggle" onclick="toggleMusic()" class="absolute top-24 right-6 z-30 flex items-center gap-2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full transition-all duration-300 border border-white/20 hover:border-white/40 group">
+<button id="musicToggle" onclick="toggleMusic()" class="absolute top-20 sm:top-24 right-4 sm:right-6 z-30 flex items-center gap-2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white px-3 sm:px-4 py-2 rounded-full transition-all duration-300 border border-white/20 hover:border-white/40 group">
 <span id="musicIcon" class="material-icons-outlined text-xl">play_arrow</span>
 <span id="musicLabel" class="text-sm font-semibold tracking-wide">Escuchar</span>
 <span id="musicBars" class="flex items-end gap-[2px] h-4 hidden">
@@ -182,7 +191,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="text-center mb-16">
 <span class="text-primary font-bold tracking-widest uppercase text-sm">Galería</span>
-<h2 class="text-4xl md:text-5xl font-display mt-2 text-white">MIRA LA EXPERIENCIA 2025</h2>
+<h2 class="text-4xl md:text-5xl font-display mt-2 text-white">MIRA LA EXPERIENCIA 2025 en nuestro campamento The Chosen</h2>
 <p class="text-teal-300/70 mt-4 text-lg">Haz click en cualquier imagen para verla en grande</p>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -290,11 +299,11 @@
 <button onclick="closeLightbox()" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/80 hover:text-white z-10 transition-colors" aria-label="Cerrar">
 <span class="material-icons-outlined text-4xl">close</span>
 </button>
-<button onclick="prevImage()" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white z-10 transition-colors bg-black/30 hover:bg-black/60 rounded-full p-2" aria-label="Anterior">
-<span class="material-icons-outlined text-3xl">chevron_left</span>
+<button onclick="prevImage()" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white z-10 transition-colors bg-black/30 hover:bg-black/60 rounded-full p-3 md:p-2" aria-label="Anterior">
+<span class="material-icons-outlined text-4xl md:text-3xl">chevron_left</span>
 </button>
-<button onclick="nextImage()" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white z-10 transition-colors bg-black/30 hover:bg-black/60 rounded-full p-2" aria-label="Siguiente">
-<span class="material-icons-outlined text-3xl">chevron_right</span>
+<button onclick="nextImage()" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white z-10 transition-colors bg-black/30 hover:bg-black/60 rounded-full p-3 md:p-2" aria-label="Siguiente">
+<span class="material-icons-outlined text-4xl md:text-3xl">chevron_right</span>
 </button>
 <img id="lightboxImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl" src="" alt="Galería del campamento"/>
 <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium">
@@ -416,6 +425,38 @@ Próximamente...
 </footer>
 
 <script>
+// Mobile Menu
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        icon.textContent = 'close';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Cerrar menú');
+    } else {
+        menu.classList.add('hidden');
+        icon.textContent = 'menu';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+    }
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    menu.classList.add('hidden');
+    icon.textContent = 'menu';
+    document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+}
+
+// Wire up the mobile menu button
+document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+// Close mobile menu on resize to desktop
+window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) closeMobileMenu();
+});
+
 function toggleMusic() {
     const audio = document.getElementById('bgMusic');
     const icon = document.getElementById('musicIcon');
@@ -482,6 +523,35 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
 });
+
+// Touch swipe support for lightbox
+(function() {
+    const lightbox = document.getElementById('galleryLightbox');
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+        const diffX = touchStartX - touchEndX;
+        const diffY = Math.abs(touchStartY - touchEndY);
+
+        // Only trigger if horizontal swipe is dominant (> 50px) and not too vertical
+        if (Math.abs(diffX) > 50 && diffY < 100) {
+            if (diffX > 0) {
+                nextImage(); // Swipe left = next
+            } else {
+                prevImage(); // Swipe right = prev
+            }
+        }
+    }, { passive: true });
+})();
 </script>
 
 </body></html>

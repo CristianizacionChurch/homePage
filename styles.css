@@ -30,6 +30,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeSpeed;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ── Performance: GPU layers for animated elements ─── */
@@ -40,7 +42,8 @@ img, video, iframe {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 24px;
+    width: 100%;
 }
 
 /* Navbar */
@@ -49,7 +52,7 @@ img, video, iframe {
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 70px;
     background: var(--bg-white);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -59,7 +62,7 @@ img, video, iframe {
 .nav-container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 24px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -69,26 +72,34 @@ img, video, iframe {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    min-width: 0;
+    flex-shrink: 1;
 }
 
 .logo-icon {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
     border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .logo-text {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 32px;
+    flex-shrink: 0;
 }
 
 .nav-links a {
@@ -97,6 +108,7 @@ img, video, iframe {
     font-size: 15px;
     font-weight: 500;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -112,23 +124,38 @@ img, video, iframe {
     border: none;
     cursor: pointer;
     padding: 10px;
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-btn span {
-    width: 25px;
-    height: 3px;
+    width: 24px;
+    height: 2.5px;
     background: var(--text-primary);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger X animation */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 120px 20px 80px;
+    padding: 100px 20px 60px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -181,21 +208,22 @@ img, video, iframe {
     max-width: 800px;
     position: relative;
     z-index: 2;
+    padding: 0 16px;
 }
 
 .hero h1 {
-    font-size: 56px;
+    font-size: clamp(28px, 5vw, 56px);
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 24px;
-    line-height: 1.2;
+    margin-bottom: 20px;
+    line-height: 1.15;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-    font-size: 22px;
+    font-size: clamp(16px, 2.5vw, 22px);
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -235,15 +263,17 @@ img, video, iframe {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 16px 40px;
-    font-size: 18px;
+    gap: 10px;
+    padding: 14px 32px;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 12px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -271,8 +301,10 @@ img, video, iframe {
 .btn-whatsapp {
     background: var(--whatsapp-green);
     color: var(--bg-white);
-    padding: 20px 48px;
-    font-size: 18px;
+    padding: 16px 32px;
+    font-size: 16px;
+    text-align: center;
+    word-break: break-word;
 }
 
 .btn-whatsapp:hover {
@@ -282,7 +314,7 @@ img, video, iframe {
 
 /* Sections */
 .section {
-    padding: 80px 0;
+    padding: 64px 0;
     contain: layout style;
 }
 
@@ -292,14 +324,14 @@ img, video, iframe {
 }
 
 .section-header h2 {
-    font-size: 40px;
+    font-size: clamp(24px, 4vw, 40px);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 12px;
 }
 
 .section-header p {
-    font-size: 18px;
+    font-size: clamp(15px, 2vw, 18px);
     color: var(--text-secondary);
 }
 
@@ -358,7 +390,7 @@ img, video, iframe {
 }
 
 .verse-text {
-    font-size: 22px;
+    font-size: clamp(17px, 2.5vw, 22px);
     line-height: 1.8;
     color: var(--bg-white);
     font-style: italic;
@@ -431,7 +463,7 @@ img, video, iframe {
 }
 
 .campamento-header h2 {
-    font-size: 40px;
+    font-size: clamp(24px, 4vw, 40px);
     font-weight: 800;
     color: var(--text-primary);
     font-style: italic;
@@ -460,7 +492,7 @@ img, video, iframe {
 
 .stat-number {
     display: block;
-    font-size: 42px;
+    font-size: clamp(28px, 4vw, 42px);
     font-weight: 800;
     color: #E8751A;
     line-height: 1.2;
@@ -752,7 +784,7 @@ img, video, iframe {
 }
 
 .about-text h2 {
-    font-size: 40px;
+    font-size: clamp(28px, 4vw, 40px);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 24px;
@@ -955,8 +987,15 @@ img, video, iframe {
 
 .virtual-content {
     display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 769px) {
+    .virtual-content {
+        grid-template-columns: 1fr 320px;
+        gap: 32px;
+    }
 }
 
 .video-player-container {
@@ -968,7 +1007,8 @@ img, video, iframe {
 .video-player {
     position: relative;
     width: 100%;
-    height: 400px;
+    aspect-ratio: 16 / 9;
+    max-height: 400px;
     background: #000;
     border-radius: 16px;
     display: flex;
@@ -1031,6 +1071,8 @@ img, video, iframe {
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .viewers {
@@ -1092,14 +1134,14 @@ img, video, iframe {
 }
 
 .cta-content h2 {
-    font-size: 40px;
+    font-size: clamp(24px, 4vw, 40px);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 24px;
 }
 
 .cta-content p {
-    font-size: 18px;
+    font-size: clamp(15px, 2vw, 18px);
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto 32px;
@@ -1109,13 +1151,15 @@ img, video, iframe {
 .footer {
     background: var(--primary-blue);
     color: var(--bg-white);
-    padding: 60px 0 30px;
+    padding: 48px 0 24px;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 32px;
 }
 
 .footer-brand h3 {
@@ -1131,7 +1175,8 @@ img, video, iframe {
 
 .footer-links {
     display: flex;
-    gap: 80px;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
 .footer-column h4 {
@@ -1210,13 +1255,11 @@ img, video, iframe {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 40px;
-    }
 
+/* ── Large tablets & small desktops ─── */
+@media (max-width: 1024px) {
     .nav-container {
-        padding: 0 40px;
+        padding: 0 24px;
     }
 
     .cards-grid,
@@ -1233,82 +1276,82 @@ img, video, iframe {
         gap: 40px;
     }
 
-    .virtual-content {
-        grid-template-columns: 1fr;
-    }
-
-    .prayer-panel {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
     .footer-content {
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
     }
 
     .footer-links {
-        flex-wrap: wrap;
-        gap: 40px;
+        gap: 32px;
     }
 }
 
+/* ── Tablets & large phones ──────────── */
 @media (max-width: 768px) {
     .daily-verse {
         padding: 40px 0;
     }
 
     .verse-card {
-        padding: 24px 16px;
-    }
-
-    .verse-text {
-        font-size: 18px;
+        padding: 24px 12px;
     }
 
     .nav-links {
         display: none;
-        position: absolute;
-        top: 80px;
+        position: fixed;
+        top: 70px;
         left: 0;
         right: 0;
+        bottom: 0;
         background: var(--bg-white);
         flex-direction: column;
-        padding: 20px;
-        gap: 20px;
+        padding: 24px;
+        gap: 4px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        z-index: 999;
     }
 
     .nav-links.active {
         display: flex;
     }
 
+    .nav-links a {
+        font-size: 17px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-color);
+        display: block;
+    }
+
     .mobile-menu-btn {
         display: flex;
     }
 
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero-subtitle {
-        font-size: 18px;
+    .hero {
+        padding: 90px 16px 48px;
+        min-height: 100svh;
     }
 
     .hero-schedule {
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
+        align-items: center;
     }
 
-    .section-header h2,
-    .about-text h2,
-    .cta-content h2 {
-        font-size: 28px;
+    .schedule-item {
+        font-size: 14px;
     }
 
     .cards-grid,
-    .video-grid,
-    .team-grid,
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
     .testimonials-grid {
         grid-template-columns: 1fr;
     }
@@ -1320,56 +1363,208 @@ img, video, iframe {
 
     .camp-stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 12px;
     }
 
-    .campamento-header h2 {
-        font-size: 28px;
+    .stat-card {
+        padding: 20px 16px;
     }
 
-    .stat-number {
-        font-size: 32px;
-    }
-
-    .container {
-        padding: 0 20px;
-    }
-
-    .nav-container {
-        padding: 0 20px;
+    .section {
+        padding: 48px 0;
     }
 
     .btn {
-        padding: 14px 28px;
-        font-size: 16px;
+        padding: 12px 24px;
+        font-size: 15px;
     }
 
     .btn-whatsapp {
-        padding: 16px 32px;
+        padding: 14px 24px;
+        font-size: 15px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .btn-whatsapp svg {
+        flex-shrink: 0;
+    }
+
+    .prayer-panel {
+        max-width: 100%;
     }
 
     .lightbox-nav {
         font-size: 32px;
         padding: 8px 14px;
     }
-}
 
-@media (max-width: 480px) {
-    .logo-text {
-        font-size: 14px;
+    .lightbox-close {
+        top: 12px;
+        right: 16px;
+        font-size: 36px;
     }
 
-    .hero h1 {
-        font-size: 28px;
+    .footer-links {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer-bottom p {
+        font-size: 11px;
+    }
+}
+
+/* ── Small phones ────────────────────── */
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 12px;
+        max-width: 180px;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hero {
+        padding: 80px 12px 40px;
     }
 
     .btn {
-        padding: 12px 24px;
+        padding: 12px 20px;
         font-size: 14px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .btn-whatsapp {
+        padding: 14px 20px;
     }
 
     .camp-gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
+    }
+
+    .camp-gallery-item {
+        border-radius: 8px;
+    }
+
+    .stat-card {
+        padding: 16px 12px;
+        border-radius: 12px;
+    }
+
+    .testimonial-card {
+        padding: 24px 20px;
+    }
+
+    .video-player {
+        border-radius: 12px;
+    }
+
+    .verse-card {
+        padding: 20px 8px;
+    }
+
+    .daily-verse::before {
+        display: none;
+    }
+
+    .prayer-panel {
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    .prayer-panel h3 {
+        font-size: 18px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .team-member {
+        padding: 16px 12px;
+    }
+
+    .member-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .footer {
+        padding: 36px 0 20px;
+    }
+
+    .footer-brand h3 {
+        font-size: 16px;
+    }
+}
+
+/* ── Very small phones (320px) ───────── */
+@media (max-width: 360px) {
+    .logo-text {
+        font-size: 11px;
+        max-width: 140px;
+    }
+
+    .camp-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .hero-content {
+        padding: 0 8px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+}
+
+/* ── Landscape phones ────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 80px 20px 40px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 16px;
+    }
+
+    .hero-schedule {
+        margin-bottom: 20px;
+    }
+}
+
+/* ── Safe area insets for notched devices ── */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .footer-bottom {
+        padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+
+    .nav-links {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* ── Large desktop ───────────────────── */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .nav-container {
+        padding: 0 40px;
     }
 }
