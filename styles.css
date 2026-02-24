@@ -401,7 +401,154 @@ body {
 
 /* Campamento Section */
 .campamento {
+    background: #FFF5ED;
+}
+
+.campamento-header {
+    margin-bottom: 40px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #E8751A;
+    margin-bottom: 8px;
+}
+
+.campamento-header h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-style: italic;
+}
+
+/* Stats Row */
+.camp-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
     background: var(--bg-white);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 42px;
+    font-weight: 800;
+    color: #E8751A;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+}
+
+.quote-icon {
+    font-size: 48px;
+    font-weight: 700;
+    color: #E8751A;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+}
+
+.testimonial-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1E3A5F, #0f2440);
+    flex-shrink: 0;
+}
+
+.author-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.author-info span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.campamento-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-ver-mas {
+    display: inline-block;
+    padding: 14px 48px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #E8751A;
+    background: transparent;
+    border: 2px solid #E8751A;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-ver-mas:hover {
+    background: #E8751A;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
 .cards-grid {
@@ -574,6 +721,24 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 .play-button {
@@ -964,8 +1129,22 @@ body {
 
     .cards-grid,
     .video-grid,
-    .team-grid {
+    .team-grid,
+    .testimonials-grid {
         grid-template-columns: 1fr;
+    }
+
+    .camp-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .campamento-header h2 {
+        font-size: 28px;
+    }
+
+    .stat-number {
+        font-size: 32px;
     }
 
     .container {

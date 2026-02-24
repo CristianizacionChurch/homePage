@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAYDAY: Misión Rescate - Campamento 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Poppins:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0F766E", // Teal-700 military green
+                        "primary-dark": "#134E4A", // Deep forest green
+                        "secondary": "#CCFBF1", // Light teal
+                        "background-light": "#F0FDFA", // Teal-50
+                        "background-dark": "#1C1917", // Stone-900
+                        "card-dark": "#292524", // Stone-800
+                        "accent-green": "#0D9488", // Teal-600
+                    },
+                    fontFamily: {
+                        display: ["Anton", "sans-serif"],
+                        body: ["Poppins", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1516939884455-1445c8652f83?q=80&w=2574&auto=format&fit=crop')",
+                        'texture-pattern': "url('https://www.transparenttextures.com/patterns/stardust.png')",
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        .dark .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+        }
+        .scroll-text {
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="font-body bg-background-light dark:bg-background-dark text-stone-800 dark:text-stone-100 transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-teal-200 dark:border-stone-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex items-center space-x-2">
+<img src="LOGO2.png" alt="MAYDAY Misión Rescate" class="h-14 w-auto drop-shadow-md" style="filter: brightness(0) saturate(100%);" />
+<span class="font-display text-2xl tracking-wider uppercase text-stone-900 dark:text-white">MAYDAY 2026</span>
+</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="hover:text-primary transition-colors font-medium" href="../../index.html">Inicio</a>
+<a class="hover:text-primary transition-colors font-medium" href="#experiencia">Experiencia</a>
+<a class="hover:text-primary transition-colors font-medium" href="#galeria">Galería</a>
+<a class="hover:text-primary transition-colors font-medium" href="#proximamente">Próximamente</a>
+<span class="bg-primary/20 text-primary px-6 py-2 rounded-full font-bold border border-primary/30">
+                        Próximamente
+                    </span>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-stone-800 dark:text-white hover:text-primary">
+<span class="material-icons-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+<source src="../../music/Vivo%20Est%C3%A1s%20(Alive)%20-%20Lyric%20Video%20%20Hillsong%20en%20Espa%C3%B1ol%20-%20Young%20%26%20Free%20(youtube).mp3" type="audio/mpeg"/>
+</audio>
+
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Campamento MAYDAY Misión Rescate 2026" class="w-full h-full object-cover" src="propuesta.png"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-light dark:to-background-dark"></div>
+</div>
+
+<!-- Music Toggle Button -->
+<button id="musicToggle" onclick="toggleMusic()" class="absolute top-24 right-6 z-30 flex items-center gap-2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full transition-all duration-300 border border-white/20 hover:border-white/40 group">
+<span id="musicIcon" class="material-icons-outlined text-xl">play_arrow</span>
+<span id="musicLabel" class="text-sm font-semibold tracking-wide">Escuchar</span>
+<span id="musicBars" class="flex items-end gap-[2px] h-4 hidden">
+<span class="w-[3px] bg-white rounded-full animate-pulse" style="height:8px; animation-delay:0s"></span>
+<span class="w-[3px] bg-white rounded-full animate-pulse" style="height:14px; animation-delay:0.15s"></span>
+<span class="w-[3px] bg-white rounded-full animate-pulse" style="height:10px; animation-delay:0.3s"></span>
+<span class="w-[3px] bg-white rounded-full animate-pulse" style="height:16px; animation-delay:0.1s"></span>
+</span>
+</button>
+
+<div class="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20">
+</div>
+<div class="absolute bottom-10 left-0 w-full rotate-2 z-20 overflow-hidden bg-primary py-2 shadow-xl border-y-4 border-teal-800">
+<div class="whitespace-nowrap scroll-text font-display text-xl text-white tracking-widest uppercase flex gap-8">
+<span>MAYDAY Misión Rescate 2026</span> • <span>Próximamente</span> • <span>Lucas 19:10</span> • <span>Prepárate</span> • <span>MAYDAY Misión Rescate 2026</span> • <span>Próximamente</span> • <span>Lucas 19:10</span> • <span>Prepárate</span> •
+                <span>MAYDAY Misión Rescate 2026</span> • <span>Próximamente</span> • <span>Lucas 19:10</span> • <span>Prepárate</span> • <span>MAYDAY Misión Rescate 2026</span> • <span>Próximamente</span> • <span>Lucas 19:10</span> • <span>Prepárate</span> •
+            </div>
+</div>
+</header>
+<section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="experiencia">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Testimonios</span>
+<h2 class="text-4xl md:text-5xl font-display mt-2 text-stone-900 dark:text-white">LO QUE VIVIMOS EL AÑO PASADO</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+<div class="text-center p-6 bg-white dark:bg-card-dark rounded-2xl shadow-xl border-b-4 border-primary">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">+200</div>
+<div class="text-stone-600 dark:text-stone-400 font-medium">Jóvenes Asistieron</div>
+</div>
+<div class="text-center p-6 bg-white dark:bg-card-dark rounded-2xl shadow-xl border-b-4 border-primary">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">4</div>
+<div class="text-stone-600 dark:text-stone-400 font-medium">Días de Aventura</div>
+</div>
+<div class="text-center p-6 bg-white dark:bg-card-dark rounded-2xl shadow-xl border-b-4 border-primary">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">15</div>
+<div class="text-stone-600 dark:text-stone-400 font-medium">Talleres Impartidos</div>
+</div>
+<div class="text-center p-6 bg-white dark:bg-card-dark rounded-2xl shadow-xl border-b-4 border-primary">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">∞</div>
+<div class="text-stone-600 dark:text-stone-400 font-medium">Momentos Épicos</div>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative bg-white/60 dark:bg-stone-800/60 backdrop-blur-xl p-8 rounded-2xl border border-white/20 dark:border-stone-700 h-full flex flex-col">
+<span class="material-icons-outlined text-4xl text-primary mb-4">format_quote</span>
+<p class="text-stone-700 dark:text-stone-300 italic mb-6 flex-grow">"Fue una experiencia que cambió mi vida por completo. Conocí amigos increíbles y me conecté con Dios como nunca antes."</p>
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuXt9usg3VNAWJIOD4QsFoVIEEq_S2vP5sVbJr7WpbbScXOSlNEWizD-Xoi86V3Vy2Kpe8AocjR3r1SAlsBySIlbYuplbvuFyv_E8E_z9TVax8TpVrFaWq_5YPKCL7PyPKlzmDZLLP7SmEcLJ0c7jJqALp5RwcbwWztGMZn_h_DJwiHJWta1eqBPsrt_siIlPeg3q95X8jVznzVEAoq5CViE4x6P6j_MNdPpWsMe0Edlv8Emv2pwG4lBhpXUxWG7aNUQZRSrbw6a5u"/>
+<div>
+<h4 class="font-bold text-stone-900 dark:text-white">Ana García</h4>
+<span class="text-xs text-stone-500 uppercase tracking-wide">Campista</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative bg-white/60 dark:bg-stone-800/60 backdrop-blur-xl p-8 rounded-2xl border border-white/20 dark:border-stone-700 h-full flex flex-col">
+<span class="material-icons-outlined text-4xl text-primary mb-4">format_quote</span>
+<p class="text-stone-700 dark:text-stone-300 italic mb-6 flex-grow">"Las actividades nocturnas y las fogatas fueron mis favoritas. ¡Definitivamente volveré este año!"</p>
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbyLsG31haPPHMzoK6aZNnJ5WG_3sBtTK8Edz0wyOhjpXctG28BurqhI0yfGuRhG9uK1ver80RVlMrG_flqmu0EhXexUuPlEKf3jEwNmvBWK-NkdHCXEVxjVEypTpih8FpE-BZIVwuVKM9gCQV6K8LRjAUriKJXGCkwLfE7knC8Bo8CwboWynHWMR2IeIOzA0_b_KLZoKzMFSWbqw4YnpbiHOne56vmZ73zGmaeqQFA3NHuW6tjh8JTFxQtu6Ob8xbrvgTXh211lsG"/>
+<div>
+<h4 class="font-bold text-stone-900 dark:text-white">Carlos Méndez</h4>
+<span class="text-xs text-stone-500 uppercase tracking-wide">Campista</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative bg-white/60 dark:bg-stone-800/60 backdrop-blur-xl p-8 rounded-2xl border border-white/20 dark:border-stone-700 h-full flex flex-col">
+<span class="material-icons-outlined text-4xl text-primary mb-4">format_quote</span>
+<p class="text-stone-700 dark:text-stone-300 italic mb-6 flex-grow">"La organización fue impecable. Desde la comida hasta los conciertos, todo estuvo a otro nivel."</p>
+<div class="flex items-center gap-4">
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbnrlrLGOfG33b_ReqSUfUx8yDzhEzgT_BHekRhtdDzn7OAv9RD61pBWKR6WgGSkvCCrDg_ZPRK96e9wy9l0nbIq0TYrIJ4lm8_sv7H0IzX-17QFmD0heOQAauU2E4iZMdFP197yTbBOZY7avgoTn4gFXj58-S9tTUGcplbMHb9o_NeZ-dBZJcemOUw4ObgKH7SAX2IH9Xr2FGfPS8zlEmhm1MS85tfKFGyKP8bjRMAnjda8kCaWUixgX9oKjejJLduWYmsPwjmIfw"/>
+<div>
+<h4 class="font-bold text-stone-900 dark:text-white">Sofía Ruiz</h4>
+<span class="text-xs text-stone-500 uppercase tracking-wide">Campista</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-teal-950 relative" id="galeria">
+<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center mb-16">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Galería</span>
+<h2 class="text-4xl md:text-5xl font-display mt-2 text-white">MIRA LA EXPERIENCIA 2025</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+<div class="group relative overflow-hidden rounded-2xl shadow-xl lg:col-span-2 lg:row-span-2 cursor-pointer">
+<img alt="Campfire night" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxkyltIlcl1Y8tkG5NPHguCO8DPdxNQHni-_AXUJZzJhCoI1sfRJ1sKDhbY1ko_Rsixxvk-Wt9NYDaumhYqiqFcXqAQxWn8ybOWqB-eCqmDp6nk0rJxkr1BBMH0tK9aOsUpcHlryA0xUSC_rcgt-iZ-7KC6AKIgXB2RahpYrr9ye5lMkp56UJ0xko6vA0-6XqQnKSl_SxkClonB9QgQ4FqA9-McRxsojP2_T6oIcy3JILh_hlBWIy9PamDXFCYIQxdxVUxfRNgrj4A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+<div>
+<h3 class="text-white text-2xl font-display mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Noches Inolvidables</h3>
+<p class="text-orange-200 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Conexión alrededor del fuego</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+<img alt="Hiking adventure" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwPJCA_DU5Md9OXdwqm5X55xjqUm3onTjWtjoVYgkQL_xnLW1yYSbX2_V8Mo9fVR28-7W3QZcGRmr8_5s2cPif9iZsKiJ2JT7ZQicm3hOFzueQGUTo3-n7kXJWhUinDdOnyvGje6BZvVNMZht4O6fHXNCepPAlA3qB1e17lwHhFKx6Epb73OKSsfLWBapSvDEfTEWAZPUpxCO2S96n8Nk1xxJVOc3B2ZEgHCkttTardNN3nnxW_LUXp_bw_LEpcTIa2yALCatcebK2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div>
+<h3 class="text-white text-xl font-display mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Senderismo Extremo</h3>
+<p class="text-orange-200 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Explorando la creación</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+<img alt="Group activities" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA22oS9hHy5yUhwa3FEo21Ku0uBDhIVL8yOcc23_oODtOcEfwNjalBHV2wGB-2eUCu5QhfdQoe02OTthP43TrEBda3QxtP5UU1kWtRTbvfNaAOt4Dck2jklHRDxgSR5B_G8XZBwB_DYjm2JhUDLxU6o4PQllZfei-ONdU2rBJ0u7rxOkSHyBojDxeLmA08MjpNCs-qPk6CgblmjWQbp14vOGlMElpp53BxmIME98dViRigONsBCSd725o0EA2aKMjHPAFoQ8gFNQ5hD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div>
+<h3 class="text-white text-xl font-display mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Trabajo en Equipo</h3>
+<p class="text-orange-200 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Superando obstáculos juntos</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+<img alt="Team building" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYArBCcQIa_RcFQmVSz389tbf-VnYRQFkSPyGEmp16IiQ7cu5f9hZSp3VGMyzneDNaNyvFdG6sZMuKcj07es9JAkz8OjxyVm2OSqPe_Z954-2heCGHDPzvbyBFfSdS0gUZNpc7hkEmRC-xZ3CopH45V44gD8d1DjUzafpBOvvhEGJiMD2McOqgpEFwkYlrJ-ccfiAz0QuD43u9PEC0Ci2EYJ9AT8cdy9r2yQag6BrITTDi0xcVAhYKxDhsnWsSqmwzRrBPfrtmSoJi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div>
+<h3 class="text-white text-xl font-display mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Diversión Total</h3>
+<p class="text-orange-200 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Risas y compañerismo</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+<img alt="Nature quiet time" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPoH6aZ_87vtOA49Fa1VIlS_H06mLY3JeFsgrJFT2SdDJZKuOm-NFEnMlI3cSAL8yXEBgrYn2i-esR-XLD5pEZYoQT0YWa_uGXWrBTH0YFM0MftFIKLBwQTpmw1PeKYdeNj-KMLkuiF5pprAycu3Xs2lTNgQsEzY--CogPowfZEseamv14sZ7bq6cAlhQ6Z4_55wFLB74Ocwxq5mcpIKCYqCzhzH4EPDSg1LtLG4aE3FVf0jzDOrj9cqAwuUGyyE026P5l_Hvmye_3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<div>
+<h3 class="text-white text-xl font-display mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Tiempo con Dios</h3>
+<p class="text-orange-200 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Paz en la montaña</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 uppercase tracking-wide group">
+                Ver Galería Completa
+                <span class="material-icons-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-100 dark:bg-black relative" id="proximamente">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center py-20">
+<span class="material-icons-outlined text-primary text-8xl mb-8 animate-pulse">construction</span>
+<h2 class="text-4xl md:text-6xl font-display mb-6 text-stone-900 dark:text-white">ACTIVIDADES & AGENDA</h2>
+<p class="text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-8">Estamos preparando una experiencia inolvidable. El itinerario completo será revelado muy pronto.</p>
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-bold border border-primary/20">
+<span class="material-icons-outlined">schedule</span>
+Próximamente...
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-4 relative overflow-hidden bg-background-light dark:bg-background-dark" id="precios">
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="text-center py-20">
+<span class="material-icons-outlined text-primary text-8xl mb-8 animate-pulse">payments</span>
+<h2 class="text-5xl font-display text-stone-900 dark:text-white mb-4">INVERSIÓN</h2>
+<p class="text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-8">Los precios y planes de pago serán anunciados próximamente. ¡Mantente atento a nuestras redes!</p>
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-bold border border-primary/20">
+<span class="material-icons-outlined">schedule</span>
+Próximamente...
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-100 dark:bg-black">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center py-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+<!-- Registro -->
+<div class="bg-white dark:bg-card-dark p-12 rounded-2xl shadow-lg border-t-4 border-primary text-center">
+<span class="material-icons-outlined text-primary text-7xl mb-6 animate-pulse">how_to_reg</span>
+<h2 class="text-3xl font-display mb-4 text-stone-900 dark:text-white">REGISTRO</h2>
+<p class="text-stone-500 dark:text-stone-400 mb-6">Las inscripciones abrirán próximamente. Sé de los primeros en enterarte.</p>
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-bold border border-primary/20">
+<span class="material-icons-outlined">schedule</span>
+Próximamente...
+</div>
+</div>
+<!-- FAQ -->
+<div class="bg-white dark:bg-card-dark p-12 rounded-2xl shadow-lg border-t-4 border-primary text-center" id="faq">
+<span class="material-icons-outlined text-primary text-7xl mb-6 animate-pulse">help_outline</span>
+<h2 class="text-3xl font-display mb-4 text-stone-900 dark:text-white">PREGUNTAS FRECUENTES</h2>
+<p class="text-stone-500 dark:text-stone-400 mb-6">Toda la información que necesitas será publicada pronto. ¡Síguenos en redes!</p>
+<a href="https://www.instagram.com/cristianizacionalcarrizos/" target="_blank" class="inline-flex items-center gap-2 bg-primary hover:bg-teal-800 text-white px-6 py-3 rounded-full font-bold transition-colors">
+<span class="material-icons-outlined">camera_alt</span>
+@cristianizacionalcarrizos
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-stone-900 text-white pt-20 pb-10 border-t border-teal-900/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center space-x-2 mb-6">
+<img src="LOGO2.png" alt="MAYDAY Misión Rescate" class="h-16 w-auto brightness-200" style="filter: brightness(10);" />
+<span class="font-display text-3xl tracking-wider uppercase">MAYDAY 2026</span>
+</div>
+<p class="text-stone-400 max-w-sm mb-6">
+                        Misión Rescate — Un ministerio juvenil dedicado a levantar una generación apasionada, conectada con la naturaleza y con un propósito divino.
+                    </p>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-icons-outlined">facebook</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-icons-outlined">camera_alt</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-icons-outlined">play_arrow</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-primary">Enlaces</h4>
+<ul class="space-y-3 text-stone-400">
+<li><a class="hover:text-white transition-colors" href="#">Sobre Nosotros</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Galería 2024</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Patrocinadores</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Política de Privacidad</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-6 uppercase tracking-wider text-primary">Contacto</h4>
+<ul class="space-y-4 text-stone-400">
+<li class="flex items-start">
+<span class="material-icons-outlined mr-3 text-primary">email</span>
+<span>info@thechosencamp.com</span>
+</li>
+<li class="flex items-start">
+<span class="material-icons-outlined mr-3 text-primary">call</span>
+<span>(809) 555-0123</span>
+</li>
+<li class="flex items-start">
+<span class="material-icons-outlined mr-3 text-primary">location_on</span>
+<span>C/14 No. 10, Savica,<br/>Los Alcarrizos</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-stone-500 text-sm">
+<p>© 2026 Ministerio Juvenil Ungidos al Extremo. Todos los derechos reservados.</p>
+<div class="mt-4 md:mt-0">
+<span class="mx-2">Lucas 19:10</span>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    const icon = document.getElementById('musicIcon');
+    const label = document.getElementById('musicLabel');
+    const bars = document.getElementById('musicBars');
+    
+    if (audio.paused) {
+        audio.play();
+        icon.textContent = 'pause';
+        label.textContent = 'Pausar';
+        bars.classList.remove('hidden');
+    } else {
+        audio.pause();
+        icon.textContent = 'play_arrow';
+        label.textContent = 'Escuchar';
+        bars.classList.add('hidden');
+    }
+}
+</script>
+
+</body></html>

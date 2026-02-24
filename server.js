@@ -21,7 +21,7 @@ app.use(helmet({
             imgSrc: ["'self'", "https://images.unsplash.com", "data:", "blob:"],
             scriptSrc: ["'self'"],
             connectSrc: ["'self'"],
-            frameSrc: ["'none'"],
+            frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],
             formAction: ["'self'"],
