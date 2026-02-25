@@ -10,7 +10,13 @@
     { "source": "/package.json", "destination": "/", "statusCode": 301 },
     { "source": "/package-lock.json", "destination": "/", "statusCode": 301 },
     { "source": "/.env.example", "destination": "/", "statusCode": 301 },
-    { "source": "/.gitignore", "destination": "/", "statusCode": 301 }
+    { "source": "/.gitignore", "destination": "/", "statusCode": 301 },
+    { "source": "/vercel.json", "destination": "/", "statusCode": 301 },
+    { "source": "/landing.pen", "destination": "/", "statusCode": 301 },
+    { "source": "/nul", "destination": "/", "statusCode": 301 },
+    { "source": "/.env", "destination": "/", "statusCode": 301 },
+    { "source": "/.env.local", "destination": "/", "statusCode": 301 },
+    { "source": "/.env.production", "destination": "/", "statusCode": 301 }
   ],
   "headers": [
     {
@@ -47,6 +53,14 @@
         {
           "key": "X-DNS-Prefetch-Control",
           "value": "on"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
         }
       ]
     }

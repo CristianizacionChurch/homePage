@@ -108,6 +108,12 @@ export default async function handler(req, res) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
     res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Accept');
+
+    // Security headers
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
     // Cache: el versículo es el mismo todo el día, cachear por 1 hora
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=1800');
@@ -142,6 +148,7 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
+        // No exponer detalles internos del error al cliente
         console.error('[DailyVerse] Error:', error.message);
 
         // Versículo de respaldo si la API falla

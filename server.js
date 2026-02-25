@@ -11,6 +11,13 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Deshabilitar header que expone tecnología del servidor
+app.disable('x-powered-by');
+
+// Limitar tamaño del body para prevenir ataques de payload grande
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: false, limit: '10kb' }));
+
 // ── Security Headers (Helmet) ──────────────────────────────
 app.use(helmet({
     contentSecurityPolicy: {
@@ -45,21 +52,41 @@ const apiLimiter = rateLimit({
     message: { error: 'Demasiadas solicitudes. Intenta de nuevo más tarde.' }
 });
 
-// ── Servir archivos estáticos ──────────────────────────────
-app.use(express.static(path.join(__dirname), {
-    dotfiles: 'deny',          // No servir archivos .env, .gitignore, etc.
-    index: 'index.html'
-}));
-
-// Bloquear acceso directo a archivos sensibles
+// Bloquear acceso directo a archivos sensibles (ANTES de static)
 app.use((req, res, next) => {
-    const blocked = ['.env', '.gitignore', 'server.js', 'package.json', 'package-lock.json'];
-    const reqFile = path.basename(req.path);
+    const blocked = [
+        '.env', '.env.example', '.env.local', '.env.production',
+        '.gitignore', 'server.js', 'package.json', 'package-lock.json',
+        'vercel.json', 'landing.pen', 'nul', '.git'
+    ];
+    const reqFile = path.basename(req.path).toLowerCase();
+    const reqPath = decodeURIComponent(req.path).toLowerCase();
+
+    // Bloquear archivos sensibles por nombre
     if (blocked.includes(reqFile)) {
         return res.status(403).json({ error: 'Acceso denegado' });
     }
+
+    // Bloquear path traversal attempts
+    if (reqPath.includes('..') || reqPath.includes('%2e%2e') || reqPath.includes('\\')) {
+        return res.status(400).json({ error: 'Solicitud inválida' });
+    }
+
+    // Bloquear acceso a carpetas ocultas
+    if (reqPath.match(/\/\.[a-z]/i)) {
+        return res.status(403).json({ error: 'Acceso denegado' });
+    }
+
     next();
 });
+
+// ── Servir archivos estáticos ──────────────────────────────
+app.use(express.static(path.join(__dirname), {
+    dotfiles: 'deny',          // No servir archivos .env, .gitignore, etc.
+    index: 'index.html',
+    maxAge: '1d',              // Cache estáticos por 1 día
+    etag: true
+}));
 
 // ── Cache en memoria del versículo diario ──────────────────
 let verseCache = {
@@ -214,6 +241,12 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
 // ── Ruta catch-all para SPA ────────────────────────────────
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// ── Manejador global de errores (no exponer stack traces) ──
+app.use((err, req, res, next) => {
+    console.error('[Server Error]:', err.message);
+    res.status(500).json({ error: 'Error interno del servidor' });
 });
 
 // ── Iniciar servidor ───────────────────────────────────────

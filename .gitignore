@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.production
+.env.*.local
 
 # Dependencies
 node_modules/
@@ -13,10 +14,22 @@ npm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+nul
+desktop.ini
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Design files (no exponer en producción)
+*.pen
 
 # Vercel
 .vercel/
+
+# Build artifacts
+dist/
+build/

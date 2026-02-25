@@ -99,15 +99,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = nameInput.value.trim();
             const message = textarea.value.trim();
 
-            if (!name) {
-                alert('Por favor, escribe tu nombre.');
+            if (!name || name.length > 100) {
+                alert('Por favor, escribe tu nombre (máximo 100 caracteres).');
                 return;
             }
 
-            if (!message) {
-                alert('Por favor, escribe tu petición de oración.');
+            if (!message || message.length > 1000) {
+                alert('Por favor, escribe tu petición de oración (máximo 1000 caracteres).');
                 return;
             }
+
+            // Sanitizar entradas básica
+            const sanitize = (str) => str.replace(/[<>]/g, '');
+            const safeName = sanitize(name);
+            const safeMessage = sanitize(message);
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
@@ -116,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const response = await fetch(this.action, {
                     method: 'POST',
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre: name, peticion: message })
+                    body: JSON.stringify({ nombre: safeName, peticion: safeMessage })
                 });
 
                 if (response.ok) {
@@ -140,11 +145,15 @@ document.addEventListener('DOMContentLoaded', function() {
         function activateVideo() {
             const videoId = facade.dataset.videoId;
             const iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            // Sanitizar videoId: solo alfanuméricos, guiones y guiones bajos
+            const safeVideoId = videoId.replace(/[^a-zA-Z0-9_-]/g, '');
+            iframe.src = `https://www.youtube.com/embed/${safeVideoId}?autoplay=1&rel=0`;
             iframe.title = facade.getAttribute('aria-label') || 'Video';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
             iframe.allowFullscreen = true;
             iframe.loading = 'lazy';
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation allow-popups');
             iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
             facade.replaceWith(iframe);
         }
@@ -181,7 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            // Sanitizar: solo permitir selectores de ID válidos
+            if (!/^#[a-zA-Z][a-zA-Z0-9_-]*$/.test(href)) return;
+            const target = document.querySelector(href);
             if (target) {
                 const offsetTop = target.offsetTop - 70;
                 window.scrollTo({
