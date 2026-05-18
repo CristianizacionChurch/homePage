@@ -1332,6 +1332,70 @@ img, video, iframe {
     margin-top: 8px;
 }
 
+/* Shorts Section */
+.shorts-section {
+    margin-top: 48px;
+}
+
+.shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .shorts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .shorts-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+.short-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.short-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.short-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.short-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.short-info {
+    padding: 12px;
+}
+
+.short-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .virtual {
     background: var(--primary-blue);
     color: var(--bg-white);
