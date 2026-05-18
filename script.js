@@ -1,13 +1,57 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ── Slideshow Hero (solo anima opacity, GPU-friendly) ───
+    // ── Slideshow Hero con controles ────────────────────────
     const slides = document.querySelectorAll('.hero-slideshow .slide');
-    if (slides.length > 1) {
-        let currentSlide = 0;
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
+    const dots = document.querySelectorAll('.slideshow-dot');
+    let currentSlide = 0;
+    let slideshowInterval;
+    let slideshowPaused = false;
+
+    function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        dots[currentSlide].setAttribute('aria-selected', 'false');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+        dots[currentSlide].setAttribute('aria-selected', 'true');
+    }
+
+    function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startSlideshow() {
+        if (slides.length > 1) {
+            slideshowInterval = setInterval(nextSlide, 5000);
+        }
+    }
+
+    function stopSlideshow() {
+        clearInterval(slideshowInterval);
+    }
+
+    if (slides.length > 1 && dots.length > 0) {
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                stopSlideshow();
+                goToSlide(index);
+                startSlideshow();
+            });
+        });
+
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', function() {
+                slideshowPaused = true;
+                stopSlideshow();
+            });
+            heroSection.addEventListener('mouseleave', function() {
+                slideshowPaused = false;
+                startSlideshow();
+            });
+        }
+
+        startSlideshow();
     }
 
     // ── Mobile Menu ─────────────────────────────────────────
@@ -18,8 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isActive);
         });
     }
 
@@ -27,12 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             navLinks.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             navLinksItems.forEach(item => item.classList.remove('active'));
             this.classList.add('active');
         });
     });
 
-    // ── Navbar Shadow on Scroll (passive + rAF debounce) ───
+    // ── Navbar Shadow on Scroll ─────────────────────────────
     let ticking = false;
     window.addEventListener('scroll', function() {
         if (!ticking) {
@@ -46,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: true });
 
-    // ── Active Nav Highlight (IntersectionObserver) ─────────
+    // ── Active Nav Highlight ────────────────────────────────
     const sections = document.querySelectorAll('section[id]');
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -66,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sections.forEach(section => navObserver.observe(section));
 
-    // ── Scroll Reveal Animation (IntersectionObserver) ─────
+    // ── Scroll Reveal Animation ─────────────────────────────
     const revealElements = document.querySelectorAll(
-        '.stat-card, .testimonial-card, .video-card, .team-member, .camp-gallery-item, .verse-card'
+        '.stat-card, .testimonial-card, .video-card, .team-member, .camp-gallery-item, .verse-card, .event-card'
     );
 
     revealElements.forEach(el => el.classList.add('reveal'));
@@ -87,8 +133,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // ── Prayer Form (Formspree via fetch) ──────────────────
+    // ── Dark Mode Toggle ────────────────────────────────────
+    const themeToggle = document.querySelector('.theme-toggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    const html = document.documentElement;
+
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        if (sunIcon && moonIcon) {
+            if (theme === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+    }
+
+    function setTheme(theme) {
+        localStorage.setItem('theme', theme);
+        applyTheme(theme);
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        applyTheme('dark');
+    } else {
+        applyTheme('light');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = html.getAttribute('data-theme') || 'light';
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
+    // ── Prayer Form (proxy server-side) ─────────────────────
     const prayerForm = document.getElementById('prayer-form');
+    const prayerSuccess = document.getElementById('prayer-success');
+    const prayerError = document.getElementById('prayer-error');
 
     if (prayerForm) {
         prayerForm.addEventListener('submit', async function(e) {
@@ -100,39 +194,46 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = textarea.value.trim();
 
             if (!name || name.length > 100) {
-                alert('Por favor, escribe tu nombre (máximo 100 caracteres).');
+                prayerError.textContent = 'Por favor, escribe tu nombre (máximo 100 caracteres).';
+                prayerError.classList.add('visible');
+                prayerSuccess.classList.remove('visible');
                 return;
             }
 
             if (!message || message.length > 1000) {
-                alert('Por favor, escribe tu petición de oración (máximo 1000 caracteres).');
+                prayerError.textContent = 'Por favor, escribe tu petición de oración (máximo 1000 caracteres).';
+                prayerError.classList.add('visible');
+                prayerSuccess.classList.remove('visible');
                 return;
             }
 
-            // Sanitizar entradas básica
             const sanitize = (str) => str.replace(/[<>]/g, '');
             const safeName = sanitize(name);
             const safeMessage = sanitize(message);
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
+            prayerError.classList.remove('visible');
+            prayerSuccess.classList.remove('visible');
 
             try {
-                const response = await fetch(this.action, {
+                const response = await fetch('/api/prayer-request', {
                     method: 'POST',
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre: safeName, peticion: safeMessage })
                 });
 
                 if (response.ok) {
-                    alert('¡Gracias por tu petición! Nuestro equipo de intercesión estará orando por ti.');
+                    prayerSuccess.classList.add('visible');
                     nameInput.value = '';
                     textarea.value = '';
                 } else {
-                    alert('Hubo un error al enviar. Intenta de nuevo más tarde.');
+                    prayerError.textContent = 'Hubo un error al enviar. Intenta de nuevo más tarde.';
+                    prayerError.classList.add('visible');
                 }
             } catch (error) {
-                alert('No se pudo conectar. Verifica tu conexión a internet.');
+                prayerError.textContent = 'No se pudo conectar. Verifica tu conexión a internet.';
+                prayerError.classList.add('visible');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Enviar Petición';
@@ -140,12 +241,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ── YouTube Facade (lite embed - no iframe until click) ─
+    // ── Newsletter Form ─────────────────────────────────────
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const email = emailInput.value.trim();
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Por favor, ingresa un correo electrónico válido.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Suscribiendo...';
+
+            try {
+                const response = await fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    alert('¡Gracias por suscribirte! Recibirás nuestro boletín semanal.');
+                    emailInput.value = '';
+                } else {
+                    alert('Hubo un error al suscribirte. Intenta de nuevo más tarde.');
+                }
+            } catch (error) {
+                alert('No se pudo conectar. Verifica tu conexión a internet.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Suscribirse';
+            }
+        });
+    }
+
+    // ── YouTube Facade ─────────────────────────────────────
     document.querySelectorAll('.youtube-facade').forEach(facade => {
         function activateVideo() {
             const videoId = facade.dataset.videoId;
             const iframe = document.createElement('iframe');
-            // Sanitizar videoId: solo alfanuméricos, guiones y guiones bajos
             const safeVideoId = videoId.replace(/[^a-zA-Z0-9_-]/g, '');
             iframe.src = `https://www.youtube.com/embed/${safeVideoId}?autoplay=1&rel=0`;
             iframe.title = facade.getAttribute('aria-label') || 'Video';
@@ -167,13 +306,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ── Play Button Alerts ──────────────────────────────────
-    const playButtons = document.querySelectorAll('.play-button, .play-button-large');
-    playButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            alert('Reproductor de video - Aquí se reproduciría el video de la prédica o transmisión en vivo.');
+    // ── Live YouTube Player ─────────────────────────────────
+    const playLiveBtn = document.getElementById('play-live');
+    const livePlayer = document.getElementById('live-player');
+
+    if (playLiveBtn && livePlayer) {
+        playLiveBtn.addEventListener('click', function() {
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/live_stream?channel=UCxxxxxxxxxxxxxxxxxxxxxxx&autoplay=1';
+            iframe.title = 'Transmisión en vivo - Iglesia Comunitaria de la Cristianización';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
+            livePlayer.innerHTML = '';
+            livePlayer.appendChild(iframe);
         });
-    });
+
+        playLiveBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                playLiveBtn.click();
+            }
+        });
+    }
 
     // ── Live Viewers Counter ────────────────────────────────
     const liveViewers = document.querySelector('.viewers span');
@@ -186,12 +341,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // ── Smooth Scroll for Anchor Links ──────────────────────
+    // ── Smooth Scroll ───────────────────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            // Sanitizar: solo permitir selectores de ID válidos
             if (!/^#[a-zA-Z][a-zA-Z0-9_-]*$/.test(href)) return;
             const target = document.querySelector(href);
             if (target) {
@@ -208,9 +362,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryItems = document.querySelectorAll('.camp-gallery-item img');
 
     if (galleryItems.length > 0) {
-        // Build lightbox DOM once
         const lightbox = document.createElement('div');
         lightbox.className = 'gallery-lightbox';
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        lightbox.setAttribute('aria-label', 'Visor de imágenes del campamento');
         lightbox.innerHTML = `
             <button class="lightbox-close" aria-label="Cerrar">&times;</button>
             <button class="lightbox-nav lightbox-prev" aria-label="Anterior">&#8249;</button>
@@ -225,12 +381,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const lbNext = lightbox.querySelector('.lightbox-next');
         let currentIdx = 0;
         const srcs = Array.from(galleryItems).map(img => img.src);
+        const alts = Array.from(galleryItems).map(img => img.alt);
 
         function openLightbox(idx) {
             currentIdx = idx;
             lbImg.src = srcs[currentIdx];
+            lbImg.alt = alts[currentIdx] || 'Foto del campamento';
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+            lbClose.focus();
         }
 
         function closeLightbox() {
@@ -241,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function navigate(dir) {
             currentIdx = (currentIdx + dir + srcs.length) % srcs.length;
             lbImg.src = srcs[currentIdx];
+            lbImg.alt = alts[currentIdx] || 'Foto del campamento';
         }
 
         galleryItems.forEach((img, idx) => {
@@ -263,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ── Versículo del Día (se actualiza a las 6 AM) ────────
+    // ── Versículo del Día ───────────────────────────────────
     async function loadDailyVerse() {
         const verseContent = document.getElementById('verse-content');
         const verseReference = document.getElementById('verse-reference');
@@ -280,7 +440,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const dateKey = getDateKey();
 
-        // Cache local primero
         try {
             const cached = JSON.parse(localStorage.getItem('dailyVerse'));
             if (cached && cached.date === dateKey) {
@@ -350,4 +509,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loadDailyVerse();
+
+    // ── Compartir Versículo ─────────────────────────────────
+    const shareVerseBtn = document.getElementById('share-verse');
+    const copyVerseBtn = document.getElementById('copy-verse');
+
+    if (shareVerseBtn) {
+        shareVerseBtn.addEventListener('click', async function() {
+            const verseContent = document.getElementById('verse-content');
+            const verseReference = document.getElementById('verse-reference');
+            if (!verseContent || !verseReference) return;
+
+            const text = `"${verseContent.textContent}" — ${verseReference.textContent.replace('— ', '')}`;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Versículo del Día',
+                        text: text,
+                        url: window.location.href
+                    });
+                } catch (e) {
+                    if (e.name !== 'AbortError') {
+                        copyToClipboard(text);
+                    }
+                }
+            } else {
+                copyToClipboard(text);
+            }
+        });
+    }
+
+    if (copyVerseBtn) {
+        copyVerseBtn.addEventListener('click', function() {
+            const verseContent = document.getElementById('verse-content');
+            const verseReference = document.getElementById('verse-reference');
+            if (!verseContent || !verseReference) return;
+
+            const text = `"${verseContent.textContent}" — ${verseReference.textContent.replace('— ', '')}`;
+            copyToClipboard(text);
+        });
+    }
+
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('¡Versículo copiado al portapapeles!');
+            }).catch(() => {
+                fallbackCopy(text);
+            });
+        } else {
+            fallbackCopy(text);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            alert('¡Versículo copiado al portapapeles!');
+        } catch (e) {
+            alert('No se pudo copiar el versículo.');
+        }
+        document.body.removeChild(textarea);
+    }
+
+    // ── Service Worker Registration ─────────────────────────
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        });
+    }
 });
