@@ -1014,10 +1014,18 @@ img, video, iframe {
     color: var(--text-muted);
 }
 
+.event-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+}
+
 .event-meta svg {
-    width: 14px;
-    height: 14px;
-    margin-right: 4px;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    stroke-width: 2;
 }
 
 .donaciones {
