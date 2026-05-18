@@ -1,400 +1,602 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Comunitaria de la Cristianización de Los Alcarrizos</title>
 
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Iglesia Comunitaria de la Cristianización de Los Alcarrizos. Unidos en Cristo, transformando vidas. Servicios Domingos 9:00 AM y 11:00 AM.">
-    <meta name="keywords" content="iglesia, cristianización, Los Alcarrizos, comunidad, fe, Cristo, culto, prédicas">
+    <meta name="keywords" content="iglesia, cristianización, Los Alcarrizos, comunidad, fe, Cristo, culto, prédicas, Santo Domingo, República Dominicana">
     <meta name="author" content="Iglesia Comunitaria de la Cristianización">
-    <meta name="theme-color" content="#1E3A5F">
+    <meta name="theme-color" content="#000080">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Iglesia Comunitaria de la Cristianización de Los Alcarrizos">
     <meta property="og:description" content="Unidos en Cristo, transformando vidas en Los Alcarrizos.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png">
+    <meta property="og:url" content="https://cristianizacionalcarrizos.vercel.app">
+    <meta property="og:locale" content="es_DO">
 
-    <!-- Preload critical resources -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Iglesia Comunitaria de la Cristianización de Los Alcarrizos">
+    <meta name="twitter:description" content="Unidos en Cristo, transformando vidas en Los Alcarrizos.">
+
+    <link rel="canonical" href="https://cristianizacionalcarrizos.vercel.app">
+
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
     <link rel="preload" href="img/Gallery/photo_2026-02-08_23-29-40.jpg" as="image">
 
-    <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Fonts with display=swap for fast text rendering -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png">
 
-    <!-- Security: DNS Prefetch Control -->
-    <meta http-equiv="X-DNS-Prefetch-Control" content="on">
+    <link rel="manifest" href="manifest.json">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Church",
+        "name": "Iglesia Comunitaria de la Cristianización de Los Alcarrizos",
+        "description": "Comunidad de fe comprometida con compartir el amor de Cristo y transformar vidas en Los Alcarrizos.",
+        "url": "https://cristianizacionalcarrizos.vercel.app",
+        "logo": "https://cristianizacionalcarrizos.vercel.app/Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png",
+        "image": "https://cristianizacionalcarrizos.vercel.app/Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Los Alcarrizos",
+            "addressLocality": "Santo Domingo",
+            "addressRegion": "Distrito Nacional",
+            "addressCountry": "DO"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "18.5137",
+            "longitude": "-69.9626"
+        },
+        "telephone": "+18094018833",
+        "email": "cristianizacionchurch@proton.me",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "09:00",
+                "closes": "13:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Wednesday",
+                "opens": "19:00",
+                "closes": "21:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/cristianizacionalcarrizos",
+            "https://www.instagram.com/cristianizacionalcarrizos/",
+            "https://www.youtube.com/@cristianizacionalcarrizos"
+        ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="nav-container">
             <div class="logo">
-                <img class="logo-icon" src="Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png" alt="Logo Iglesia" width="42" height="42">
-                <span class="logo-text">Iglesia Comunitaria de la Cristianización de Los Alcarrizos</span>
+                <img class="logo-icon" src="Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png" alt="Logo Iglesia Comunitaria de la Cristianización" width="42" height="42">
+                <span class="logo-text" title="Iglesia Comunitaria de la Cristianización de Los Alcarrizos">Iglesia Cristianización</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#inicio" class="active">Inicio</a></li>
-                <li><a href="#campamento">Campamento</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#predicas">Prédicas</a></li>
-                <li><a href="#virtual">Iglesia Virtual</a></li>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#inicio" class="active" role="menuitem">Inicio</a></li>
+                <li role="none"><a href="#versiculo" role="menuitem">Versículo</a></li>
+                <li role="none"><a href="#campamento" role="menuitem">Campamento</a></li>
+                <li role="none"><a href="#eventos" role="menuitem">Eventos</a></li>
+                <li role="none"><a href="#nosotros" role="menuitem">Nosotros</a></li>
+                <li role="none"><a href="#predicas" role="menuitem">Prédicas</a></li>
+                <li role="none"><a href="#virtual" role="menuitem">Iglesia Virtual</a></li>
             </ul>
-            <button class="mobile-menu-btn" aria-label="Abrir menú de navegación">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button class="theme-toggle" aria-label="Cambiar modo oscuro/claro" title="Cambiar tema">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <!-- Slideshow de fondo -->
-        <div class="hero-slideshow">
-            <div class="slide active" style="background-image: url('img/Gallery/photo_2026-02-08_23-29-40.jpg')"></div>
-            <div class="slide" style="background-image: url('img/Gallery/photo_2026-02-15_22-14-07.jpg')"></div>
-            <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202025-11-08%20at%2010.11.29%20PM.jpeg')"></div>
-            <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202025-11-08%20at%2010.11ll.29%20PM.jpeg')"></div>
-            <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202026-01-17%20at%202.05.24%20PM.jpeg')"></div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Bienvenidos a Nuestra Comunidad de Fe</h1>
-            <p class="hero-subtitle">Unidos en Cristo, transformando vidas en Los Alcarrizos</p>
-            <div class="hero-schedule">
-                <div class="schedule-item">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12,6 12,12 16,14"></polyline>
-                    </svg>
-                    <span>Domingos 9:00 AM y 11:00 AM</span>
+    <main id="main-content">
+        <section id="inicio" class="hero" aria-label="Bienvenida">
+            <div class="hero-slideshow" aria-hidden="true">
+                <div class="slide active" style="background-image: url('img/Gallery/photo_2026-02-08_23-29-40.jpg')"></div>
+                <div class="slide" style="background-image: url('img/Gallery/photo_2026-02-15_22-14-07.jpg')"></div>
+                <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202025-11-08%20at%2010.11.29%20PM.jpeg')"></div>
+                <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202025-11-08%20at%2010.11ll.29%20PM.jpeg')"></div>
+                <div class="slide" style="background-image: url('img/Gallery/WhatsApp%20Image%202026-01-17%20at%202.05.24%20PM.jpeg')"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Bienvenidos a Nuestra Comunidad de Fe</h1>
+                <p class="hero-subtitle">Unidos en Cristo, transformando vidas en Los Alcarrizos</p>
+                <div class="hero-schedule">
+                    <div class="schedule-item">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12,6 12,12 16,14"></polyline>
+                        </svg>
+                        <span>Domingos 9:00 AM y 11:00 AM</span>
+                    </div>
+                    <div class="schedule-item">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>Estudios Bíblicos Miércoles 7:00 PM</span>
+                    </div>
                 </div>
-                <div class="schedule-item">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="#nosotros" class="btn btn-primary">Conócenos</a>
+            </div>
+            <div class="slideshow-controls" role="tablist" aria-label="Controles del slideshow">
+                <button class="slideshow-dot active" role="tab" aria-label="Imagen 1" aria-selected="true"></button>
+                <button class="slideshow-dot" role="tab" aria-label="Imagen 2" aria-selected="false"></button>
+                <button class="slideshow-dot" role="tab" aria-label="Imagen 3" aria-selected="false"></button>
+                <button class="slideshow-dot" role="tab" aria-label="Imagen 4" aria-selected="false"></button>
+                <button class="slideshow-dot" role="tab" aria-label="Imagen 5" aria-selected="false"></button>
+            </div>
+        </section>
+
+        <section id="versiculo" class="section daily-verse" aria-label="Versículo del día">
+            <div class="container">
+                <div class="verse-card">
+                    <div class="verse-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <p class="verse-label">Versículo del Día</p>
+                    <blockquote id="verse-content" class="verse-text">
+                        Cargando versículo...
+                    </blockquote>
+                    <cite id="verse-reference" class="verse-reference"></cite>
+                    <div class="verse-actions">
+                        <button class="verse-share-btn" id="share-verse" aria-label="Compartir versículo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            Compartir
+                        </button>
+                        <button class="verse-share-btn" id="copy-verse" aria-label="Copiar versículo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="campamento" class="section campamento" aria-label="Campamento">
+            <div class="container">
+                <div class="section-header campamento-header">
+                    <span class="section-tag">🚨 Campamento Juvenil 2026</span>
+                    <h2>MAYDAY: Misión Rescate</h2>
+                    <p style="color: #E8751A; font-weight: 600; font-size: 1.1rem; margin-top: 8px;">14 - 16 de Agosto · Campamento Villa Zoila</p>
+                </div>
+
+                <div class="camp-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">🚨</span>
+                        <span class="stat-label">MAYDAY</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Días de Impacto</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">$4,500</span>
+                        <span class="stat-label">Inversión</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">829-730-0446</span>
+                        <span class="stat-label">Información</span>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-bottom: 32px;">
+                    <div style="display: inline-block; background: var(--primary-blue); color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">
+                        📖 Lucas 19:10 — "Porque el Hijo del Hombre vino a buscar y a salvar lo que se había perdido."
+                    </div>
+                </div>
+
+                <div class="camp-gallery">
+                    <h3 class="camp-gallery-title">Galería del Campamento 2025</h3>
+                    <div class="camp-gallery-grid">
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485130008_1089895973167765_2978073238719954642_n.jpg" alt="Jóvenes reunidos en adoración durante el campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485157851_1089895626501133_7287658294849281818_n.jpg" alt="Actividades al aire libre en el campamento The Chosen" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485158955_1089897036500992_6143346591235169094_n.jpg" alt="Momento de oración grupal en el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485164562_1089892683168094_3162373882791336028_n.jpg" alt="Dinámicas de equipo durante el campamento The Chosen" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485184320_1089896766501019_8965268890575684699_n.jpg" alt="Noche de fogata y alabanza en el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485273639_1089896893167673_1380986865327838283_n.jpg" alt="Grupo de campistas celebrando juntos" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485310719_1089930939830935_7245277302784016862_n.jpg" alt="Taller de liderazgo juvenil en el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485319155_1089931273164235_7167599666465398003_n.jpg" alt="Momento de reflexión personal durante el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485360877_1089892579834771_1393392123014172061_n.jpg" alt="Actividades deportivas en el campamento The Chosen" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485377034_1089930909830938_2414759549303430224_n.jpg" alt="Sesión de alabanza y adoración nocturna" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485430969_1089931056497590_8044536399375351334_n.jpg" alt="Comunidad de jóvenes unidos en fe" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485600315_1089892593168103_6962149646517136694_n.jpg" alt="Enseñanza bíblica durante el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485698250_1089896669834362_7550129159215165196_n.jpg" alt="Momentos de alegría y fraternidad" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485702330_1089895529834476_8044093865461577928_n.jpg" alt="Cena comunitaria en el campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/485766039_1089895639834465_7828012492250603184_n.jpg" alt="Foto grupal del campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                        <div class="camp-gallery-item">
+                            <img src="img/Gallery-Camp/486022499_1089895833167779_2994473904544213443_n.jpg" alt="Despedida y promesas del campamento" loading="lazy" decoding="async" width="400" height="300">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campamento-cta" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                    <a href="https://wa.me/18297300446?text=%C2%A1Hola!%20Quiero%20inscribirme%20al%20campamento%20MAYDAY%3A%20Misi%C3%B3n%20Rescate%202026" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="max-width: 400px;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        ¡Inscríbete por WhatsApp!
+                    </a>
+                    <a href="page/Camp/code.html" target="_blank" rel="noopener noreferrer" class="btn btn-ver-mas">Ver página del campamento →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="eventos" class="section eventos" aria-label="Próximos eventos">
+            <div class="container">
+                <div class="section-header">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
-                    <span>Estudios Bíblicos Miércoles 7:00 PM</span>
+                    <h2>Próximos Eventos</h2>
+                    <p>No te pierdas nuestras actividades y reuniones especiales</p>
+                </div>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">25</span>
+                            <span class="month">Mayo</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Culto de Acción de Gracias</h3>
+                            <p>Únete a nosotros para un servicio especial de gratitud y alabanza.</p>
+                            <div class="event-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                                    9:00 AM
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    Templo Principal
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">01</span>
+                            <span class="month">Junio</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Retiro de Jóvenes 2026</h3>
+                            <p>Un fin de semana de crecimiento espiritual y confraternidad.</p>
+                            <div class="event-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                                    Todo el día
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    Por confirmar
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">Junio</span>
+                        </div>
+                        <div class="event-content">
+                            <h3>Noche de Alabanza</h3>
+                            <p>Una noche especial dedicada a la adoración y la música cristiana.</p>
+                            <div class="event-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                                    7:00 PM
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    Templo Principal
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <a href="#nosotros" class="btn btn-primary">Conócenos</a>
-        </div>
-    </section>
+        </section>
 
-    <!-- Versículo del Día -->
-    <section id="versiculo" class="section daily-verse">
-        <div class="container">
-            <div class="verse-card">
-                <div class="verse-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        <section id="nosotros" class="section about" aria-label="Acerca de nosotros">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <h2>Acerca de Nosotros</h2>
+                    <div class="mission">
+                        <h3>Nuestra Misión</h3>
+                        <p>Somos una comunidad de fe comprometida con compartir el amor de Cristo y transformar vidas en Los Alcarrizos. Creemos en el poder de la comunidad, la oración y el servicio activo para hacer una diferencia real en las familias de nuestro barrio.</p>
+                    </div>
+                    <div class="vision">
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser una iglesia que impacta positivamente a cada familia de nuestra comunidad, guiándolas hacia una relación personal con Jesucristo.</p>
+                    </div>
+                </div>
+                <div class="team">
+                    <h3>Equipo de Liderazgo</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar" aria-hidden="true">JI</div>
+                            <h4>Jose Infante</h4>
+                            <p>Pastor</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" aria-hidden="true">EC</div>
+                            <h4>Elvin Coronado</h4>
+                            <p>Pastor Juvenil</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" aria-hidden="true">SC</div>
+                            <h4>Sarah Calderon</h4>
+                            <p>Pastora Juvenil</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" aria-hidden="true">JC</div>
+                            <h4>Jose Carmona</h4>
+                            <p>Anciano</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" aria-hidden="true">BS</div>
+                            <h4>Braylin Santana</h4>
+                            <p>Anciano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="predicas" class="section predicas" aria-label="Prédicas y enseñanzas">
+            <div class="container">
+                <div class="section-header">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                     </svg>
+                    <h2>Prédicas y Enseñanzas</h2>
+                    <p>Mensajes que transforman vidas</p>
                 </div>
-                <p class="verse-label">Versículo del Día</p>
-                <blockquote id="verse-content" class="verse-text">
-                    Cargando versículo...
-                </blockquote>
-                <cite id="verse-reference" class="verse-reference"></cite>
-            </div>
-        </div>
-    </section>
-
-    <!-- Campamento Section -->
-    <section id="campamento" class="section campamento">
-        <div class="container">
-            <div class="section-header campamento-header">
-                <span class="section-tag">Testimonios del campamento 2025</span>
-                <h2>Lo Que Vivimos El Año Pasado en nuestro campamento The Chosen</h2>
-            </div>
-
-            <!-- Stats -->
-            <div class="camp-stats">
-                <div class="stat-card">
-                    <span class="stat-number">+200</span>
-                    <span class="stat-label">Jóvenes Asistieron</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Días de Aventura</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">15</span>
-                    <span class="stat-label">Talleres Impartidos</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">&infin;</span>
-                    <span class="stat-label">Momentos Épicos</span>
-                </div>
-            </div>
-
-            <!-- Galería del Campamento -->
-            <div class="camp-gallery">
-                <h3 class="camp-gallery-title">Galería del Campamento</h3>
-                <div class="camp-gallery-grid">
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485130008_1089895973167765_2978073238719954642_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485157851_1089895626501133_7287658294849281818_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485158955_1089897036500992_6143346591235169094_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485164562_1089892683168094_3162373882791336028_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485184320_1089896766501019_8965268890575684699_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485273639_1089896893167673_1380986865327838283_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485310719_1089930939830935_7245277302784016862_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485319155_1089931273164235_7167599666465398003_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485360877_1089892579834771_1393392123014172061_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485377034_1089930909830938_2414759549303430224_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485430969_1089931056497590_8044536399375351334_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485600315_1089892593168103_6962149646517136694_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485698250_1089896669834362_7550129159215165196_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485702330_1089895529834476_8044093865461577928_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/485766039_1089895639834465_7828012492250603184_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                    <div class="camp-gallery-item">
-                        <img src="img/Gallery-Camp/486022499_1089895833167779_2994473904544213443_n.jpg" alt="Campamento The Chosen 2025" loading="lazy" decoding="async" width="400" height="300">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonials -->
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-icon">&ldquo;</div>
-                    <p class="testimonial-text">&ldquo;Fue una experiencia que cambió mi vida por completo. Conocí amigos increíbles y me conecté con Dios como nunca antes.&rdquo;</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Ana García</h4>
-                            <span>CAMPISTA</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">&ldquo;</div>
-                    <p class="testimonial-text">&ldquo;Las actividades nocturnas y las fogatas fueron mis favoritas. ¡Definitivamente volveré este año!&rdquo;</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Carlos Méndez</h4>
-                            <span>CAMPISTA</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">&ldquo;</div>
-                    <p class="testimonial-text">&ldquo;La organización fue impecable. Desde la comida hasta los conciertos, todo estuvo a otro nivel.&rdquo;</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Sofía Ruiz</h4>
-                            <span>CAMPISTA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="campamento-cta">
-                <a href="page/Camp/code.html" target="_blank" rel="noopener noreferrer" class="btn btn-ver-mas">Ver más...</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="nosotros" class="section about">
-        <div class="container about-grid">
-            <div class="about-text">
-                <h2>Acerca de Nosotros</h2>
-                <div class="mission">
-                    <h3>Nuestra Misión</h3>
-                    <p>Somos una comunidad de fe comprometida con compartir el amor de Cristo y transformar vidas en Los Alcarrizos. Creemos en el poder de la comunidad, la oración y el servicio activo para hacer una diferencia real en las familias de nuestro barrio.</p>
-                </div>
-                <div class="vision">
-                    <h3>Nuestra Visión</h3>
-                    <p>Ser una iglesia que impacta positivamente a cada familia de nuestra comunidad, guiándolas hacia una relación personal con Jesucristo.</p>
-                </div>
-            </div>
-            <div class="team">
-                <h3>Equipo de Liderazgo</h3>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-avatar"></div>
-                        <h4>Jose Infante</h4>
-                        <p>Pastor</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar"></div>
-                        <h4>Elvin Coronado</h4>
-                        <p>Pastor Juvenil</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar"></div>
-                        <h4>Sarah Calderon</h4>
-                        <p>Pastora Juvenil</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar"></div>
-                        <h4>Jose Carmona</h4>
-                        <p>Anciano</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-avatar"></div>
-                        <h4>Braylin Santana</h4>
-                        <p>Anciano</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prédicas Section -->
-    <section id="predicas" class="section predicas">
-        <div class="container">
-            <div class="section-header">
-                <h2>Prédicas y Enseñanzas</h2>
-                <p>Mensajes que transforman vidas</p>
-            </div>
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-embed">
-                        <!-- YouTube facade: carga el iframe solo al hacer click -->
-                        <div class="youtube-facade" data-video-id="NWN3tlno2pU" role="button" tabindex="0" aria-label="Reproducir Prédica 1">
-                            <img src="https://i.ytimg.com/vi/NWN3tlno2pU/hqdefault.jpg" alt="Prédica 1" loading="lazy" decoding="async" width="480" height="360">
-                            <div class="facade-play-btn">
-                                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <div class="youtube-facade" data-video-id="NWN3tlno2pU" role="button" tabindex="0" aria-label="Reproducir prédica: El poder de la fe">
+                                <img src="https://i.ytimg.com/vi/NWN3tlno2pU/hqdefault.jpg" alt="Miniatura de la prédica: El poder de la fe" loading="lazy" decoding="async" width="480" height="360">
+                                <div class="facade-play-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-embed">
-                        <div class="youtube-facade" data-video-id="J9NQXAY_hRU" role="button" tabindex="0" aria-label="Reproducir Prédica 2">
-                            <img src="https://i.ytimg.com/vi/J9NQXAY_hRU/hqdefault.jpg" alt="Prédica 2" loading="lazy" decoding="async" width="480" height="360">
-                            <div class="facade-play-btn">
-                                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
-                            </div>
+                        <div class="video-info">
+                            <h4>El Poder de la Fe</h4>
+                            <p>Un mensaje inspirador sobre cómo la fe puede mover montañas en nuestra vida diaria.</p>
+                            <span class="video-date">Domingo, 15 de Febrero 2026</span>
                         </div>
                     </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-embed">
-                        <div class="youtube-facade" data-video-id="WubXjicj8js" role="button" tabindex="0" aria-label="Reproducir Prédica 3">
-                            <img src="https://i.ytimg.com/vi/WubXjicj8js/hqdefault.jpg" alt="Prédica 3" loading="lazy" decoding="async" width="480" height="360">
-                            <div class="facade-play-btn">
-                                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <div class="youtube-facade" data-video-id="J9NQXAY_hRU" role="button" tabindex="0" aria-label="Reproducir prédica: Caminando en amor">
+                                <img src="https://i.ytimg.com/vi/J9NQXAY_hRU/hqdefault.jpg" alt="Miniatura de la prédica: Caminando en amor" loading="lazy" decoding="async" width="480" height="360">
+                                <div class="facade-play-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                                </div>
                             </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Caminando en Amor</h4>
+                            <p>Descubre cómo el amor de Dios transforma nuestras relaciones y nuestro carácter.</p>
+                            <span class="video-date">Domingo, 8 de Febrero 2026</span>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <div class="youtube-facade" data-video-id="WubXjicj8js" role="button" tabindex="0" aria-label="Reproducir prédica: La gracia que salva">
+                                <img src="https://i.ytimg.com/vi/WubXjicj8js/hqdefault.jpg" alt="Miniatura de la prédica: La gracia que salva" loading="lazy" decoding="async" width="480" height="360">
+                                <div class="facade-play-btn" aria-hidden="true">
+                                    <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>La Gracia que Salva</h4>
+                            <p>Un estudio profundo sobre la gracia de Dios y cómo nos alcanza en nuestra debilidad.</p>
+                            <span class="video-date">Domingo, 1 de Febrero 2026</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Iglesia Virtual Section -->
-    <section id="virtual" class="section virtual">
-        <div class="container">
-            <div class="section-header light">
-                <h2>Iglesia Virtual</h2>
-                <p>Únete a nuestra transmisión en vivo</p>
+        <section class="section donaciones" aria-label="Donaciones">
+            <div class="container">
+                <div class="donaciones-content">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color: white; margin-bottom: 16px;">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <h2>Apoya Nuestra Misión</h2>
+                    <p>Tu generosidad nos permite seguir transformando vidas, ayudando a familias necesitadas y expandiendo el mensaje de Cristo en nuestra comunidad.</p>
+                    <a href="https://www.paypal.com/donate" class="btn btn-donate" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        Donar Ahora
+                    </a>
+                    <div class="donaciones-options">
+                        <span class="verse-share-btn" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: white;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                            Transferencia Bancaria
+                        </span>
+                        <span class="verse-share-btn" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: white;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Efectivo en el Templo
+                        </span>
+                    </div>
+                    <p class="donations-info">"Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre." — 2 Corintios 9:7</p>
+                </div>
             </div>
-            <div class="virtual-content">
-                <div class="video-player-container">
-                    <div class="video-player">
-                        <div class="live-badge">
-                            <span class="live-dot"></span>
-                            <span>EN VIVO</span>
+        </section>
+
+        <section id="virtual" class="section virtual" aria-label="Iglesia virtual">
+            <div class="container">
+                <div class="section-header light">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color: white;">
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                    <h2>Iglesia Virtual</h2>
+                    <p>Únete a nuestra transmisión en vivo</p>
+                </div>
+                <div class="virtual-content">
+                    <div class="video-player-container">
+                        <div class="video-player" id="live-player">
+                            <div class="live-badge">
+                                <span class="live-dot"></span>
+                                <span>EN VIVO</span>
+                            </div>
+                            <div class="play-button-large" id="play-live" role="button" tabindex="0" aria-label="Reproducir transmisión en vivo">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5,3 19,12 5,21"></polygon>
+                                </svg>
+                            </div>
                         </div>
-                        <div class="play-button-large">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <polygon points="5,3 19,12 5,21"></polygon>
-                            </svg>
+                        <div class="video-controls">
+                            <div class="viewers">
+                                <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span>234 viendo ahora</span>
+                            </div>
+                            <span class="service-time">Domingos 9:00 AM y 11:00 AM</span>
                         </div>
                     </div>
-                    <div class="video-controls">
-                        <div class="viewers">
-                            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                            <span>234 viendo ahora</span>
-                        </div>
-                        <span class="service-time">Domingos 9:00 AM y 11:00 AM</span>
+                    <div class="prayer-panel">
+                        <h3>Peticiones de Oración</h3>
+                        <p>Comparte tu petición y nuestro equipo de intercesión orará por ti.</p>
+                        <div class="form-success" id="prayer-success" role="alert">¡Gracias por tu petición! Nuestro equipo de intercesión estará orando por ti.</div>
+                        <div class="form-error" id="prayer-error" role="alert">Hubo un error al enviar. Intenta de nuevo más tarde.</div>
+                        <form id="prayer-form" action="/api/prayer-request" method="POST">
+                            <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="name" maxlength="100" aria-label="Tu nombre">
+                            <textarea name="peticion" placeholder="Escribe tu petición aquí..." rows="4" required maxlength="1000" aria-label="Tu petición de oración"></textarea>
+                            <button type="submit" class="btn btn-secondary">Enviar Petición</button>
+                        </form>
                     </div>
                 </div>
-                <div class="prayer-panel">
-                    <h3>Peticiones de Oración</h3>
-                    <p>Comparte tu petición y nuestro equipo de intercesión orará por ti.</p>
-                    <form id="prayer-form" action="https://formspree.io/f/xeelvgwb" method="POST">
-                        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="name" maxlength="100">
-                        <textarea name="peticion" placeholder="Escribe tu petición aquí..." rows="4" required maxlength="1000"></textarea>
-                        <button type="submit" class="btn btn-secondary">Enviar Petición</button>
+            </div>
+        </section>
+
+        <section class="section cta" aria-label="Únete a nuestra comunidad">
+            <div class="container cta-content">
+                <h2>Sé Parte de Nuestra Comunidad</h2>
+                <p>Únete a nuestro canal de WhatsApp para recibir actualizaciones, versículos diarios y estar conectado con la familia de fe.</p>
+                <a href="https://whatsapp.com/channel/0029Vb6SVAt9RZAeH0mZi53w" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Únete a nuestro canal de WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <section class="newsletter" aria-label="Suscripción al boletín">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h3>📬 Boletín Semanal</h3>
+                        <p>Recibe versículos, devocionales y noticias de la iglesia en tu correo.</p>
+                    </div>
+                    <form class="newsletter-form" id="newsletter-form" action="/api/newsletter" method="POST">
+                        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email" aria-label="Tu correo electrónico">
+                        <button type="submit">Suscribirse</button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- CTA Section -->
-    <section class="section cta">
-        <div class="container cta-content">
-            <h2>Sé Parte de Nuestra Comunidad</h2>
-            <p>Únete a nuestro canal de WhatsApp para recibir actualizaciones, versículos diarios y estar conectado con la familia de fe.</p>
-            <a href="https://whatsapp.com/channel/0029Vb6SVAt9RZAeH0mZi53w" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Únete a nuestro canal de WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container footer-content">
             <div class="footer-brand">
                 <h3>Iglesia Comunitaria de la Cristianización</h3>
@@ -405,7 +607,9 @@
                     <h4>Navegación</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#versiculo">Versículo</a></li>
                         <li><a href="#campamento">Campamento</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#predicas">Prédicas</a></li>
                     </ul>
@@ -414,24 +618,24 @@
                     <h4>Contacto</h4>
                     <ul>
                         <li>Los Alcarrizos, Santo Domingo</li>
-                        <li>Tel: (809) 401-8833</li>
-                        <li>cristianizacionchurch@proton.me</li>
+                        <li>Tel: <a href="tel:+18094018833">(809) 401-8833</a></li>
+                        <li><a href="mailto:cristianizacionchurch@proton.me">cristianizacionchurch@proton.me</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Síguenos</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/cristianizacionalcarrizos" class="social-icon" aria-label="Facebook">
+                        <a href="https://www.facebook.com/cristianizacionalcarrizos" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/cristianizacionalcarrizos/" class="social-icon" aria-label="Instagram">
+                        <a href="https://www.instagram.com/cristianizacionalcarrizos/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
-                        <a href="https://www.youtube.com/@cristianizacionalcarrizos" class="social-icon" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@cristianizacionalcarrizos" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
@@ -440,12 +644,23 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15156.5!2d-69.9626!3d18.5137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89f1b0c0c0c1%3A0x0!2sLos+Alcarrizos%2C+Santo+Dominico!5e0!3m2!1ses!2sdo!4v1700000000000!5m2!1ses!2sdo" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de la iglesia en Los Alcarrizos, Santo Domingo"></iframe>
+            </div>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Iglesia Comunitaria de la Cristianización. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Script diferido para no bloquear el render -->
+    <a href="https://whatsapp.com/channel/0029Vb6SVAt9RZAeH0mZi53w" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <span class="whatsapp-tooltip">¡Escríbenos!</span>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
     <script src="script.js" defer></script>
 </body>
 </html>
