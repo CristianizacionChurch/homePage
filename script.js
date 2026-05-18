@@ -581,8 +581,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ── Service Worker Registration ─────────────────────────
     if ('serviceWorker' in navigator) {
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+            if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
+
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').catch(function(error) {
+            navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                registration.update();
+            }).catch(function(error) {
                 console.log('Service Worker registration failed:', error);
             });
         });
