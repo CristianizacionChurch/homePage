@@ -83,6 +83,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png'));
+});
+
 app.use(express.static(path.join(__dirname), {
     dotfiles: 'deny',
     index: 'index.html',
