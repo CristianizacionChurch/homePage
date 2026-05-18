@@ -1,0 +1,27 @@
+{
+    "name": "Iglesia Comunitaria de la Cristianización de Los Alcarrizos",
+    "short_name": "Iglesia Cristianización",
+    "description": "Unidos en Cristo, transformando vidas en Los Alcarrizos",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000080",
+    "theme_color": "#000080",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["lifestyle", "social"],
+    "lang": "es",
+    "dir": "ltr"
+}
