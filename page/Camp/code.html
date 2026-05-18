@@ -217,6 +217,7 @@ window.tailwind.config = {
 
     @media (max-width: 768px) {
         .hero-content { padding: 80px 16px 40px; }
+        .hero-bg img { object-fit: cover !important; width: 100vw; height: 100dvh; }
     }
 
     .info-card {
@@ -359,8 +360,8 @@ window.tailwind.config = {
     </div>
 </section>
 
-<div class="relative bg-rescue-900 overflow-hidden">
-    <div class="scroll-bar whitespace-nowrap font-display text-lg text-white/90 py-4 bg-gradient-to-r from-alert/90 via-fire-600 to-alert/90 flex items-center gap-6">
+<div class="relative bg-rescue-900 overflow-x-hidden">
+    <div class="scroll-bar whitespace-nowrap font-display text-lg text-white/90 py-4 bg-gradient-to-r from-alert/90 via-fire-600 to-alert/90 flex items-center gap-6 min-w-[200%]">
         <span class="mx-4">🚨 MAYDAY · MISIÓN RESCATE 2026 🚨</span>
         <span class="mx-4">·</span>
         <span class="mx-4">14 - 16 AGOSTO</span>
@@ -471,8 +472,53 @@ window.tailwind.config = {
             <div class="distress-underline mx-auto mt-4"></div>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8">
-            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-8 sm:p-10">
+        <div class="grid lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-4 sm:p-6 lg:p-8 flex items-center gap-3 sm:gap-4">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rescue-900/60 border border-fire-700/30 flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 sm:w-10 sm:h-10 text-fire-400" fill="currentColor" aria-hidden="true">
+                        <path d="M8 36c6 0 14-8 20-8h10c4 0 8 2 10 5l8 3v6h-7l-4 6H32l-4-6H8v-6z"></path>
+                        <path d="M30 22l10-6 6 2-10 6-6-2z"></path>
+                        <circle cx="20" cy="46" r="4"></circle>
+                        <circle cx="44" cy="46" r="4"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-white font-semibold uppercase tracking-wider text-sm sm:text-base">Operación Rescate</p>
+                    <p class="text-white/60 text-xs sm:text-sm">Helicópteros, señal de auxilio y acción inmediata.</p>
+                </div>
+            </div>
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-4 sm:p-6 lg:p-8 flex items-center gap-3 sm:gap-4">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rescue-900/60 border border-fire-700/30 flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 sm:w-10 sm:h-10 text-fire-400" fill="currentColor" aria-hidden="true">
+                        <path d="M32 6c8 0 12 6 12 12 0 6-4 10-6 12v10h-12V30c-2-2-6-6-6-12 0-6 4-12 12-12z"></path>
+                        <rect x="24" y="40" width="16" height="14" rx="4"></rect>
+                        <rect x="20" y="54" width="24" height="6" rx="3"></rect>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-white font-semibold uppercase tracking-wider text-sm sm:text-base">Soldado en Misión</p>
+                    <p class="text-white/60 text-xs sm:text-sm">Protección, firmeza y avance espiritual.</p>
+                </div>
+            </div>
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-4 sm:p-6 lg:p-8 flex items-center gap-3 sm:gap-4">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rescue-900/60 border border-fire-700/30 flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 64 64" class="w-6 h-6 sm:w-10 sm:h-10 text-fire-400" fill="currentColor" aria-hidden="true">
+                        <rect x="10" y="14" width="34" height="40" rx="6"></rect>
+                        <rect x="18" y="22" width="18" height="6" rx="3" fill="#0C0A09"></rect>
+                        <rect x="18" y="32" width="18" height="6" rx="3" fill="#0C0A09"></rect>
+                        <rect x="18" y="42" width="18" height="6" rx="3" fill="#0C0A09"></rect>
+                        <path d="M46 20v-8h8" fill="none" stroke="currentColor" stroke-width="4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-white font-semibold uppercase tracking-wider text-sm sm:text-base">Comunicación de Emergencia</p>
+                    <p class="text-white/60 text-xs sm:text-sm">Responder al llamado con autoridad.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 sm:gap-8">
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-5 sm:p-8 lg:p-10">
                 <h3 class="text-2xl font-display text-white uppercase tracking-wider mb-4">Misión</h3>
                 <p class="text-white/70 leading-relaxed">Formar una generación que responda al "Mayday" espiritual del mundo en el nombre de Jesús.</p>
                 <div class="mt-6 grid gap-4">
@@ -487,8 +533,8 @@ window.tailwind.config = {
                 </div>
             </div>
 
-            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-8 sm:p-10">
-                <h3 class="text-2xl font-display text-white uppercase tracking-wider mb-4">Fundamento del Concepto</h3>
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-5 sm:p-8 lg:p-10">
+                <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-4">Fundamento del Concepto</h3>
                 <p class="text-white/70 leading-relaxed">"Mayday" es la señal de auxilio urgente. En lo espiritual, es el clamor de vidas que necesitan rescate.</p>
                 <div class="mt-6 grid gap-3">
                     <div class="flex items-center gap-3 text-white/70">
@@ -507,19 +553,44 @@ window.tailwind.config = {
             </div>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8 mt-10">
-            <div class="bg-rescue-800/40 border border-fire-700/20 rounded-2xl p-8 sm:p-10">
-                <h3 class="text-2xl font-display text-white uppercase tracking-wider mb-4">Mayday Espiritual</h3>
+        <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-10">
+            <div class="bg-rescue-800/40 border border-fire-700/20 rounded-2xl p-5 sm:p-8 lg:p-10">
+                <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-4">Mayday Espiritual</h3>
                 <div class="grid gap-3 text-white/70">
-                    <div class="flex items-center gap-3"><span class="material-icons-outlined text-fire-400">sentiment_stressed</span>Ansiedad</div>
-                    <div class="flex items-center gap-3"><span class="material-icons-outlined text-fire-400">report_gmailerrorred</span>Pecado</div>
-                    <div class="flex items-center gap-3"><span class="material-icons-outlined text-fire-400">heart_broken</span>Corazones rotos</div>
-                    <div class="flex items-center gap-3"><span class="material-icons-outlined text-fire-400">psychology_alt</span>Sin propósito</div>
-                    <div class="flex items-center gap-3"><span class="material-icons-outlined text-fire-400">groups</span>Familias en crisis</div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-fire-500/20 border border-fire-500/30 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-fire-400" fill="currentColor" aria-hidden="true"><path d="M12 2a6 6 0 00-6 6v3a5 5 0 0010 0V8a6 6 0 00-4-6z"></path><path d="M4 14a8 8 0 0016 0h-2a6 6 0 01-12 0H4z"></path></svg>
+                        </span>
+                        Ansiedad
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-fire-500/20 border border-fire-500/30 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-fire-400" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z"></path></svg>
+                        </span>
+                        Pecado
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-fire-500/20 border border-fire-500/30 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-fire-400" fill="currentColor" aria-hidden="true"><path d="M12 21s-7-4.35-7-10a4 4 0 017-2.65A4 4 0 0119 11c0 5.65-7 10-7 10z"></path><path d="M9 8l6 6" stroke="currentColor" stroke-width="2" fill="none"></path></svg>
+                        </span>
+                        Corazones rotos
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-fire-500/20 border border-fire-500/30 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-fire-400" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 017 7c0 3.1-2 5.7-4.7 6.7V20l-4.6-2v-2.3C7 14.7 5 12.1 5 9a7 7 0 017-7z"></path></svg>
+                        </span>
+                        Sin propósito
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-fire-500/20 border border-fire-500/30 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-fire-400" fill="currentColor" aria-hidden="true"><path d="M7 11a3 3 0 016 0v2H7v-2zm8 0a3 3 0 016 0v2h-6v-2z"></path><path d="M2 20v-3a5 5 0 015-5h10a5 5 0 015 5v3H2z"></path></svg>
+                        </span>
+                        Familias en crisis
+                    </div>
                 </div>
             </div>
-            <div class="bg-rescue-800/40 border border-fire-700/20 rounded-2xl p-8 sm:p-10">
-                <h3 class="text-2xl font-display text-white uppercase tracking-wider mb-4">¿Qué significa "Misión Rescate"?</h3>
+            <div class="bg-rescue-800/40 border border-fire-700/20 rounded-2xl p-5 sm:p-8 lg:p-10">
+                <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-4">¿Qué significa "Misión Rescate"?</h3>
                 <div class="grid gap-4">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-full bg-alert text-white font-bold flex items-center justify-center">1</div>
@@ -543,22 +614,47 @@ window.tailwind.config = {
                         </div>
                     </div>
                 </div>
+                <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-4">
+                    <div class="bg-rescue-900/60 border border-fire-700/20 rounded-xl p-3 sm:p-4 text-center">
+                        <svg viewBox="0 0 64 64" class="w-10 h-10 mx-auto text-alert" fill="currentColor" aria-hidden="true">
+                            <path d="M32 6l26 48H6L32 6z"></path>
+                            <rect x="30" y="22" width="4" height="18" fill="#0C0A09"></rect>
+                            <rect x="30" y="44" width="4" height="4" fill="#0C0A09"></rect>
+                        </svg>
+                        <p class="text-white/70 text-xs mt-2 uppercase tracking-wider">Peligro</p>
+                    </div>
+                    <div class="bg-rescue-900/60 border border-fire-700/20 rounded-xl p-3 sm:p-4 text-center">
+                        <svg viewBox="0 0 64 64" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-fire-400" fill="currentColor" aria-hidden="true">
+                            <path d="M18 10h28v40H18z" fill="none" stroke="currentColor" stroke-width="4"></path>
+                            <path d="M26 18h12M26 26h12M26 34h12" stroke="currentColor" stroke-width="4"></path>
+                            <path d="M36 8l10 8" stroke="currentColor" stroke-width="4"></path>
+                        </svg>
+                        <p class="text-white/70 text-[10px] sm:text-xs mt-2 uppercase tracking-wider">Llamado</p>
+                    </div>
+                    <div class="bg-rescue-900/60 border border-fire-700/20 rounded-xl p-3 sm:p-4 text-center">
+                        <svg viewBox="0 0 64 64" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-fire-500" fill="currentColor" aria-hidden="true">
+                            <rect x="26" y="12" width="12" height="40"></rect>
+                            <rect x="12" y="26" width="40" height="12"></rect>
+                        </svg>
+                        <p class="text-white/70 text-[10px] sm:text-xs mt-2 uppercase tracking-wider">Autoridad</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="mt-12 bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-8 sm:p-10">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="mt-8 sm:mt-12 bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-5 sm:p-8 lg:p-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 sm:gap-6">
                 <div>
-                    <h3 class="text-2xl font-display text-white uppercase tracking-wider mb-3">Propósito del Campamento</h3>
-                    <p class="text-white/60">Tres pasos para levantar un equipo de rescate espiritual.</p>
+                    <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-2 sm:mb-3">Propósito del Campamento</h3>
+                    <p class="text-white/60 text-sm sm:text-base">Tres pasos para levantar un equipo de rescate espiritual.</p>
                 </div>
                 <div class="inline-flex items-center gap-2 text-fire-300 text-sm font-semibold">
                     <span class="material-icons-outlined text-base">shield</span>
                     Misión Rescate 2026
                 </div>
             </div>
-            <div class="mt-6 grid md:grid-cols-3 gap-4">
-                <div class="bg-rescue-900/60 border border-fire-700/20 rounded-xl p-5">
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                <div class="bg-rescue-900/60 border border-fire-700/20 rounded-xl p-4">
                     <div class="flex items-center gap-3 text-white font-semibold">
                         <span class="material-icons-outlined text-fire-400">radar</span>
                         Reconocer su propio "Mayday"
