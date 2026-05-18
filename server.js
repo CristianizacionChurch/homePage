@@ -94,6 +94,16 @@ app.use(express.static(path.join(__dirname), {
     etag: true
 }));
 
+app.get('/sw.js', (req, res) => {
+    res.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.sendFile(path.join(__dirname, 'sw.js'));
+});
+
+app.get('/manifest.json', (req, res) => {
+    res.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.sendFile(path.join(__dirname, 'manifest.json'));
+});
+
 let verseCache = {
     dateKey: null,
     verse: null
