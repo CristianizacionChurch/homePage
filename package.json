@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "test": "node --test tests/primeros-pasos.test.js",
-    "all": "node --test tests/primeros-pasos.test.js && node server.js"
+    "test": "node --test tests/cursos.test.js",
+    "all": "node --test tests/cursos.test.js && node server.js"
   },
   "engines": {
     "node": ">=18.0.0"

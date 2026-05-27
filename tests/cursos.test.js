@@ -1,7 +1,7 @@
 const { describe, it, beforeEach } = require('node:test');
 const assert = require('node:assert');
 
-describe('Primeros Pasos - Progress Management', () => {
+describe('Cursos - Progress Management', () => {
     const TOTAL_LESSONS = 12;
     const STORAGE_KEY = 'primerosPasos';
     
@@ -159,7 +159,7 @@ describe('Primeros Pasos - Progress Management', () => {
     });
 });
 
-describe('Primeros Pasos - Lesson Card States', () => {
+describe('Cursos - Lesson Card States', () => {
     function toggleLessonState(completedLessons, lessonId) {
         if (!Array.isArray(completedLessons)) {
             completedLessons = [];
@@ -206,7 +206,7 @@ describe('Primeros Pasos - Lesson Card States', () => {
     });
 });
 
-describe('Primeros Pasos - Completion Detection', () => {
+describe('Cursos - Completion Detection', () => {
     const TOTAL_LESSONS = 12;
     
     function isCourseCompleted(completedLessons) {
