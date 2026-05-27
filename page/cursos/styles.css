@@ -233,6 +233,27 @@ body {
     padding: 20px 24px;
 }
 
+.video-placeholder {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-dark);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+}
+
+[data-theme="dark"] .video-placeholder {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.12) 100%);
+    color: var(--gray-dark);
+}
+
 .video-thumbnail {
     position: relative;
     width: 100%;
