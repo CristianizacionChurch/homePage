@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const STORAGE_KEY = 'primerosPasos';
-    const TOTAL_LESSONS = 12;
+    const TOTAL_LESSONS = 15;
     
     function getProgress() {
         try {

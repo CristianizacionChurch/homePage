@@ -2,7 +2,7 @@ const { describe, it, beforeEach } = require('node:test');
 const assert = require('node:assert');
 
 describe('Cursos - Progress Management', () => {
-    const TOTAL_LESSONS = 12;
+    const TOTAL_LESSONS = 15;
     const STORAGE_KEY = 'primerosPasos';
     
     function validateProgress(progress) {
@@ -78,7 +78,7 @@ describe('Cursos - Progress Management', () => {
             const progress = { completedLessons: [0, 1, 2] };
             assert.strictEqual(validateProgress(progress), false);
             
-            const progress2 = { completedLessons: [1, 2, 13] };
+            const progress2 = { completedLessons: [1, 2, 16] };
             assert.strictEqual(validateProgress(progress2), false);
         });
         
@@ -94,22 +94,22 @@ describe('Cursos - Progress Management', () => {
         });
         
         it('should return correct percentage for partial completion', () => {
-            assert.strictEqual(calculateProgress([1, 2, 3]), 25);
-            assert.strictEqual(calculateProgress([1, 2, 3, 4, 5, 6]), 50);
-            assert.strictEqual(calculateProgress([1, 2, 3, 4, 5, 6, 7, 8, 9]), 75);
+            assert.strictEqual(calculateProgress([1, 2, 3]), 20);
+            assert.strictEqual(calculateProgress([1, 2, 3, 4, 5, 6]), 40);
+            assert.strictEqual(calculateProgress([1, 2, 3, 4, 5, 6, 7, 8, 9]), 60);
         });
         
         it('should return 100 for all lessons completed', () => {
-            const allLessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            const allLessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
             assert.strictEqual(calculateProgress(allLessons), 100);
         });
         
         it('should handle duplicate lesson IDs', () => {
-            assert.strictEqual(calculateProgress([1, 1, 1, 2, 2, 3]), 25);
+            assert.strictEqual(calculateProgress([1, 1, 1, 2, 2, 3]), 20);
         });
         
         it('should ignore invalid lesson IDs', () => {
-            assert.strictEqual(calculateProgress([0, 1, 2, 13, 14]), 17);
+            assert.strictEqual(calculateProgress([0, 1, 2, 16, 17]), 13);
         });
         
         it('should return 0 for non-array input', () => {
@@ -207,7 +207,7 @@ describe('Cursos - Lesson Card States', () => {
 });
 
 describe('Cursos - Completion Detection', () => {
-    const TOTAL_LESSONS = 12;
+    const TOTAL_LESSONS = 15;
     
     function isCourseCompleted(completedLessons) {
         if (!Array.isArray(completedLessons)) {
@@ -227,12 +227,12 @@ describe('Cursos - Completion Detection', () => {
         });
         
         it('should return true for all lessons completed', () => {
-            const allLessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            const allLessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
             assert.strictEqual(isCourseCompleted(allLessons), true);
         });
         
         it('should handle duplicates correctly', () => {
-            const withDuplicates = [1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            const withDuplicates = [1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
             assert.strictEqual(isCourseCompleted(withDuplicates), true);
         });
         
