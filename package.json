@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Página principal - Iglesia Comunitaria de la Cristianización de Los Alcarrizos",
   "main": "server.js",
+  "packageManager": "pnpm@11.4.0",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "node --test tests/primeros-pasos.test.js"
   },
   "engines": {
     "node": ">=18.0.0"
