@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Bíblicos | Iglesia Comunitaria de la Cristianización</title>
+    
+    <meta name="description" content="Cursos bíblicos gratuitos. Aprende los fundamentos de la fe cristiana con lecciones, videos y enseñanzas bíblicas.">
+    <meta name="keywords" content="cursos bíblicos, cristianismo, estudios bíblicos, fundamentos de la fe, salvación, bautismo, oración, discipulado">
+    <meta name="author" content="Iglesia Comunitaria de la Cristianización">
+    <meta name="theme-color" content="#000080">
+    
+    <meta property="og:title" content="Cursos Bíblicos">
+    <meta property="og:description" content="Cursos bíblicos gratuitos para crecer en tu fe">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cristianizacionalcarrizos.vercel.app/page/cursos/">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../styles.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="../../Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+            <div class="logo">
+                <img class="logo-icon" src="../../Iglesia Comunitaria De La Cristianizacion De Los alcarrizos.png" alt="Logo Iglesia Comunitaria de la Cristianización" width="42" height="42">
+                <span class="logo-text">Iglesia Cristianización</span>
+            </div>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="../../index.html#inicio" role="menuitem">Inicio</a></li>
+                <li role="none"><a href="../../index.html#versiculo" role="menuitem">Versículo</a></li>
+                <li role="none"><a href="../../index.html#eventos" role="menuitem">Eventos</a></li>
+                <li role="none"><a href="../../index.html#nosotros" role="menuitem">Nosotros</a></li>
+                <li role="none"><a href="../../index.html#predicas" role="menuitem">Prédicas</a></li>
+                <li role="none"><a href="index.html" class="active" role="menuitem">Cursos</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button class="theme-toggle" aria-label="Cambiar modo oscuro/claro" title="Cambiar tema">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <main id="main-content">
+        <section class="hero-section">
+            <div class="container">
+                <h1>Cursos Bíblicos</h1>
+                <p class="hero-subtitle">Dios tiene un propósito para tu vida y un camino de crecimiento para ti. Estos cursos están diseñados para impulsarte a dar pasos firmes en tu fe, fortalecer tu relación con Jesús y desarrollar hábitos espirituales que transformen tu día a día. Avanza a tu ritmo, con la certeza de que cada lección es una oportunidad para crecer.</p>
+                
+                <div class="progress-container" role="region" aria-label="Progreso del curso">
+                    <div class="progress-bar">
+                        <div class="progress-fill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="progress-text">0 de 15 lecciones completadas (0%)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="modules-section">
+            <div class="container">
+                
+                <div class="module" id="modulo-1">
+                    <h2 class="module-title">Módulo 1: Fundamentos de la Fe</h2>
+                    
+                    <article class="lesson-card" data-lesson-id="1">
+                        <div class="lesson-header">
+                            <div class="lesson-number">1</div>
+                            <h3 class="lesson-title">¿Quién es Jesús?</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 1 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">La persona y obra de Cristo, el Hijo de Dios</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Juan 1:1-18</strong> - El Verbo hecho carne</li>
+                                    <li><strong>Filipenses 2:5-11</strong> - La humillación y exaltación de Cristo</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Cómo cambió tu comprensión de quién es Jesús después de esta lección?</li>
+                                    <li>¿Qué aspecto del carácter de Jesús te impacta más y por qué?</li>
+                                    <li>¿Cómo puedes aplicar el ejemplo de Jesús en tu vida diaria esta semana?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="2">
+                        <div class="lesson-header">
+                            <div class="lesson-number">2</div>
+                            <h3 class="lesson-title">La Biblia</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 2 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">La Palabra de Dios para nosotros</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>2 Timoteo 3:16-17</strong> - Toda la Escritura es inspirada por Dios</li>
+                                    <li><strong>Salmo 119:105</strong> - Lámpara es a mis pies tu palabra</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Por qué es importante la Biblia para tu vida diaria?</li>
+                                    <li>¿Qué hábitos puedes desarrollar para leer la Biblia regularmente?</li>
+                                    <li>¿Cómo puede la Palabra de Dios guiarte en tus decisiones?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="3">
+                        <div class="lesson-header">
+                            <div class="lesson-number">3</div>
+                            <h3 class="lesson-title">El Pecado y la Gracia</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 3 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Nuestra necesidad de salvación</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Romanos 3:23</strong> - Todos pecaron</li>
+                                    <li><strong>Romanos 6:23</strong> - La paga del pecado y el regalo de Dios</li>
+                                    <li><strong>Efesios 2:8-9</strong> - Salvos por gracia mediante la fe</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Cómo entiendes ahora la diferencia entre pecado y gracia?</li>
+                                    <li>¿Por qué necesitamos la gracia de Dios?</li>
+                                    <li>¿Cómo te hace sentir saber que Dios te ama a pesar de tus pecados?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="module" id="modulo-2">
+                    <h2 class="module-title">Módulo 2: La Salvación</h2>
+                    
+                    <article class="lesson-card" data-lesson-id="4">
+                        <div class="lesson-header">
+                            <div class="lesson-number">4</div>
+                            <h3 class="lesson-title">El Plan de Salvación</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 4 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Cómo recibir a Cristo en tu vida</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Juan 3:16</strong> - Dios amó al mundo</li>
+                                    <li><strong>Romanos 10:9-10</strong> - Confesar y creer</li>
+                                    <li><strong>Apocalipsis 3:20</strong> - He aquí, yo estoy a la puerta</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Qué significa para ti recibir a Cristo en tu vida?</li>
+                                    <li>¿Has dado ya ese paso de fe? Si no, ¿qué te detiene?</li>
+                                    <li>¿Cómo puedes compartir este plan de salvación con alguien más?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="5">
+                        <div class="lesson-header">
+                            <div class="lesson-number">5</div>
+                            <h3 class="lesson-title">Arrepentimiento y Fe</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 5 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Los dos pilares de la conversión</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Hechos 3:19</strong> - Arrepentíos y convertíos</li>
+                                    <li><strong>Hebreos 11:1</strong> - La fe es la certeza</li>
+                                    <li><strong>Santiago 2:17</strong> - La fe sin obras está muerta</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Qué significa realmente arrepentirse?</li>
+                                    <li>¿Cómo se relacionan el arrepentimiento y la fe?</li>
+                                    <li>¿Qué áreas de tu vida necesitan un cambio de dirección?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="6">
+                        <div class="lesson-header">
+                            <div class="lesson-number">6</div>
+                            <h3 class="lesson-title">Seguridad de la Salvación</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 6 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Certeza bíblica de tu salvación</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>1 Juan 5:13</strong> - Para que sepáis que tenéis vida eterna</li>
+                                    <li><strong>Romanos 8:38-39</strong> - Nada nos separará del amor de Dios</li>
+                                    <li><strong>Juan 10:28-29</strong> - Nadie las arrebatará de mi mano</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Tienes seguridad de tu salvación? ¿Por qué?</li>
+                                    <li>¿Qué promesas de Dios te dan confianza?</li>
+                                    <li>¿Cómo puedes fortalecer tu seguridad en Cristo?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="module" id="modulo-3">
+                    <h2 class="module-title">Módulo 3: Vida Cristiana Básica</h2>
+                    
+                    <article class="lesson-card" data-lesson-id="7">
+                        <div class="lesson-header">
+                            <div class="lesson-number">7</div>
+                            <h3 class="lesson-title">El Bautismo</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 7 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Obediencia y testimonio público</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Mateo 28:19</strong> - Bautizándolos en el nombre</li>
+                                    <li><strong>Hechos 2:38</strong> - Arrepentíos y bautícese cada uno</li>
+                                    <li><strong>Romanos 6:3-4</strong> - Sepultados con él en el bautismo</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Por qué es importante el bautismo para un creyente?</li>
+                                    <li>¿Has sido bautizado? Si no, ¿qué pasos darás para hacerlo?</li>
+                                    <li>¿Cómo puedes compartir tu testimonio con otros?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="8">
+                        <div class="lesson-header">
+                            <div class="lesson-number">8</div>
+                            <h3 class="lesson-title">La Oración</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 8 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Comunicación con Dios</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Mateo 6:5-13</strong> - El Padre Nuestro</li>
+                                    <li><strong>Filipenses 4:6-7</strong> - No se inquieten, oren</li>
+                                    <li><strong>1 Tesalonicenses 5:17</strong> - Orad sin cesar</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Cómo es tu vida de oración actualmente?</li>
+                                    <li>¿Qué cambios puedes hacer para orar más consistentemente?</li>
+                                    <li>¿Por qué crees que Dios quiere que oremos?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="9">
+                        <div class="lesson-header">
+                            <div class="lesson-number">9</div>
+                            <h3 class="lesson-title">La Lectura Bíblica</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 9 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Alimentación espiritual diaria</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Josué 1:8</strong> - Medita en ella de día y de noche</li>
+                                    <li><strong>Salmo 1:1-3</strong> - Bienaventurado el varón</li>
+                                    <li><strong>Hebreos 4:12</strong> - La palabra de Dios es viva y eficaz</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Cuánto tiempo dedicas actualmente a leer la Biblia?</li>
+                                    <li>¿Qué plan de lectura bíblica podrías seguir?</li>
+                                    <li>¿Cómo puedes aplicar lo que lees en tu vida diaria?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="module" id="modulo-4">
+                    <h2 class="module-title">Módulo 4: Crecimiento y Comunidad</h2>
+                    
+                    <article class="lesson-card" data-lesson-id="10">
+                        <div class="lesson-header">
+                            <div class="lesson-number">10</div>
+                            <h3 class="lesson-title">El Espíritu Santo</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 10 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Nuestro ayudador y guía</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Juan 14:16-17</strong> - El Consolador estará con vosotros</li>
+                                    <li><strong>Hechos 1:8</strong> - Recibiréis poder</li>
+                                    <li><strong>Gálatas 5:22-23</strong> - El fruto del Espíritu</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Quién es el Espíritu Santo y qué hace en tu vida?</li>
+                                    <li>¿Qué fruto del Espíritu necesitas desarrollar más?</li>
+                                    <li>¿Cómo puedes ser más sensible a la guía del Espíritu Santo?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="11">
+                        <div class="lesson-header">
+                            <div class="lesson-number">11</div>
+                            <h3 class="lesson-title">La Iglesia</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 11 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">El cuerpo de Cristo</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>1 Corintios 12:12-27</strong> - Un cuerpo, muchos miembros</li>
+                                    <li><strong>Hebreos 10:24-25</strong> - No dejando de congregarnos</li>
+                                    <li><strong>Efesios 4:11-16</strong> - Edificando el cuerpo de Cristo</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Por qué es importante ser parte activa de una iglesia local?</li>
+                                    <li>¿Qué dones o talentos puedes usar para servir en la iglesia?</li>
+                                    <li>¿Cómo puedes fortalecer tus relaciones con otros creyentes?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="lesson-card" data-lesson-id="12">
+                        <div class="lesson-header">
+                            <div class="lesson-number">12</div>
+                            <h3 class="lesson-title">Discipulado</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 12 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Crecer y multiplicarse - La Gran Comisión</p>
+                        
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+                        
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Mateo 28:19-20</strong> - Id y haced discípulos</li>
+                                    <li><strong>2 Timoteo 2:2</strong> - Enseña a otros que también enseñen</li>
+                                    <li><strong>Hechos 1:8</strong> - Seréis mis testigos</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Quién en tu vida necesita escuchar el mensaje de Cristo?</li>
+                                    <li>¿Cómo puedes cumplir la Gran Comisión en tu comunidad esta semana?</li>
+                                    <li>¿Qué pasos concretos darás para ayudar a otros a crecer en su fe?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="module" id="modulo-5">
+                    <h2 class="module-title">Módulo 5: Hábitos Espirituales</h2>
+
+                    <article class="lesson-card" data-lesson-id="13">
+                        <div class="lesson-header">
+                            <div class="lesson-number">13</div>
+                            <h3 class="lesson-title">El Ayuno</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 13 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Buscar a Dios con enfoque y dependencia</p>
+
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Mateo 6:16-18</strong> - Ayuno en secreto</li>
+                                    <li><strong>Isaías 58:6-7</strong> - El ayuno que agrada a Dios</li>
+                                </ul>
+                            </div>
+
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Qué propósito espiritual puedes buscar a través del ayuno?</li>
+                                    <li>¿Cómo puedes practicar el ayuno con una actitud correcta delante de Dios?</li>
+                                    <li>¿Qué cambios esperas ver en tu vida espiritual al ayunar?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="lesson-card" data-lesson-id="14">
+                        <div class="lesson-header">
+                            <div class="lesson-number">14</div>
+                            <h3 class="lesson-title">El Estudio de la Palabra</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 14 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Profundizar en la Escritura para crecer en fe</p>
+
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Salmo 119:105</strong> - Tu palabra es lámpara</li>
+                                    <li><strong>2 Timoteo 3:16-17</strong> - Inspiración y utilidad de la Escritura</li>
+                                </ul>
+                            </div>
+
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Qué método puedes usar para estudiar la Biblia con mayor profundidad?</li>
+                                    <li>¿Cómo puede la Palabra transformar tus decisiones diarias?</li>
+                                    <li>¿Qué versículo te gustaría memorizar esta semana y por qué?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="lesson-card" data-lesson-id="15">
+                        <div class="lesson-header">
+                            <div class="lesson-number">15</div>
+                            <h3 class="lesson-title">La Oración</h3>
+                            <button class="btn-complete" aria-label="Marcar lección 15 como completada">
+                                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="lesson-description">Comunión constante con Dios</p>
+
+                        <div class="lesson-video">
+                            <div class="video-placeholder" aria-label="Video en proceso">En proceso</div>
+                        </div>
+
+                        <div class="lesson-content">
+                            <div class="bible-reading">
+                                <h4>📖 Lectura Bíblica</h4>
+                                <ul>
+                                    <li><strong>Mateo 6:5-13</strong> - El Padre Nuestro</li>
+                                    <li><strong>1 Tesalonicenses 5:17</strong> - Orad sin cesar</li>
+                                </ul>
+                            </div>
+
+                            <div class="reflection-questions">
+                                <h4>💭 Preguntas de Reflexión</h4>
+                                <ol>
+                                    <li>¿Qué obstáculos te impiden orar con constancia?</li>
+                                    <li>¿Cómo puedes crear un hábito diario de oración?</li>
+                                    <li>¿Qué área de tu vida necesitas entregar a Dios en oración hoy?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="completion-section" id="completion-message" style="display: none;">
+            <div class="container">
+                <div class="completion-card">
+                    <h2>¡Felicidades!</h2>
+                    <p>Has completado todas las lecciones de los Cursos Bíblicos.</p>
+                    <p>Ahora estás listo para seguir creciendo en tu fe y cumplir la Gran Comisión.</p>
+                    <a href="../../index.html#nosotros" class="btn btn-primary">Conoce más sobre nuestra iglesia</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Iglesia Comunitaria de la Cristianización</h3>
+                <p>Transformando vidas en Los Alcarrizos</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="../../index.html#inicio">Inicio</a></li>
+                        <li><a href="../../index.html#eventos">Eventos</a></li>
+                        <li><a href="../../index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html">Cursos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Los Alcarrizos, Santo Domingo</li>
+                        <li>Tel: <a href="tel:+18094018833">(809) 401-8833</a></li>
+                        <li><a href="mailto:cristianizacionchurch@proton.me">cristianizacionchurch@proton.me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Reproductor de video" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar video">&times;</button>
+            <div class="video-container"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
