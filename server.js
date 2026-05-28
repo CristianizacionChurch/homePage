@@ -2,12 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.disable('x-powered-by');
+
+const corsOptions = {
+    origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: false, limit: '10kb' }));
@@ -19,19 +27,19 @@ app.use(helmet({
             styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "https://images.unsplash.com", "https://i.ytimg.com", "https://www.google.com", "https://maps.gstatic.com", "data:", "blob:"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.tailwindcss.com"],
+            scriptSrc: ["'self'", "https://www.youtube.com"],
             connectSrc: [
                 "'self'",
                 "https://formspree.io",
                 "https://www.google.com",
-                "https://cdn.tailwindcss.com",
                 "https://fonts.googleapis.com",
                 "https://fonts.gstatic.com"
             ],
-            frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.google.com"],
+            frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],
             formAction: ["'self'", "https://formspree.io"],
+            frameAncestors: ["'none'"],
             upgradeInsecureRequests: [],
             blockAllMixedContent: []
         }
@@ -40,7 +48,8 @@ app.use(helmet({
     crossOriginResourcePolicy: { policy: "same-origin" },
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
     hsts: { maxAge: 63072000, includeSubDomains: true, preload: true },
-    noSniff: true
+    noSniff: true,
+    frameguard: { action: 'deny' }
 }));
 
 const apiLimiter = rateLimit({
@@ -173,13 +182,20 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
         const verseId = VERSE_IDS[getVerseIndex(dateKey)];
 
         const apiUrl = `${process.env.API_BASE_URL}/v1/bibles/${BIBLE_ID}/verses/${verseId}`;
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
+
         const response = await fetch(apiUrl, {
             method: 'GET',
             headers: {
                 'api-key': process.env.API_KEY,
                 'Accept': 'application/json'
-            }
+            },
+            signal: controller.signal
         });
+
+        clearTimeout(timeout);
 
         if (!response.ok) {
             throw new Error(`API respondió con estado ${response.status}`);
@@ -188,7 +204,7 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
         const data = await response.json();
 
         let content = data.data.content || '';
-        content = content.replace(/<[^>]*>/g, '').trim();
+        content = content.replace(/<[^>]*>/g, '').replace(/[<>"'&]/g, '').trim();
 
         const verse = {
             reference: data.data.reference,
@@ -201,7 +217,11 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
         res.json(verse);
 
     } catch (error) {
-        console.error('[DailyVerse] Error:', error.message);
+        if (error.name === 'AbortError') {
+            console.error('[DailyVerse] Timeout error');
+        } else {
+            console.error('[DailyVerse] Error:', error.message);
+        }
 
         const fallbackVerses = [
             { reference: 'Juan 3:16', content: 'Porque de tal manera amó Dios al mundo, que ha dado á su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.' },
@@ -227,6 +247,11 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
 
 app.post('/api/prayer-request', formLimiter, async (req, res) => {
     try {
+        const contentType = req.headers['content-type'];
+        if (!contentType || !contentType.includes('application/json')) {
+            return res.status(415).json({ error: 'Content-Type debe ser application/json' });
+        }
+
         const { nombre, peticion } = req.body;
 
         if (!nombre || typeof nombre !== 'string' || nombre.trim().length === 0) {
@@ -245,11 +270,14 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
             return res.status(400).json({ error: 'La petición es demasiado larga' });
         }
 
-        const sanitize = (str) => str.replace(/[<>]/g, '').trim();
+        const sanitize = (str) => str.replace(/[<>"'&]/g, '').trim();
         const safeName = sanitize(nombre);
         const safeMessage = sanitize(peticion);
 
         const formspreeEndpoint = process.env.FORMSPREE_PRAYER_ENDPOINT || 'https://formspree.io/f/xeelvgwb';
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
 
         const response = await fetch(formspreeEndpoint, {
             method: 'POST',
@@ -262,8 +290,11 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
                 peticion: safeMessage,
                 _subject: `Nueva Petición de Oración - ${safeName}`,
                 _template: 'table'
-            })
+            }),
+            signal: controller.signal
         });
+
+        clearTimeout(timeout);
 
         if (!response.ok) {
             console.error('[PrayerRequest] Formspree error:', response.status);
@@ -276,6 +307,10 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
         });
 
     } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('[PrayerRequest] Timeout error');
+            return res.status(504).json({ error: 'Tiempo de espera agotado' });
+        }
         console.error('[PrayerRequest] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
@@ -283,6 +318,11 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
 
 app.post('/api/newsletter', formLimiter, async (req, res) => {
     try {
+        const contentType = req.headers['content-type'];
+        if (!contentType || !contentType.includes('application/json')) {
+            return res.status(415).json({ error: 'Content-Type debe ser application/json' });
+        }
+
         const { email } = req.body;
 
         if (!email || typeof email !== 'string') {
@@ -303,12 +343,15 @@ app.post('/api/newsletter', formLimiter, async (req, res) => {
         const formspreeEndpoint = process.env.FORMSPREE_NEWSLETTER_ENDPOINT;
 
         if (!formspreeEndpoint) {
-            console.log('[Newsletter] Email registrado (sin endpoint configurado):', safeEmail);
+            console.log('[Newsletter] Email registrado (sin endpoint configurado)');
             return res.status(200).json({
                 success: true,
                 message: 'Suscripción registrada'
             });
         }
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
 
         const response = await fetch(formspreeEndpoint, {
             method: 'POST',
@@ -320,8 +363,11 @@ app.post('/api/newsletter', formLimiter, async (req, res) => {
                 email: safeEmail,
                 _subject: 'Nueva Suscripción al Boletín',
                 _template: 'table'
-            })
+            }),
+            signal: controller.signal
         });
+
+        clearTimeout(timeout);
 
         if (!response.ok) {
             console.error('[Newsletter] Formspree error:', response.status);
@@ -334,6 +380,10 @@ app.post('/api/newsletter', formLimiter, async (req, res) => {
         });
 
     } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('[Newsletter] Timeout error');
+            return res.status(504).json({ error: 'Tiempo de espera agotado' });
+        }
         console.error('[Newsletter] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
