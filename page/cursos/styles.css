@@ -1,0 +1,543 @@
+:root {
+    --primary-blue: #000080;
+    --primary-blue-light: #1a1aff;
+    --success-green: #28a745;
+    --success-green-light: #34d058;
+    --gray-neutral: #6c757d;
+    --gray-light: #f8f9fa;
+    --gray-dark: #343a40;
+    --white: #ffffff;
+    --black: #000000;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --gray-light: #1a1a1a;
+    --gray-dark: #e9ecef;
+    --white: #2d2d2d;
+    --black: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    background-color: var(--gray-light);
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+.progress-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--success-green-light);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.progress-text {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.modules-section {
+    padding: 60px 0;
+}
+
+.module {
+    margin-bottom: 60px;
+}
+
+.module-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--primary-blue);
+}
+
+[data-theme="dark"] .module-title {
+    color: var(--primary-blue-light);
+    border-bottom-color: var(--primary-blue-light);
+}
+
+.lesson-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.lesson-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.lesson-card.completed {
+    border-left: 4px solid var(--success-green);
+}
+
+.lesson-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .lesson-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.lesson-card.completed .lesson-number {
+    background: var(--success-green);
+}
+
+.lesson-title {
+    flex: 1;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.btn-complete {
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--gray-neutral);
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-complete:hover {
+    border-color: var(--success-green);
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.btn-complete:focus {
+    outline: 3px solid var(--primary-blue-light);
+    outline-offset: 2px;
+}
+
+.check-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gray-neutral);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.lesson-card.completed .btn-complete {
+    border-color: var(--success-green);
+    background: var(--success-green);
+}
+
+.lesson-card.completed .check-icon {
+    stroke: white;
+    opacity: 1;
+}
+
+.lesson-description {
+    padding: 0 24px;
+    color: var(--gray-neutral);
+    font-size: 0.95rem;
+    margin-top: -8px;
+}
+
+.lesson-video {
+    padding: 20px 24px;
+}
+
+.video-placeholder {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-dark);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+}
+
+[data-theme="dark"] .video-placeholder {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.12) 100%);
+    color: var(--gray-dark);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+}
+
+.video-thumbnail:hover .play-overlay {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.lesson-content {
+    padding: 24px;
+    background: var(--gray-light);
+}
+
+[data-theme="dark"] .lesson-content {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.bible-reading,
+.reflection-questions {
+    margin-bottom: 24px;
+}
+
+.bible-reading:last-child,
+.reflection-questions:last-child {
+    margin-bottom: 0;
+}
+
+.bible-reading h4,
+.reflection-questions h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--black);
+}
+
+.bible-reading ul,
+.reflection-questions ol {
+    padding-left: 24px;
+}
+
+.bible-reading li,
+.reflection-questions li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.bible-reading strong {
+    color: var(--primary-blue);
+}
+
+[data-theme="dark"] .bible-reading strong {
+    color: var(--primary-blue-light);
+}
+
+.completion-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--success-green) 0%, var(--success-green-light) 100%);
+    color: white;
+    text-align: center;
+}
+
+.completion-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+}
+
+.completion-card h2 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.completion-card p {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    opacity: 0.95;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+    background: var(--gray-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-close:focus {
+    outline: 3px solid white;
+    outline-offset: 2px;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0 40px;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .module-title {
+        font-size: 1.5rem;
+    }
+    
+    .lesson-header {
+        padding: 16px;
+        flex-wrap: wrap;
+    }
+    
+    .lesson-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .lesson-title {
+        font-size: 1.1rem;
+    }
+    
+    .lesson-content {
+        padding: 16px;
+    }
+    
+    .bible-reading h4,
+    .reflection-questions h4 {
+        font-size: 1rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+    
+    .modal-close {
+        top: -36px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+    
+    .lesson-header {
+        gap: 12px;
+    }
+    
+    .btn-complete {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .check-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
