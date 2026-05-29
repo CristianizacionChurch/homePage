@@ -1856,7 +1856,7 @@ img, video, iframe {
     .nav-links.active {
         display: flex;
         transform: translateX(0);
-        z-index: 1002;
+        z-index: 2000;
     }
 
     .nav-links a {
