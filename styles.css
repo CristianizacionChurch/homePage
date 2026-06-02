@@ -1344,11 +1344,57 @@ img, video, iframe {
 }
 
 @media (max-width: 1024px) {
-    .shorts-grid { grid-template-columns: repeat(2, 1fr); }
+    .shorts-grid {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 16px;
+        padding: 4px 16px 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .shorts-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .shorts-grid .short-card {
+        flex: 0 0 calc(50% - 6px);
+        max-width: 320px;
+        scroll-snap-align: start;
+    }
 }
 
 @media (max-width: 480px) {
-    .shorts-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .shorts-grid {
+        gap: 12px;
+        padding: 4px 16px 12px;
+    }
+    .shorts-grid .short-card {
+        flex: 0 0 calc(100% - 32px);
+        max-width: 280px;
+    }
+}
+
+.shorts-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.shorts-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-color);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.shorts-dots .dot.active {
+    background: var(--primary-blue);
+    transform: scale(1.25);
 }
 
 .short-card {
@@ -1836,34 +1882,45 @@ img, video, iframe {
     }
 
     .nav-links {
-        display: none;
         position: fixed;
         top: 70px;
         left: 0;
         right: 0;
         bottom: 0;
         background: var(--bg-white);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         flex-direction: column;
         padding: 24px;
+        padding-top: calc(24px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
         gap: 4px;
         box-shadow: var(--shadow-lg);
         overflow-y: auto;
-        z-index: 999;
+        overscroll-behavior: contain;
+        z-index: 2000;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
         transform: translateX(100%);
-        transition: transform var(--transition-normal);
+        transition: transform var(--transition-normal), opacity var(--transition-normal), visibility 0s linear var(--transition-normal);
     }
 
     .nav-links.active {
-        display: flex;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
         transform: translateX(0);
-        z-index: 2000;
+        transition: transform var(--transition-normal), opacity var(--transition-normal), visibility 0s;
     }
 
     .nav-links a {
         font-size: 17px;
         padding: 14px 0;
         border-bottom: 1px solid var(--border-color);
-        display: block;
+        display: flex;
+        align-items: center;
+        min-height: 48px;
     }
 
     .nav-links a::after {
@@ -1872,6 +1929,16 @@ img, video, iframe {
 
     .mobile-menu-btn {
         display: flex;
+        padding: 12px;
+        min-width: 48px;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        transition: transform var(--transition-fast);
+    }
+
+    .mobile-menu-btn:active {
+        transform: scale(0.94);
     }
 
 
