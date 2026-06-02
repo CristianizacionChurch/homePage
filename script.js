@@ -60,23 +60,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const navLinksItems = document.querySelectorAll('.nav-links a');
 
+    function closeMobileMenu() {
+        if (!navLinks || !mobileMenuBtn) return;
+        navLinks.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    function openMobileMenu() {
+        if (!navLinks || !mobileMenuBtn) return;
+        navLinks.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
-            const isActive = navLinks.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-            mobileMenuBtn.setAttribute('aria-expanded', isActive);
+            if (navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
     }
 
     navLinksItems.forEach(link => {
         link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            closeMobileMenu();
             navLinksItems.forEach(item => item.classList.remove('active'));
             this.classList.add('active');
         });
     });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth >= 769 && navLinks && navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        }, 150);
+    }, { passive: true });
 
     // ── Navbar Shadow on Scroll ─────────────────────────────
     let ticking = false;
@@ -577,6 +609,53 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('No se pudo copiar el versículo.');
         }
         document.body.removeChild(textarea);
+    }
+
+    // ── Shorts Carousel Dots Sync ──────────────────────────
+    const shortsGrid = document.querySelector('.shorts-grid');
+    const shortsDots = document.querySelectorAll('.shorts-dots .dot');
+
+    if (shortsGrid && shortsDots.length > 0) {
+        const shortsCards = shortsGrid.querySelectorAll('.short-card');
+
+        if (shortsCards.length > 0) {
+            let shortsScrollTimer;
+            const setActiveDot = (index) => {
+                shortsDots.forEach((dot, i) => {
+                    const isActive = i === index;
+                    dot.classList.toggle('active', isActive);
+                    dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+            };
+
+            const getActiveShortIndex = () => {
+                const gridRect = shortsGrid.getBoundingClientRect();
+                const gridCenter = gridRect.left + gridRect.width / 2;
+                let closestIdx = 0;
+                let closestDist = Infinity;
+                shortsCards.forEach((card, idx) => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.left + rect.width / 2;
+                    const dist = Math.abs(cardCenter - gridCenter);
+                    if (dist < closestDist) {
+                        closestDist = dist;
+                        closestIdx = idx;
+                    }
+                });
+                return closestIdx;
+            };
+
+            shortsGrid.addEventListener('scroll', function() {
+                clearTimeout(shortsScrollTimer);
+                shortsScrollTimer = setTimeout(() => {
+                    setActiveDot(getActiveShortIndex());
+                }, 80);
+            }, { passive: true });
+
+            if (window.matchMedia('(max-width: 1024px)').matches) {
+                setActiveDot(0);
+            }
+        }
     }
 
     // ── Service Worker Registration ─────────────────────────
