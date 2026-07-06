@@ -24,10 +24,10 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.tailwindcss.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "https://images.unsplash.com", "https://i.ytimg.com", "https://www.google.com", "https://maps.gstatic.com", "data:", "blob:"],
-            scriptSrc: ["'self'", "https://www.youtube.com"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://www.youtube.com"],
             connectSrc: [
                 "'self'",
                 "https://formspree.io",

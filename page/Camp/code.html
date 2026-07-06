@@ -139,6 +139,65 @@ window.tailwind.config = {
         transform: scale(1.1);
     }
 
+    .instalacion-folder {
+        background: rgba(28,25,23,0.6);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(249,115,22,0.2);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .instalacion-folder[open] {
+        border-color: rgba(249,115,22,0.5);
+        box-shadow: 0 0 24px rgba(249,115,22,0.15);
+    }
+    .instalacion-folder > summary {
+        list-style: none;
+        cursor: pointer;
+        user-select: none;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        transition: background-color 0.3s ease;
+    }
+    .instalacion-folder > summary::-webkit-details-marker { display: none; }
+    .instalacion-folder > summary:hover { background: rgba(249,115,22,0.06); }
+    .instalacion-folder__icon {
+        width: 44px; height: 44px;
+        border-radius: 10px;
+        background: rgba(220,38,38,0.15);
+        border: 1px solid rgba(220,38,38,0.3);
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    .instalacion-folder__title {
+        font-family: "Anton", sans-serif;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 1.05rem;
+        line-height: 1.1;
+    }
+    .instalacion-folder__count {
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.5);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+    .instalacion-folder__chevron {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+        color: #F97316;
+    }
+    .instalacion-folder[open] > summary .instalacion-folder__chevron {
+        transform: rotate(180deg);
+    }
+    .instalacion-folder__body {
+        border-top: 1px solid rgba(249,115,22,0.15);
+    }
+
     .fire-gradient {
         background: linear-gradient(180deg, transparent 0%, #0C0A09 100%);
     }
@@ -446,7 +505,7 @@ window.tailwind.config = {
             <div class="hidden md:flex space-x-8 items-center">
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../../index.html">Inicio</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#info">Info</a>
-                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#galeria">Galería</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#instalaciones">Instalaciones</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#registro">Registro</a>
                 <a href="#registro" class="bg-alert hover:bg-alert-dark text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wider transition-all hover:shadow-lg hover:shadow-alert/30 pulse-glow">
                     ¡Reserva tu lugar!
@@ -463,7 +522,7 @@ window.tailwind.config = {
         <div class="px-4 py-4 space-y-1">
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../../index.html">Inicio</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#info" onclick="closeMobileMenu()">Info del Evento</a>
-            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#galeria" onclick="closeMobileMenu()">Galería</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#instalaciones" onclick="closeMobileMenu()">Instalaciones</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#registro" onclick="closeMobileMenu()">Registro</a>
         </div>
     </div>
@@ -891,114 +950,17 @@ window.tailwind.config = {
     </div>
 </section>
 
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-rescue-900 relative" id="galeria">
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-rescue-900 relative" id="instalaciones">
     <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 0 L20 40 M0 20 L40 20\' stroke=\'%23F97316\' stroke-width=\'0.5\' opacity=\'0.3\'/%3E%3C/svg%3E')]"></div>
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-16">
-            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Galería</span>
-            <h2 class="text-4xl md:text-6xl font-display mt-3 text-white">EXPERIENCIA 2025</h2>
-            <p class="text-white/50 mt-3 max-w-xl mx-auto">Lo que vivimos el año pasado en nuestro campamento The Chosen</p>
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Instalaciones</span>
+            <h2 class="text-4xl md:text-6xl font-display mt-3 text-white">NUESTRAS INSTALACIONES</h2>
+            <p class="text-white/50 mt-3 max-w-xl mx-auto">Explora cada área del campamento Villa Zoila. Toca un dossier para desplegar sus fotografías.</p>
             <div class="distress-underline mx-auto mt-4"></div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(0)">
-                <img src="../../img/Gallery-Camp/485130008_1089895973167765_2978073238719954642_n.jpg" alt="Adoración en el campamento 2025" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(1)">
-                <img src="../../img/Gallery-Camp/485157851_1089895626501133_7287658294849281818_n.jpg" alt="Actividades grupales campamento" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(2)">
-                <img src="../../img/Gallery-Camp/485158955_1089897036500992_6143346591235169094_n.jpg" alt="Oración grupal campamento" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(3)">
-                <img src="../../img/Gallery-Camp/485164562_1089892683168094_3162373882791336028_n.jpg" alt="Dinámicas de equipo" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer lg:col-span-2 lg:row-span-2" onclick="openLightbox(4)">
-                <img src="../../img/Gallery-Camp/485184320_1089896766501019_8965268890575684699_n.jpg" alt="Noche de fogata" class="w-full h-full object-cover aspect-[4/3] lg:aspect-auto lg:h-full" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(5)">
-                <img src="../../img/Gallery-Camp/485273639_1089896893167673_1380986865327838283_n.jpg" alt="Celebración" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(6)">
-                <img src="../../img/Gallery-Camp/485310719_1089930939830935_7245277302784016862_n.jpg" alt="Taller liderazgo" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(7)">
-                <img src="../../img/Gallery-Camp/485319155_1089931273164235_7167599666465398003_n.jpg" alt="Reflexión" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(8)">
-                <img src="../../img/Gallery-Camp/485360877_1089892579834771_1393392123014172061_n.jpg" alt="Deportes campamento" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(9)">
-                <img src="../../img/Gallery-Camp/485377034_1089930909830938_2414759549303430224_n.jpg" alt="Alabanza nocturna" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(10)">
-                <img src="../../img/Gallery-Camp/485430969_1089931056497590_8044536399375351334_n.jpg" alt="Comunidad juvenil" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(11)">
-                <img src="../../img/Gallery-Camp/485600315_1089892593168103_6962149646517136694_n.jpg" alt="Enseñanza bíblica" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(12)">
-                <img src="../../img/Gallery-Camp/485698250_1089896669834362_7550129159215165196_n.jpg" alt="Fraternidad" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(13)">
-                <img src="../../img/Gallery-Camp/485702330_1089895529834476_8044093865461577928_n.jpg" alt="Cena comunitaria" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(14)">
-                <img src="../../img/Gallery-Camp/485766039_1089895639834465_7828012492250603184_n.jpg" alt="Foto grupal" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-            <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" onclick="openLightbox(15)">
-                <img src="../../img/Gallery-Camp/486022499_1089895833167779_2994473904544213443_n.jpg" alt="Despedida campamento" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span class="material-icons-outlined text-white text-2xl">zoom_in</span>
-                </div>
-            </div>
-        </div>
+        <div id="instalacionesGrid" class="space-y-4"></div>
     </div>
 
     <div id="galleryLightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center" onclick="if(event.target===this)closeLightbox()">
@@ -1011,7 +973,7 @@ window.tailwind.config = {
         <button onclick="nextImage()" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white z-10 transition-colors bg-black/30 hover:bg-black/60 rounded-full p-3 md:p-2" aria-label="Siguiente">
             <span class="material-icons-outlined text-4xl md:text-3xl">chevron_right</span>
         </button>
-        <img id="lightboxImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl" src="" alt="Galería del campamento"/>
+        <img id="lightboxImg" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl" src="" alt="Instalaciones del campamento"/>
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium">
             <span id="lightboxCounter"></span>
         </div>
@@ -1114,7 +1076,7 @@ window.tailwind.config = {
                 <ul class="space-y-2 text-sm text-white/40">
                     <li><a class="hover:text-fire-400 transition-colors" href="../../index.html">Inicio</a></li>
                     <li><a class="hover:text-fire-400 transition-colors" href="#info">Información</a></li>
-                    <li><a class="hover:text-fire-400 transition-colors" href="#galeria">Galería</a></li>
+                    <li><a class="hover:text-fire-400 transition-colors" href="#instalaciones">Instalaciones</a></li>
                     <li><a class="hover:text-fire-400 transition-colors" href="#registro">Registro</a></li>
                 </ul>
             </div>
@@ -1198,6 +1160,88 @@ function toggleMusic() {
         bars.classList.add('hidden');
     }
 }
+
+const INSTALACIONES_DATA = [
+    { name: "Habitaciones", folder: "Habitaciones", photos: [
+        "photo_2026-07-05_18-44-48.jpg", "photo_2026-07-05_18-44-49.jpg", "photo_2026-07-05_18-44-50.jpg",
+        "photo_2026-07-05_18-45-08.jpg", "photo_2026-07-05_18-45-09.jpg", "photo_2026-07-05_18-45-10.jpg",
+        "photo_2026-07-05_18-45-11 (2).jpg", "photo_2026-07-05_18-45-11.jpg", "photo_2026-07-05_18-45-12.jpg"
+    ]},
+    { name: "Pabellón de Habitaciones", folder: "Pabellon de Habitaciones", photos: [
+        "photo_2026-07-05_18-44-46.jpg", "photo_2026-07-05_18-44-47.jpg", "photo_2026-07-05_18-44-54 (2).jpg",
+        "photo_2026-07-05_18-44-54.jpg", "photo_2026-07-05_18-44-56.jpg", "photo_2026-07-05_18-44-57.jpg",
+        "photo_2026-07-05_18-44-59.jpg", "photo_2026-07-05_18-45-00.jpg", "photo_2026-07-05_18-45-02.jpg"
+    ]},
+    { name: "Comedor", folder: "Comedor", photos: [
+        "photo_2026-07-05_18-44-27.jpg", "photo_2026-07-05_18-44-31.jpg", "photo_2026-07-05_18-44-32.jpg",
+        "photo_2026-07-05_18-44-33.jpg", "photo_2026-07-05_18-44-34.jpg", "photo_2026-07-05_18-44-35.jpg",
+        "photo_2026-07-05_18-44-36.jpg", "photo_2026-07-05_18-44-37.jpg"
+    ]},
+    { name: "Capilla", folder: "Capilla", photos: [
+        "photo_2026-07-05_18-44-40 (2).jpg", "photo_2026-07-05_18-44-41.jpg", "photo_2026-07-05_18-44-42.jpg",
+        "photo_2026-07-05_18-44-43 (2).jpg", "photo_2026-07-05_18-44-43.jpg", "photo_2026-07-05_18-44-44.jpg",
+        "photo_2026-07-05_18-44-45.jpg"
+    ]},
+    { name: "Piscina", folder: "Piscina", photos: [
+        "photo_2026-07-05_18-44-45 (2).jpg", "photo_2026-07-05_18-45-04.jpg", "photo_2026-07-05_19-21-33.jpg"
+    ]},
+    { name: "Jacuzzi", folder: "Jacuzzi", photos: [
+        "photo_2026-07-05_18-44-51.jpg", "photo_2026-07-05_18-44-52.jpg"
+    ]},
+    { name: "Cancha de Basketball", folder: "Cancha de Basketball", photos: [
+        "photo_2026-07-05_18-44-55.jpg", "photo_2026-07-05_18-44-58 (2).jpg", "photo_2026-07-05_18-44-58.jpg"
+    ]},
+    { name: "Cancha de Volleyball", folder: "Cancha de Volleyball", photos: [
+        "photo_2026-07-05_18-45-01.jpg", "photo_2026-07-05_18-45-02.jpg"
+    ]},
+    { name: "Sala de Billar", folder: "Sala de Billar", photos: [
+        "photo_2026-07-05_18-44-39.jpg", "photo_2026-07-05_18-44-40.jpg"
+    ]},
+    { name: "Área de recreación para niños", folder: "Area de recreacion para niños", photos: [
+        "photo_2026-07-05_18-45-05.jpg", "photo_2026-07-05_18-45-06.jpg", "photo_2026-07-05_18-45-07.jpg"
+    ]}
+];
+
+(function renderInstalaciones() {
+    const grid = document.getElementById('instalacionesGrid');
+    if (!grid) return;
+    let globalIndex = 0;
+    const basePath = '../../img/INSTALACIONES/';
+    INSTALACIONES_DATA.forEach(cat => {
+        const details = document.createElement('details');
+        details.className = 'instalacion-folder';
+        const summary = document.createElement('summary');
+        summary.innerHTML =
+            '<span class="instalacion-folder__icon"><span class="material-icons-outlined text-fire-400">photo_library</span></span>' +
+            '<span class="flex flex-col leading-tight"><span class="instalacion-folder__title">' + cat.name + '</span>' +
+            '<span class="instalacion-folder__count">' + cat.photos.length + ' fotos</span></span>' +
+            '<span class="instalacion-folder__chevron material-icons-outlined">expand_more</span>';
+        details.appendChild(summary);
+        const body = document.createElement('div');
+        body.className = 'instalacion-folder__body grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6';
+        cat.photos.forEach(file => {
+            const idx = globalIndex++;
+            const item = document.createElement('div');
+            item.className = 'gallery-item group relative overflow-hidden rounded-xl cursor-pointer';
+            item.onclick = () => openLightbox(idx);
+            const src = basePath + encodeURIComponent(cat.folder) + '/' + encodeURIComponent(file);
+            item.innerHTML =
+                '<img src="' + src + '" alt="' + cat.name + '" class="w-full h-full object-cover aspect-[4/3]" loading="lazy"/>' +
+                '<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">' +
+                '<span class="material-icons-outlined text-white text-2xl">zoom_in</span></div>';
+            body.appendChild(item);
+        });
+        details.appendChild(body);
+        grid.appendChild(details);
+    });
+    grid.addEventListener('toggle', function(e) {
+        if (e.target.open) {
+            grid.querySelectorAll('.instalacion-folder[open]').forEach(function(o) {
+                if (o !== e.target) o.open = false;
+            });
+        }
+    }, true);
+})();
 
 const galleryImages = Array.from(document.querySelectorAll('.gallery-item img')).map(img => img.src);
 let currentIndex = 0;
