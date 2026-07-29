@@ -11,9 +11,9 @@
   // Circle geometry per template — extracted from SVG viewBox (810x1440), scaled to 1080x1920
   // Scale factor: 1080/810 = 1.333
   var TEMPLATE_CIRCLES = {
-    "fuerza-aerea.svg":  { cx: 540, cy: 900, r: 267 },
-    "Fuerza-naval.svg":  { cx: 540, cy: 900, r: 267 },
-    "fuerza-terrestre.svg": { cx: 540, cy: 900, r: 267 }
+    "fuerza-aerea.svg":  { cx: 540, cy: 960, r: 267 },
+    "Fuerza-naval.svg":  { cx: 540, cy: 960, r: 267 },
+    "fuerza-terrestre.svg": { cx: 540, cy: 960, r: 267 }
   };
 
   function getCircleForTemplate(name) {
