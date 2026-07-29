@@ -11,9 +11,9 @@
   // Circle geometry per template — extracted from SVG viewBox (810x1440), scaled to 1080x1920
   // Scale factor: 1080/810 = 1.333
   var TEMPLATE_CIRCLES = {
-    "fuerza-aerea.svg":  { cx: 540, cy: 680, r: 267 },
-    "Fuerza-naval.svg":  { cx: 540, cy: 680, r: 267 },
-    "fuerza-terrestre.svg": { cx: 540, cy: 680, r: 267 }
+    "fuerza-aerea.svg":  { cx: 540, cy: 900, r: 267 },
+    "Fuerza-naval.svg":  { cx: 540, cy: 900, r: 267 },
+    "fuerza-terrestre.svg": { cx: 540, cy: 900, r: 267 }
   };
 
   function getCircleForTemplate(name) {
@@ -89,7 +89,24 @@
     var diam = circle.r * 2;
     var fit = coverFit(userImage.width, userImage.height, diam);
 
-    // Draw photo clipped to circle
+    // 1. Draw SVG template
+    if (templateCache[currentTemplate]) {
+      ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      // 2. Punch hole in template so photo can go underneath
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    } else if (!templateFailed[currentTemplate]) {
+      loadTemplateImage(currentTemplate, function (img) {
+        if (img && userImage) render();
+      });
+      return;
+    }
+
+    // 3. Draw photo clipped to circle (on top of the hole)
     ctx.save();
     ctx.beginPath();
     ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
@@ -101,22 +118,6 @@
       diam, diam
     );
     ctx.restore();
-
-    // Draw SVG template overlay
-    if (templateCache[currentTemplate]) {
-      ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-      // Punch hole in template so photo shows through the circle
-      ctx.save();
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.beginPath();
-      ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    } else if (!templateFailed[currentTemplate]) {
-      loadTemplateImage(currentTemplate, function (img) {
-        if (img && userImage) render();
-      });
-    }
   }
 
   function loadTemplateImage(name, callback) {
