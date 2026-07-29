@@ -15,6 +15,7 @@
   var userImage = null;
   var currentTemplate = "fuerza-aerea.svg";
   var templateCache = {};
+  var templateFailed = {};
 
   function drawPlaceholder() {
     ctx.fillStyle = "#1C1917";
@@ -76,9 +77,9 @@
 
     if (templateCache[currentTemplate]) {
       ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-    } else {
-      loadTemplateImage(currentTemplate, function () {
-        if (userImage) render();
+    } else if (!templateFailed[currentTemplate]) {
+      loadTemplateImage(currentTemplate, function (img) {
+        if (img && userImage) render();
       });
     }
   }
@@ -95,6 +96,7 @@
       if (callback) callback(img);
     };
     img.onerror = function () {
+      templateFailed[name] = true;
       if (callback) callback(null);
     };
     img.src = name;
@@ -103,6 +105,11 @@
   uploadInput.addEventListener("change", function (e) {
     var file = e.target.files[0];
     if (!file) return;
+
+    if (!file.type.startsWith("image/") || file.size > 10 * 1024 * 1024) {
+      alert("Selecciona una imagen de menos de 10 MB.");
+      return;
+    }
 
     var reader = new FileReader();
     reader.onload = function (ev) {
@@ -114,13 +121,16 @@
       };
       img.src = ev.target.result;
     };
+    reader.onerror = function () {
+      alert("No se pudo leer el archivo.");
+    };
     reader.readAsDataURL(file);
   });
 
   downloadBtn.addEventListener("click", function () {
     if (!userImage) return;
-    render();
     canvas.toBlob(function (blob) {
+      if (!blob) return;
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
       a.href = url;
