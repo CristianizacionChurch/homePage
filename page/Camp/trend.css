@@ -178,8 +178,8 @@ body {
 .canvas-wrapper {
     position: relative;
     width: 100%;
-    max-width: 540px;
-    aspect-ratio: 1 / 1;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
     margin: 0 auto;
 }
 .canvas-wrapper canvas {

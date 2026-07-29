@@ -1,9 +1,11 @@
 (function () {
   "use strict";
 
-  var CANVAS_SIZE = 1080;
+  var CANVAS_WIDTH = 1080;
+  var CANVAS_HEIGHT = 1920;
   var CIRCLE_RADIUS = 340;
-  var CIRCLE_CENTER = CANVAS_SIZE / 2;
+  var CIRCLE_CENTER_X = CANVAS_WIDTH / 2;
+  var CIRCLE_CENTER_Y = 700;
   var DIAMETER = CIRCLE_RADIUS * 2;
 
   var canvas = document.getElementById("trendCanvas");
@@ -19,10 +21,10 @@
 
   function drawPlaceholder() {
     ctx.fillStyle = "#1C1917";
-    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     ctx.beginPath();
-    ctx.arc(CIRCLE_CENTER, CIRCLE_CENTER, CIRCLE_RADIUS, 0, Math.PI * 2);
+    ctx.arc(CIRCLE_CENTER_X, CIRCLE_CENTER_Y, CIRCLE_RADIUS, 0, Math.PI * 2);
     ctx.strokeStyle = "#F97316";
     ctx.lineWidth = 3;
     ctx.setLineDash([10, 10]);
@@ -33,7 +35,15 @@
     ctx.font = "600 24px Poppins, sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("Sube una foto para comenzar", CIRCLE_CENTER, CIRCLE_CENTER);
+    ctx.fillText("Sube una foto para comenzar", CIRCLE_CENTER_X, CIRCLE_CENTER_Y);
+
+    if (templateCache[currentTemplate]) {
+      ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    } else if (!templateFailed[currentTemplate]) {
+      loadTemplateImage(currentTemplate, function (img) {
+        if (img) drawPlaceholder();
+      });
+    }
   }
 
   function coverFit(imgW, imgH, diam) {
@@ -52,9 +62,9 @@
   }
 
   function render() {
-    ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.fillStyle = "#1C1917";
-    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     if (!userImage) {
       drawPlaceholder();
@@ -65,18 +75,18 @@
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(CIRCLE_CENTER, CIRCLE_CENTER, CIRCLE_RADIUS, 0, Math.PI * 2);
+    ctx.arc(CIRCLE_CENTER_X, CIRCLE_CENTER_Y, CIRCLE_RADIUS, 0, Math.PI * 2);
     ctx.clip();
     ctx.drawImage(
       userImage,
       fit.sx, fit.sy, fit.sw, fit.sh,
-      CIRCLE_CENTER - CIRCLE_RADIUS, CIRCLE_CENTER - CIRCLE_RADIUS,
+      CIRCLE_CENTER_X - CIRCLE_RADIUS, CIRCLE_CENTER_Y - CIRCLE_RADIUS,
       DIAMETER, DIAMETER
     );
     ctx.restore();
 
     if (templateCache[currentTemplate]) {
-      ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+      ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     } else if (!templateFailed[currentTemplate]) {
       loadTemplateImage(currentTemplate, function (img) {
         if (img && userImage) render();
