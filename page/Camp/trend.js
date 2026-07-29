@@ -8,6 +8,18 @@
   var CIRCLE_CENTER_Y = 700;
   var DIAMETER = CIRCLE_RADIUS * 2;
 
+  // Circle geometry per template — extracted from SVG viewBox (810x1440), scaled to 1080x1920
+  // Scale factor: 1080/810 = 1.333
+  var TEMPLATE_CIRCLES = {
+    "fuerza-aerea.svg":  { cx: 540, cy: 680, r: 267 },
+    "Fuerza-naval.svg":  { cx: 540, cy: 680, r: 267 },
+    "fuerza-terrestre.svg": { cx: 540, cy: 680, r: 267 }
+  };
+
+  function getCircleForTemplate(name) {
+    return TEMPLATE_CIRCLES[name] || { cx: CIRCLE_CENTER_X, cy: CIRCLE_CENTER_Y, r: CIRCLE_RADIUS };
+  }
+
   var canvas = document.getElementById("trendCanvas");
   var ctx = canvas.getContext("2d");
   var uploadInput = document.getElementById("photoUpload");
@@ -23,8 +35,10 @@
     ctx.fillStyle = "#1C1917";
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+    var circle = getCircleForTemplate(currentTemplate);
+
     ctx.beginPath();
-    ctx.arc(CIRCLE_CENTER_X, CIRCLE_CENTER_Y, CIRCLE_RADIUS, 0, Math.PI * 2);
+    ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
     ctx.strokeStyle = "#F97316";
     ctx.lineWidth = 3;
     ctx.setLineDash([10, 10]);
@@ -35,7 +49,7 @@
     ctx.font = "600 24px Poppins, sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("Sube una foto para comenzar", CIRCLE_CENTER_X, CIRCLE_CENTER_Y);
+    ctx.fillText("Sube una foto para comenzar", circle.cx, circle.cy);
 
     if (templateCache[currentTemplate]) {
       ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -71,22 +85,33 @@
       return;
     }
 
-    var fit = coverFit(userImage.width, userImage.height, DIAMETER);
+    var circle = getCircleForTemplate(currentTemplate);
+    var diam = circle.r * 2;
+    var fit = coverFit(userImage.width, userImage.height, diam);
 
+    // Draw photo clipped to circle
     ctx.save();
     ctx.beginPath();
-    ctx.arc(CIRCLE_CENTER_X, CIRCLE_CENTER_Y, CIRCLE_RADIUS, 0, Math.PI * 2);
+    ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
     ctx.clip();
     ctx.drawImage(
       userImage,
       fit.sx, fit.sy, fit.sw, fit.sh,
-      CIRCLE_CENTER_X - CIRCLE_RADIUS, CIRCLE_CENTER_Y - CIRCLE_RADIUS,
-      DIAMETER, DIAMETER
+      circle.cx - circle.r, circle.cy - circle.r,
+      diam, diam
     );
     ctx.restore();
 
+    // Draw SVG template overlay
     if (templateCache[currentTemplate]) {
       ctx.drawImage(templateCache[currentTemplate], 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      // Punch hole in template so photo shows through the circle
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(circle.cx, circle.cy, circle.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
     } else if (!templateFailed[currentTemplate]) {
       loadTemplateImage(currentTemplate, function (img) {
         if (img && userImage) render();
