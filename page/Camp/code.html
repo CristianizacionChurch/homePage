@@ -224,6 +224,15 @@ window.tailwind.config = {
         border-color: rgba(249,115,22,0.5);
     }
 
+    @keyframes dressCodePulse {
+        0%, 100% { opacity: 0.7; transform: translateY(0); }
+        50% { opacity: 1; transform: translateY(-2px); }
+    }
+
+    .dress-code-item {
+        animation: dressCodePulse 3s ease-in-out infinite;
+    }
+
     .hero-section {
         position: relative;
         min-height: 100vh;
@@ -506,6 +515,8 @@ window.tailwind.config = {
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../../index.html">Inicio</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#info">Info</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#instalaciones">Instalaciones</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#itinerario">Itinerario</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#eventos">Eventos</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#registro">Registro</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="trend.html">Trend</a>
                 <a href="#registro" class="bg-alert hover:bg-alert-dark text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wider transition-all hover:shadow-lg hover:shadow-alert/30 pulse-glow">
@@ -524,6 +535,8 @@ window.tailwind.config = {
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../../index.html">Inicio</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#info" onclick="closeMobileMenu()">Info del Evento</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#instalaciones" onclick="closeMobileMenu()">Instalaciones</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#itinerario" onclick="closeMobileMenu()">Itinerario</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#eventos" onclick="closeMobileMenu()">Eventos</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#registro" onclick="closeMobileMenu()">Registro</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="trend.html" onclick="closeMobileMenu()">Trend</a>
         </div>
@@ -900,6 +913,102 @@ window.tailwind.config = {
                 <p class="text-white/40 text-sm mt-6">
                     14 - 16 de Agosto 2026 · Campamento Villa Zoila
                 </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-rescue-900 relative overflow-hidden" id="eventos">
+    <div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0 L30 60 M0 30 L60 30\' stroke=\'%23F97316\' stroke-width=\'0.3\' opacity=\'0.4\'/%3E%3C/svg%3E')]"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Noche Especial</span>
+            <h2 class="text-4xl md:text-6xl font-display mt-3 text-white">EVENTOS</h2>
+            <p class="text-white/50 mt-3 max-w-xl mx-auto">Una noche dedicada a la comunidad, la convivencia y la adoración juntos.</p>
+            <div class="distress-underline mx-auto mt-4"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card 1: Noche Especial -->
+                <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-8 relative overflow-hidden group hover:border-fire-500/30 transition-colors duration-500">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-fire-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-icons-outlined text-fire-400 text-3xl">nightlife</span>
+                        <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider">Noche Especial</h3>
+                    </div>
+                    <p class="text-white/60 text-sm leading-relaxed mb-6">
+                        Una velada única para cerrar el campamento con fuerza: adoración en vivo, testimonios que tocan el corazón, fuegos artificiales y la oportunidad de compartir con amigos y familias en un ambiente de gozo y gratitud.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">event</span>
+                            <span class="text-white/80">15 de Agosto, 2026</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">schedule</span>
+                            <span class="text-white/80">7:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">location_on</span>
+                            <span class="text-white/80">Campamento Villa Zoila</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">payments</span>
+                            <span class="text-white/80">Incluido en el registro</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <div class="inline-flex items-center gap-2 bg-fire-500/10 border border-fire-500/20 rounded-full px-4 py-2 text-xs text-fire-300 font-medium tracking-wide dress-code-item" style="animation-delay: 0s">
+                            <span class="material-icons-outlined text-sm">checkroom</span>
+                            Formal / Uniforme
+                        </div>
+                        <div class="inline-flex items-center gap-2 bg-fire-500/10 border border-fire-500/20 rounded-full px-4 py-2 text-xs text-fire-300 font-medium tracking-wide dress-code-item" style="animation-delay: 0.15s">
+                            <span class="material-icons-outlined text-sm">palette</span>
+                            Colores Oscuros
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Programa de la Noche -->
+                <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-8 relative overflow-hidden group hover:border-fire-500/30 transition-colors duration-500">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-fire-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-icons-outlined text-fire-400 text-3xl">info</span>
+                        <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider">Programa</h3>
+                    </div>
+                    <p class="text-white/60 text-sm leading-relaxed mb-6">
+                        Todo lo que necesitas saber para esta noche inolvidable: horario, código de vestimenta, ubicación y recomendaciones para disfrutar al máximo junto a tu comunidad.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">groups</span>
+                            <span class="text-white/80">Abierto a todos los campistas y familias</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">restaurant</span>
+                            <span class="text-white/80">Cena incluida</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">music_note</span>
+                            <span class="text-white/80">Adoración en vivo con la banda del campamento</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="material-icons-outlined text-fire-400 text-lg">auto_awesome</span>
+                            <span class="text-white/80">Fuegos artificiales de cierre</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <div class="inline-flex items-center gap-2 bg-fire-500/10 border border-fire-500/20 rounded-full px-4 py-2 text-xs text-fire-300 font-medium tracking-wide dress-code-item" style="animation-delay: 0.3s">
+                            <span class="material-icons-outlined text-sm">schedule</span>
+                            7:00 PM
+                        </div>
+                        <div class="inline-flex items-center gap-2 bg-fire-500/10 border border-fire-500/20 rounded-full px-4 py-2 text-xs text-fire-300 font-medium tracking-wide dress-code-item" style="animation-delay: 0.45s">
+                            <span class="material-icons-outlined text-sm">celebration</span>
+                            Noche de cierre
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
