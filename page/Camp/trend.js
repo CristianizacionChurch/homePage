@@ -13,7 +13,8 @@
   var TEMPLATE_CIRCLES = {
     "fuerza-aerea.svg":  { cx: 540, cy: 960, r: 290 },
     "Fuerza-naval.svg":  { cx: 540, cy: 960, r: 290 },
-    "fuerza-terrestre.svg": { cx: 540, cy: 960, r: 290 }
+    "fuerza-terrestre.svg": { cx: 540, cy: 960, r: 290 },
+    "mayDayGeneral.svg": { cx: 540, cy: 960, r: 290 }
   };
 
   function getCircleForTemplate(name) {
