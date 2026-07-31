@@ -515,7 +515,7 @@ window.tailwind.config = {
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../../index.html">Inicio</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#info">Info</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#instalaciones">Instalaciones</a>
-                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#itinerario">Itinerario</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#reglas">Reglas</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#eventos">Eventos</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="#registro">Registro</a>
                 <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="trend.html">Trend</a>
@@ -535,7 +535,7 @@ window.tailwind.config = {
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../../index.html">Inicio</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#info" onclick="closeMobileMenu()">Info del Evento</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#instalaciones" onclick="closeMobileMenu()">Instalaciones</a>
-            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#itinerario" onclick="closeMobileMenu()">Itinerario</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#reglas" onclick="closeMobileMenu()">Reglas</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#eventos" onclick="closeMobileMenu()">Eventos</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="#registro" onclick="closeMobileMenu()">Registro</a>
             <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="trend.html" onclick="closeMobileMenu()">Trend</a>
@@ -890,29 +890,135 @@ window.tailwind.config = {
     </div>
 </section>
 
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-rescue-900 relative" id="itinerario">
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-rescue-900 relative" id="reglas">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Programa</span>
-            <h2 class="text-4xl md:text-6xl font-display mt-3 text-white">ITINERARIO</h2>
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Código de Conducta</span>
+            <h2 class="text-4xl md:text-6xl font-display mt-3 text-white">REGLAS DEL CAMPAMENTO</h2>
             <div class="distress-underline mx-auto mt-4"></div>
         </div>
 
-        <div class="max-w-2xl mx-auto">
-            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-fire-500 via-alert to-fire-500 animate-pulse"></div>
-                <span class="material-icons-outlined text-fire-400 text-6xl mb-6">construction</span>
-                <h3 class="text-2xl sm:text-3xl font-display text-white uppercase tracking-wider mb-4">En Programación</h3>
-                <p class="text-white/70 max-w-md mx-auto leading-relaxed mb-6">
-                    Estamos preparando un itinerario lleno de actividades, enseñanzas y momentos especiales para este campamento.
-                </p>
-                <div class="inline-flex items-center gap-3 bg-fire-500/10 border border-fire-500/30 rounded-full px-6 py-3">
-                    <span class="material-icons-outlined text-fire-400 text-xl">schedule</span>
-                    <span class="text-fire-300 font-semibold tracking-wide">Próximamente</span>
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-fire-500 via-alert to-fire-500"></div>
+
+                <h3 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-6 text-center">Normas Durante Su Estadía</h3>
+
+                <div class="grid gap-3">
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">1</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">block</span>
+                            <span class="text-white/80 text-sm sm:text-base">No armas blancas, ni de fuego</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">2</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">content_cut</span>
+                            <span class="text-white/80 text-sm sm:text-base">No objetos punzantes</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">3</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">smoking_rooms</span>
+                            <span class="text-white/80 text-sm sm:text-base">No drogas</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">4</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">smoke_free</span>
+                            <span class="text-white/80 text-sm sm:text-base">No cigarrillos, no cigarrillos electrónicos, vapers, No hookah</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">5</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">no_drinks</span>
+                            <span class="text-white/80 text-sm sm:text-base">No bebidas alcohólicas</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">6</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">home</span>
+                            <span class="text-white/80 text-sm sm:text-base">Respetar la propiedad y las instalaciones</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">7</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">wc</span>
+                            <span class="text-white/80 text-sm sm:text-base">Evitar la entrada a las cabañas del sexo opuesto</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">8</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">delete</span>
+                            <span class="text-white/80 text-sm sm:text-base">Tirar la basura al zafacón y en las zonas indicadas</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">9</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">checkroom</span>
+                            <span class="text-white/80 text-sm sm:text-base">Utilizar ropa adecuada para cada actividad</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">10</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">cleaning_services</span>
+                            <span class="text-white/80 text-sm sm:text-base">Mantener baños y cabañas limpias y organizadas</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">11</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">security</span>
+                            <span class="text-white/80 text-sm sm:text-base">Cuidar sus pertenencias personales</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">12</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">group</span>
+                            <span class="text-white/80 text-sm sm:text-base">Participar en las actividades del campamento</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">13</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">schedule</span>
+                            <span class="text-white/80 text-sm sm:text-base">Respetar los tiempos programados para cada actividad</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                        <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">14</span>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-outlined text-fire-400 text-xl">handshake</span>
+                            <span class="text-white/80 text-sm sm:text-base">Colaborar con el equipo asignado</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-white/40 text-sm mt-6">
-                    14 - 16 de Agosto 2026 · Campamento Villa Zoila
-                </p>
+
+
             </div>
         </div>
     </div>
