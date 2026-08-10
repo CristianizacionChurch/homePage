@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reglas del Campamento | MAYDAY: Misión Rescate 2026</title>
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg"/>
+<script>
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                fire: { 50: "#FFF7ED", 100: "#FFEDD5", 200: "#FED7AA", 300: "#FDBA74", 400: "#FB923C", 500: "#F97316", 600: "#EA580C", 700: "#C2410C", 800: "#9A3412", 900: "#7C2D12" },
+                rescue: { 900: "#0C0A09", 800: "#1C1917", 700: "#292524", 600: "#44403C", 950: "#070605" },
+                navy: { DEFAULT: "#000080", light: "#0000B3", dark: "#000060" },
+                alert: { DEFAULT: "#DC2626", dark: "#991B1B", light: "#FCA5A5" }
+            },
+            fontFamily: {
+                display: ["Anton", "sans-serif"],
+                body: ["Poppins", "sans-serif"],
+            },
+        },
+    },
+};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<link href="../Camp/trend.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="camp-bg" aria-hidden="true">
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-crosshairs"></div>
+    <div class="bg-layer bg-compass"></div>
+    <div class="bg-layer bg-topo"></div>
+    <div class="bg-deco bg-helicopter"></div>
+    <div class="bg-deco bg-rescue-cross"></div>
+    <div class="bg-deco bg-dogtag"></div>
+</div>
+<nav class="fixed w-full z-50 bg-rescue-900/80 backdrop-blur-md border-b border-fire-700/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-20 items-center">
+            <div class="flex items-center space-x-3 min-w-0">
+                <a href="../Camp/code.html" aria-label="Ir al campamento" class="flex-shrink-0">
+                    <img src="../../img/favicon.svg" alt="MAYDAY Misión Rescate" class="h-12 sm:h-14 w-auto object-contain" />
+                </a>
+                <div class="flex flex-col leading-tight">
+                    <span class="font-display text-lg sm:text-2xl tracking-wider uppercase text-white truncate">MAYDAY 2026</span>
+                    <span class="text-[10px] sm:text-xs text-fire-400 tracking-widest uppercase">Misión Rescate</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html">Inicio</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html#info">Info</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html#instalaciones">Instalaciones</a>
+                <a class="text-fire-400 font-medium text-sm uppercase tracking-wider" href="reglas.html">Reglas</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html#registro">Registro</a>
+                <a href="../Camp/code.html#registro" class="bg-alert hover:bg-alert-dark text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wider transition-all hover:shadow-lg hover:shadow-alert/30 pulse-glow">
+                    ¡Reserva tu lugar!
+                </a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobileMenuBtn" class="text-white hover:text-fire-400 p-2 -mr-2" aria-label="Abrir menú">
+                    <span id="menuIcon" class="material-icons-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-rescue-900/95 backdrop-blur-md border-t border-fire-700/20">
+        <div class="px-4 py-4 space-y-1">
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html">Inicio</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html#info" onclick="closeMobileMenu()">Info del Evento</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html#instalaciones" onclick="closeMobileMenu()">Instalaciones</a>
+            <a class="block py-3 px-4 rounded-lg bg-fire-500/10 text-fire-400 font-medium transition-colors" href="reglas.html">Reglas</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html#registro" onclick="closeMobileMenu()">Registro</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Código de Conducta</span>
+            <h1 class="text-4xl md:text-6xl font-display mt-3 text-white">REGLAS DEL CAMPAMENTO</h1>
+            <p class="text-white/50 mt-3 max-w-xl mx-auto">Normas durante su estadía. Léelas con atención y confirma tu aceptación al final de la página.</p>
+            <div class="distress-underline mx-auto mt-4"></div>
+        </div>
+
+        <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10 relative overflow-hidden mb-16">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-fire-500 via-alert to-fire-500"></div>
+
+            <h2 class="text-xl sm:text-2xl font-display text-white uppercase tracking-wider mb-6 text-center">Normas Durante Su Estadía</h2>
+
+            <div class="grid gap-3">
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">1</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">block</span>
+                        <span class="text-white/80 text-sm sm:text-base">No armas blancas, ni de fuego</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">2</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">content_cut</span>
+                        <span class="text-white/80 text-sm sm:text-base">No objetos punzantes</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">3</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">smoking_rooms</span>
+                        <span class="text-white/80 text-sm sm:text-base">No drogas</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">4</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">smoke_free</span>
+                        <span class="text-white/80 text-sm sm:text-base">No cigarrillos, no cigarrillos electrónicos, vapers, No hookah</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">5</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">no_drinks</span>
+                        <span class="text-white/80 text-sm sm:text-base">No bebidas alcohólicas</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">6</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">home</span>
+                        <span class="text-white/80 text-sm sm:text-base">Respetar la propiedad y las instalaciones</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">7</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">wc</span>
+                        <span class="text-white/80 text-sm sm:text-base">Evitar la entrada a las cabañas del sexo opuesto</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">8</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">delete</span>
+                        <span class="text-white/80 text-sm sm:text-base">Tirar la basura al zafacón y en las zonas indicadas</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">9</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">checkroom</span>
+                        <span class="text-white/80 text-sm sm:text-base">Utilizar ropa adecuada para cada actividad</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">10</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">cleaning_services</span>
+                        <span class="text-white/80 text-sm sm:text-base">Mantener baños y cabañas limpias y organizadas</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">11</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">security</span>
+                        <span class="text-white/80 text-sm sm:text-base">Cuidar sus pertenencias personales</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">12</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">group</span>
+                        <span class="text-white/80 text-sm sm:text-base">Participar en las actividades del campamento</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">13</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">schedule</span>
+                        <span class="text-white/80 text-sm sm:text-base">Respetar los tiempos programados para cada actividad</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-rescue-900/60 border border-fire-700/15 rounded-xl px-4 sm:px-5 py-3">
+                    <span class="w-9 h-9 rounded-full bg-alert/20 border border-alert/30 flex items-center justify-center text-alert font-bold text-sm flex-shrink-0">14</span>
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons-outlined text-fire-400 text-xl">handshake</span>
+                        <span class="text-white/80 text-sm sm:text-base">Colaborar con el equipo asignado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="max-w-2xl mx-auto" id="aceptacion">
+            <div class="text-center mb-8">
+                <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Aceptación</span>
+                <h2 class="text-3xl md:text-4xl font-display mt-3 text-white">DECLARACIÓN DE ACEPTACIÓN</h2>
+                <div class="distress-underline mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10">
+                <form id="aceptarForm" novalidate>
+                    <div class="mb-6">
+                        <label for="nombre" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">YO:</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            autocomplete="name"
+                            placeholder="Escribe aquí tu nombre completo"
+                            maxlength="150"
+                            class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-fire-500 focus:outline-none"
+                        />
+                    </div>
+                    <label class="flex items-start gap-3 mb-8 cursor-pointer">
+                        <input type="checkbox" id="acepto" class="mt-1 w-5 h-5 accent-fire-500" />
+                        <span class="text-white/80 text-sm sm:text-base">Acepto acatarme a las reglas del campamento</span>
+                    </label>
+                    <button type="submit" id="aceptarBtn" class="fire-btn w-full px-8 py-4 rounded-full font-bold text-base tracking-wider flex items-center justify-center gap-2">
+                        <span class="material-icons-outlined">download</span>
+                        Acepto y Descargar PDF
+                    </button>
+                </form>
+                <div id="msg" class="mt-6 text-center text-sm" hidden></div>
+                <div id="registroLink" class="mt-4 text-center" hidden>
+                    <a href="aceptaciones.html" class="text-fire-400 hover:text-fire-500 underline">Ver registro de aceptaciones →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="bg-black py-8 border-t border-fire-700/10">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-white/30 text-xs">© 2026 Ministerio Juvenil Ungidos al Extremo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        icon.textContent = 'close';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Cerrar menú');
+    } else {
+        menu.classList.add('hidden');
+        icon.textContent = 'menu';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+    }
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    menu.classList.add('hidden');
+    icon.textContent = 'menu';
+    document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+}
+
+document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) closeMobileMenu();
+});
+</script>
+<script src="reglas.js"></script>
+</body>
+</html>
