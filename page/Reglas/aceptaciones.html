@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registro de Aceptaciones | MAYDAY: Misión Rescate 2026</title>
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg"/>
+<script>
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                fire: { 50: "#FFF7ED", 100: "#FFEDD5", 200: "#FED7AA", 300: "#FDBA74", 400: "#FB923C", 500: "#F97316", 600: "#EA580C", 700: "#C2410C", 800: "#9A3412", 900: "#7C2D12" },
+                rescue: { 900: "#0C0A09", 800: "#1C1917", 700: "#292524", 600: "#44403C", 950: "#070605" },
+                navy: { DEFAULT: "#000080", light: "#0000B3", dark: "#000060" },
+                alert: { DEFAULT: "#DC2626", dark: "#991B1B", light: "#FCA5A5" }
+            },
+            fontFamily: {
+                display: ["Anton", "sans-serif"],
+                body: ["Poppins", "sans-serif"],
+            },
+        },
+    },
+};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="../Camp/trend.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="camp-bg" aria-hidden="true">
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-crosshairs"></div>
+    <div class="bg-layer bg-compass"></div>
+    <div class="bg-layer bg-topo"></div>
+    <div class="bg-deco bg-helicopter"></div>
+    <div class="bg-deco bg-rescue-cross"></div>
+    <div class="bg-deco bg-dogtag"></div>
+</div>
+<nav class="fixed w-full z-50 bg-rescue-900/80 backdrop-blur-md border-b border-fire-700/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-20 items-center">
+            <div class="flex items-center space-x-3 min-w-0">
+                <a href="../Camp/code.html" aria-label="Ir al campamento" class="flex-shrink-0">
+                    <img src="../../img/favicon.svg" alt="MAYDAY Misión Rescate" class="h-12 sm:h-14 w-auto object-contain" />
+                </a>
+                <div class="flex flex-col leading-tight">
+                    <span class="font-display text-lg sm:text-2xl tracking-wider uppercase text-white truncate">MAYDAY 2026</span>
+                    <span class="text-[10px] sm:text-xs text-fire-400 tracking-widest uppercase">Misión Rescate</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html">Inicio</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="reglas.html">Reglas</a>
+                <a class="text-fire-400 font-medium text-sm uppercase tracking-wider" href="aceptaciones.html">Aceptaciones</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html#registro">Registro</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobileMenuBtn" class="text-white hover:text-fire-400 p-2 -mr-2" aria-label="Abrir menú">
+                    <span id="menuIcon" class="material-icons-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-rescue-900/95 backdrop-blur-md border-t border-fire-700/20">
+        <div class="px-4 py-4 space-y-1">
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html">Inicio</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="reglas.html">Reglas</a>
+            <a class="block py-3 px-4 rounded-lg bg-fire-500/10 text-fire-400 font-medium transition-colors" href="aceptaciones.html">Aceptaciones</a>
+            <a class="block py-3 px-4 rounded-lg hover:bg-fire-500/10 text-white font-medium transition-colors" href="../Camp/code.html#registro" onclick="closeMobileMenu()">Registro</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Registro</span>
+            <h1 class="text-4xl md:text-5xl font-display mt-3 text-white">ACEPTACIONES</h1>
+            <p class="text-white/50 mt-3 max-w-xl mx-auto">Personas que han confirmado acatarse a las reglas del campamento.</p>
+            <div class="distress-underline mx-auto mt-4"></div>
+        </div>
+
+        <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-rescue-900/60 border-b border-fire-700/20">
+                            <th class="px-4 py-3 text-fire-400 font-display uppercase tracking-wider text-xs">Nombre completo</th>
+                            <th class="px-4 py-3 text-fire-400 font-display uppercase tracking-wider text-xs">Aceptó términos</th>
+                            <th class="px-4 py-3 text-fire-400 font-display uppercase tracking-wider text-xs">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registroBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="reglas.html" class="text-fire-400 hover:text-fire-500 underline">← Volver a las reglas</a>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-black py-8 border-t border-fire-700/10">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-white/30 text-xs">© 2026 Ministerio Juvenil Ungidos al Extremo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        icon.textContent = 'close';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Cerrar menú');
+    } else {
+        menu.classList.add('hidden');
+        icon.textContent = 'menu';
+        document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+    }
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const icon = document.getElementById('menuIcon');
+    menu.classList.add('hidden');
+    icon.textContent = 'menu';
+    document.getElementById('mobileMenuBtn').setAttribute('aria-label', 'Abrir menú');
+}
+
+document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768) closeMobileMenu();
+});
+</script>
+<script src="aceptaciones.js"></script>
+</body>
+</html>
