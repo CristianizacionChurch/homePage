@@ -94,6 +94,70 @@ window.tailwind.config = {
             <div class="distress-underline mx-auto mt-4"></div>
         </div>
 
+        <section class="max-w-2xl mx-auto mb-12" id="informacion">
+            <div class="text-center mb-8">
+                <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Datos Personales</span>
+                <h2 class="text-3xl md:text-4xl font-display mt-3 text-white">INFORMACIÓN PERSONAL</h2>
+                <div class="distress-underline mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10 space-y-5">
+                <div>
+                    <label for="nombre" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Nombre completo *</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        autocomplete="name"
+                        placeholder="Tu nombre completo"
+                        maxlength="150"
+                        required
+                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
+                        style="color: black; caret-color: #F97316;"
+                    />
+                </div>
+                <div>
+                    <label for="contactoEmergencia" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Contacto de emergencia *</label>
+                    <input
+                        type="text"
+                        id="contactoEmergencia"
+                        name="contactoEmergencia"
+                        placeholder="Nombre y teléfono de contacto"
+                        maxlength="200"
+                        required
+                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
+                        style="color: black; caret-color: #F97316;"
+                    />
+                </div>
+                <div>
+                    <label for="condicionMedica" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Condición médica *</label>
+                    <input
+                        type="text"
+                        id="condicionMedica"
+                        name="condicionMedica"
+                        placeholder="Ej: Asma, diabetes, ninguna"
+                        maxlength="300"
+                        required
+                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
+                        style="color: black; caret-color: #F97316;"
+                    />
+                </div>
+                <div>
+                    <label for="alergias" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Alérgico a: *</label>
+                    <input
+                        type="text"
+                        id="alergias"
+                        name="alergias"
+                        placeholder="Ej: Penicilina, mariscos, ninguna"
+                        maxlength="300"
+                        required
+                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
+                        style="color: black; caret-color: #F97316;"
+                    />
+                </div>
+            </div>
+        </section>
+
         <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10 relative overflow-hidden mb-16">
             <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-fire-500 via-alert to-fire-500"></div>
 
@@ -200,70 +264,6 @@ window.tailwind.config = {
                 </div>
             </div>
         </div>
-
-        <section class="max-w-2xl mx-auto mb-12" id="informacion">
-            <div class="text-center mb-8">
-                <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Datos Personales</span>
-                <h2 class="text-3xl md:text-4xl font-display mt-3 text-white">INFORMACIÓN PERSONAL</h2>
-                <div class="distress-underline mx-auto mt-4"></div>
-            </div>
-
-            <div class="bg-rescue-800/50 border border-fire-700/20 rounded-2xl p-6 sm:p-10 space-y-5">
-                <div>
-                    <label for="nombre" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Nombre completo *</label>
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        autocomplete="name"
-                        placeholder="Tu nombre completo"
-                        maxlength="150"
-                        required
-                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
-                        style="color: black; caret-color: #F97316;"
-                    />
-                </div>
-                <div>
-                    <label for="contactoEmergencia" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Contacto de emergencia *</label>
-                    <input
-                        type="text"
-                        id="contactoEmergencia"
-                        name="contactoEmergencia"
-                        placeholder="Nombre y teléfono de contacto"
-                        maxlength="200"
-                        required
-                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
-                        style="color: black; caret-color: #F97316;"
-                    />
-                </div>
-                <div>
-                    <label for="condicionMedica" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Condición médica *</label>
-                    <input
-                        type="text"
-                        id="condicionMedica"
-                        name="condicionMedica"
-                        placeholder="Ej: Asma, diabetes, ninguna"
-                        maxlength="300"
-                        required
-                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
-                        style="color: black; caret-color: #F97316;"
-                    />
-                </div>
-                <div>
-                    <label for="alergias" class="block text-white/70 text-sm uppercase tracking-wider mb-2 font-semibold">Alérgico a: *</label>
-                    <input
-                        type="text"
-                        id="alergias"
-                        name="alergias"
-                        placeholder="Ej: Penicilina, mariscos, ninguna"
-                        maxlength="300"
-                        required
-                        class="w-full bg-rescue-900/60 border border-fire-700/30 rounded-xl px-4 py-3 text-black placeholder-black/50 focus:border-fire-500 focus:outline-none"
-                        style="color: black; caret-color: #F97316;"
-                    />
-                </div>
-            </div>
-        </section>
 
         <section class="max-w-2xl mx-auto" id="aceptacion">
             <div class="text-center mb-8">
