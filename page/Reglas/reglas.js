@@ -31,31 +31,36 @@
   }
 
   function downloadPdf(nombre) {
-    var doc = new window.jspdf.jsPDF();
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.text("MAYDAY 2026 - Reglas del Campamento", 105, 20, { align: "center" });
-    doc.setFontSize(12);
-    doc.text("Normas Durante Su Estadía", 105, 30, { align: "center" });
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
-    var y = 42;
-    RULES.forEach(function (rule, i) {
-      doc.splitTextToSize((i + 1) + ". " + rule, 180).forEach(function (line) {
-        if (y > 270) { doc.addPage(); y = 20; }
-        doc.text(line, 15, y);
-        y += 6;
+    try {
+      var doc = new window.jspdf.jsPDF();
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("MAYDAY 2026 - Reglas del Campamento", 105, 20, { align: "center" });
+      doc.setFontSize(12);
+      doc.text("Normas Durante Su Estadía", 105, 30, { align: "center" });
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      var y = 42;
+      RULES.forEach(function (rule, i) {
+        doc.splitTextToSize((i + 1) + ". " + rule, 180).forEach(function (line) {
+          if (y > 270) { doc.addPage(); y = 20; }
+          doc.text(line, 15, y);
+          y += 6;
+        });
       });
-    });
-    y += 12;
-    if (y > 270) { doc.addPage(); y = 20; }
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.text("Yo, " + nombre + ", acepto acatarme a las reglas del campamento.", 15, y);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
-    doc.text("Fecha: " + new Date().toLocaleDateString("es-DO"), 15, y + 8);
-    doc.save("reglas-campamento-aceptacion.pdf");
+      y += 12;
+      if (y > 270) { doc.addPage(); y = 20; }
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.text("Yo, " + nombre + ", acepto acatarme a las reglas del campamento.", 15, y);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.text("Fecha: " + new Date().toLocaleDateString("es-DO"), 15, y + 8);
+      doc.save("reglas-campamento-aceptacion.pdf");
+    } catch (err) {
+      showMsg("No se pudo generar el PDF. Revisa tu conexión o inténtalo de nuevo.", false);
+      return;
+    }
   }
 
   form.addEventListener("submit", function (e) {
@@ -73,7 +78,9 @@
       return;
     }
 
+    var btnOriginal = btn.innerHTML;
     btn.disabled = true;
+    btn.textContent = "Registrando...";
     fetch("/api/reglas-accept", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -94,6 +101,7 @@
       })
       .finally(function () {
         btn.disabled = false;
+        btn.innerHTML = btnOriginal;
       });
   });
 })();
