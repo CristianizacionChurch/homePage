@@ -29,7 +29,9 @@
 
   function showMsg(text, ok) {
     msg.textContent = text;
-    msg.className = "mt-6 text-center text-sm " + (ok ? "text-emerald-400" : "text-alert");
+    msg.className = ok
+      ? "mt-6 p-4 rounded-xl border border-emerald-400/40 bg-emerald-500/10 text-emerald-400 font-semibold text-center text-sm"
+      : "mt-6 text-center text-sm text-alert";
   }
 
   function savePdf(doc, filename) {
@@ -138,6 +140,7 @@
     }
 
     var btnOriginal = btn.innerHTML;
+    var dataSuccess = false;
     btn.disabled = true;
     btn.textContent = "Registrando...";
     fetch("/api/reglas-accept", {
@@ -154,8 +157,16 @@
       .then(function (res) { return res.json(); })
       .then(function (data) {
         if (data.success) {
-          showMsg("Aceptacion registrada con exito.", true);
+          dataSuccess = true;
+          showMsg("Datos registrados exitosamente.", true);
           downloadPdf(nombre, contacto, condicion, alergias);
+          btn.disabled = true;
+          btn.innerHTML = '<span class="material-icons-outlined">check_circle</span> Registrado';
+          nombreInput.value = "";
+          contactoInput.value = "";
+          condicionInput.value = "";
+          alergiasInput.value = "";
+          aceptoCheck.checked = false;
         } else {
           showMsg(data.error || "Error al registrar. Intenta de nuevo.", false);
         }
@@ -164,8 +175,10 @@
         showMsg("Error de conexion. Intenta de nuevo.", false);
       })
       .finally(function () {
-        btn.disabled = false;
-        btn.innerHTML = btnOriginal;
+        if (!dataSuccess) {
+          btn.disabled = false;
+          btn.innerHTML = btnOriginal;
+        }
       });
   });
 })();
