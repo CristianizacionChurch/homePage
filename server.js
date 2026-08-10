@@ -33,6 +33,7 @@ app.use(helmet({
             connectSrc: [
                 "'self'",
                 "https://formspree.io",
+                "https://cdn.jsdelivr.net",
                 "https://www.google.com",
                 "https://fonts.googleapis.com",
                 "https://fonts.gstatic.com"
