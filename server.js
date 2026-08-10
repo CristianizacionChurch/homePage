@@ -406,6 +406,9 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
         const nombre = sanitizeName(req.body.nombre);
         const record = {
             nombre,
+            contactoEmergencia: sanitizeName(req.body.contactoEmergencia),
+            condicionMedica: sanitizeName(req.body.condicionMedica),
+            alergias: sanitizeName(req.body.alergias),
             acepto: true,
             fecha: new Date().toISOString()
         };
@@ -429,12 +432,19 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    nombre: record.nombre,
-                    acepto: 'Sí',
-                    fecha: record.fecha,
-                    reglas: formatReglasContent(record.nombre),
                     _subject: `Nueva Aceptación de Reglas - ${record.nombre}`,
-                    _template: 'table'
+                    _template: 'table',
+                    reglas: [
+                        'SECCION PERSONAL',
+                        'Nombre: ' + record.nombre,
+                        'Contacto de emergencia: ' + record.contactoEmergencia,
+                        'Condicion medica: ' + record.condicionMedica,
+                        'Alergias: ' + record.alergias,
+                        '',
+                        'SECCION REGLAS',
+                        formatReglasContent(record.nombre),
+                        'Fecha: ' + new Date(record.fecha).toLocaleDateString('es-DO')
+                    ].join('\n')
                 }),
                 signal: controller.signal
             });

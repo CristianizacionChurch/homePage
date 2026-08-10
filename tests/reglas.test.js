@@ -1,10 +1,18 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert');
-const { validateAcceptance, sanitizeName, REGLAS, formatReglasContent } = require('../lib/reglas');
+const { validateAcceptance, sanitizeName, sanitizeText, REGLAS, formatReglasContent } = require('../lib/reglas');
+
+const VALID_PAYLOAD = {
+    nombre: 'Juan Pérez',
+    contactoEmergencia: 'María Pérez 555-1234',
+    condicionMedica: 'Asma',
+    alergias: 'Ninguna',
+    acepto: true
+};
 
 describe('validateAcceptance', () => {
-    it('returns true for a valid payload', () => {
-        assert.strictEqual(validateAcceptance({ nombre: 'Juan Pérez', acepto: true }), true);
+    it('returns true for a valid payload with all personal info', () => {
+        assert.strictEqual(validateAcceptance(VALID_PAYLOAD), true);
     });
 
     it('returns false for missing body', () => {
@@ -13,18 +21,71 @@ describe('validateAcceptance', () => {
     });
 
     it('returns false for missing or empty nombre', () => {
-        assert.strictEqual(validateAcceptance({ acepto: true }), false);
-        assert.strictEqual(validateAcceptance({ nombre: '   ', acepto: true }), false);
-        assert.strictEqual(validateAcceptance({ nombre: 123, acepto: true }), false);
+        const base = { ...VALID_PAYLOAD };
+        delete base.nombre;
+        assert.strictEqual(validateAcceptance(base), false);
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, nombre: '   ' }), false);
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, nombre: 123 }), false);
     });
 
     it('returns false for nombre longer than 150 chars', () => {
-        assert.strictEqual(validateAcceptance({ nombre: 'a'.repeat(151), acepto: true }), false);
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, nombre: 'a'.repeat(151) }), false);
     });
 
     it('returns false when acepto is not literally true', () => {
-        assert.strictEqual(validateAcceptance({ nombre: 'Juan', acepto: 'yes' }), false);
-        assert.strictEqual(validateAcceptance({ nombre: 'Juan', acepto: false }), false);
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, acepto: 'yes' }), false);
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, acepto: false }), false);
+    });
+
+    it('returns false when contactoEmergencia is missing', () => {
+        const body = { ...VALID_PAYLOAD };
+        delete body.contactoEmergencia;
+        assert.strictEqual(validateAcceptance(body), false);
+    });
+
+    it('returns false when contactoEmergencia is empty', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, contactoEmergencia: '   ' }), false);
+    });
+
+    it('returns false when contactoEmergencia exceeds 200 chars', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, contactoEmergencia: 'a'.repeat(201) }), false);
+    });
+
+    it('returns false when condicionMedica is missing', () => {
+        const body = { ...VALID_PAYLOAD };
+        delete body.condicionMedica;
+        assert.strictEqual(validateAcceptance(body), false);
+    });
+
+    it('returns false when condicionMedica is empty', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, condicionMedica: '   ' }), false);
+    });
+
+    it('returns false when condicionMedica exceeds 300 chars', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, condicionMedica: 'a'.repeat(301) }), false);
+    });
+
+    it('returns false when alergias is missing', () => {
+        const body = { ...VALID_PAYLOAD };
+        delete body.alergias;
+        assert.strictEqual(validateAcceptance(body), false);
+    });
+
+    it('returns false when alergias is empty', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, alergias: '   ' }), false);
+    });
+
+    it('returns false when alergias exceeds 300 chars', () => {
+        assert.strictEqual(validateAcceptance({ ...VALID_PAYLOAD, alergias: 'a'.repeat(301) }), false);
+    });
+
+    it('trims whitespace in personal info fields before validation', () => {
+        assert.strictEqual(validateAcceptance({
+            ...VALID_PAYLOAD,
+            contactoEmergencia: '  María 555-1234  ',
+            condicionMedica: '  Asma  ',
+            alergias: '  Penicilina  '
+        }), true);
     });
 });
 
@@ -36,6 +97,22 @@ describe('sanitizeName', () => {
 
     it('trims surrounding whitespace', () => {
         assert.strictEqual(sanitizeName('   Juan Pérez   '), 'Juan Pérez');
+    });
+});
+
+describe('sanitizeText', () => {
+    it('removes HTML and quote characters', () => {
+        assert.strictEqual(sanitizeText('<script>alert(1)</script>'), 'scriptalert(1)/script');
+    });
+
+    it('trims whitespace', () => {
+        assert.strictEqual(sanitizeText('   Asma leve   '), 'Asma leve');
+    });
+
+    it('returns empty string for non-string input', () => {
+        assert.strictEqual(sanitizeText(null), '');
+        assert.strictEqual(sanitizeText(undefined), '');
+        assert.strictEqual(sanitizeText(123), '');
     });
 });
 

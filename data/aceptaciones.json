@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "nombre": "sdasdasdasd",
+    "acepto": true,
+    "fecha": "2026-08-10T17:38:35.412Z"
+  },
+  {
+    "nombre": "Isai Abreu",
+    "acepto": true,
+    "fecha": "2026-08-10T18:56:27.346Z"
+  },
+  {
+    "nombre": "dsadas",
+    "acepto": true,
+    "fecha": "2026-08-10T19:01:07.974Z"
+  },
+  {
+    "nombre": "Isai Test",
+    "contactoEmergencia": "dasda181",
+    "condicionMedica": "adwaw",
+    "alergias": "awdawadw",
+    "acepto": true,
+    "fecha": "2026-08-10T19:32:23.502Z"
+  }
+]

@@ -7,7 +7,7 @@
     .then(function (res) { return res.json(); })
     .then(function (records) {
       if (!records.length) {
-        tbody.innerHTML = '<tr><td colspan="3" class="px-4 py-8 text-center text-white/40">Aún no hay aceptaciones registradas.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-white/40">Aun no hay aceptaciones registradas.</td></tr>';
         return;
       }
 
@@ -15,13 +15,16 @@
         var fecha = new Date(r.fecha).toLocaleDateString("es-DO");
         return '<tr class="border-b border-fire-700/10">' +
           '<td class="px-4 py-3 text-white/80">' + r.nombre + '</td>' +
-          '<td class="px-4 py-3 text-emerald-400 font-semibold">Sí</td>' +
+          '<td class="px-4 py-3 text-white/60">' + (r.contactoEmergencia || '-') + '</td>' +
+          '<td class="px-4 py-3 text-white/60">' + (r.condicionMedica || '-') + '</td>' +
+          '<td class="px-4 py-3 text-white/60">' + (r.alergias || '-') + '</td>' +
+          '<td class="px-4 py-3 text-emerald-400 font-semibold">Si</td>' +
           '<td class="px-4 py-3 text-white/50">' + fecha + '</td>' +
           '</tr>';
       });
       tbody.innerHTML = rows.join("");
     })
     .catch(function () {
-      tbody.innerHTML = '<tr><td colspan="3" class="px-4 py-8 text-center text-alert">No se pudo cargar el registro.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-alert">No se pudo cargar el registro.</td></tr>';
     });
 })();

@@ -20,6 +20,9 @@
 
   var form = document.getElementById("aceptarForm");
   var nombreInput = document.getElementById("nombre");
+  var contactoInput = document.getElementById("contactoEmergencia");
+  var condicionInput = document.getElementById("condicionMedica");
+  var alergiasInput = document.getElementById("alergias");
   var aceptoCheck = document.getElementById("acepto");
   var btn = document.getElementById("aceptarBtn");
   var msg = document.getElementById("msg");
@@ -30,17 +33,36 @@
     msg.className = "mt-6 text-center text-sm " + (ok ? "text-emerald-400" : "text-alert");
   }
 
-  function downloadPdf(nombre) {
+  function downloadPdf(nombre, contacto, condicion, alergias) {
     try {
       var doc = new window.jspdf.jsPDF();
       doc.setFont("helvetica", "bold");
       doc.setFontSize(16);
       doc.text("MAYDAY 2026 - Reglas del Campamento", 105, 20, { align: "center" });
-      doc.setFontSize(12);
-      doc.text("Normas Durante Su Estadía", 105, 30, { align: "center" });
+
+      doc.setFontSize(13);
+      doc.text("SECCION PERSONAL", 15, 34);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       var y = 42;
+      var personalFields = [
+        ["Nombre", nombre],
+        ["Contacto de emergencia", contacto],
+        ["Condicion medica", condicion],
+        ["Alergias", alergias]
+      ];
+      personalFields.forEach(function (field) {
+        doc.text(field[0] + ": " + field[1], 15, y);
+        y += 6;
+      });
+
+      y += 6;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text("SECCION REGLAS", 15, y);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      y += 8;
       RULES.forEach(function (rule, i) {
         doc.splitTextToSize((i + 1) + ". " + rule, 180).forEach(function (line) {
           if (y > 270) { doc.addPage(); y = 20; }
@@ -48,17 +70,17 @@
           y += 6;
         });
       });
-      y += 12;
+      y += 10;
       if (y > 270) { doc.addPage(); y = 20; }
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(12);
+      doc.setFontSize(11);
       doc.text("Yo, " + nombre + ", acepto acatarme a las reglas del campamento.", 15, y);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       doc.text("Fecha: " + new Date().toLocaleDateString("es-DO"), 15, y + 8);
       doc.save("reglas-campamento-aceptacion.pdf");
     } catch (err) {
-      showMsg("No se pudo generar el PDF. Revisa tu conexión o inténtalo de nuevo.", false);
+      showMsg("No se pudo generar el PDF. Revisa tu conexion o intentalo de nuevo.", false);
       return;
     }
   }
@@ -67,10 +89,28 @@
     e.preventDefault();
 
     var nombre = nombreInput.value.trim();
+    var contacto = contactoInput.value.trim();
+    var condicion = condicionInput.value.trim();
+    var alergias = alergiasInput.value.trim();
 
     if (!nombre) {
       showMsg("Por favor escribe tu nombre completo.", false);
       nombreInput.focus();
+      return;
+    }
+    if (!contacto) {
+      showMsg("Por favor escribe tu contacto de emergencia.", false);
+      contactoInput.focus();
+      return;
+    }
+    if (!condicion) {
+      showMsg("Por favor escribe tu condicion medica.", false);
+      condicionInput.focus();
+      return;
+    }
+    if (!alergias) {
+      showMsg("Por favor escribe tus alergias.", false);
+      alergiasInput.focus();
       return;
     }
     if (!aceptoCheck.checked) {
@@ -84,20 +124,26 @@
     fetch("/api/reglas-accept", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre: nombre, acepto: true })
+      body: JSON.stringify({
+        nombre: nombre,
+        contactoEmergencia: contacto,
+        condicionMedica: condicion,
+        alergias: alergias,
+        acepto: true
+      })
     })
       .then(function (res) { return res.json(); })
       .then(function (data) {
         if (data.success) {
-          showMsg("Aceptación registrada con éxito.", true);
-          downloadPdf(nombre);
+          showMsg("Aceptacion registrada con exito.", true);
+          downloadPdf(nombre, contacto, condicion, alergias);
           registroLink.hidden = false;
         } else {
           showMsg(data.error || "Error al registrar. Intenta de nuevo.", false);
         }
       })
       .catch(function () {
-        showMsg("Error de conexión. Intenta de nuevo.", false);
+        showMsg("Error de conexion. Intenta de nuevo.", false);
       })
       .finally(function () {
         btn.disabled = false;
