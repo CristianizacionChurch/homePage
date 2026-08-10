@@ -33,3 +33,6 @@ desktop.ini
 # Build artifacts
 dist/
 build/
+
+# Google service account keys (SECRETS)
+mayday-aceptaciones-*.json

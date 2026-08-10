@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert');
-const { validateAcceptance, sanitizeName, sanitizeText, REGLAS, formatReglasContent } = require('../lib/reglas');
+const { validateAcceptance, sanitizeName, sanitizeText, REGLAS, formatReglasContent, buildFormsubmitPayload } = require('../lib/reglas');
 
 const VALID_PAYLOAD = {
     nombre: 'Juan Pérez',
@@ -147,5 +147,56 @@ describe('formatReglasContent', () => {
         const lines = out.split('\n');
         assert.strictEqual(lines.length, 15);
         assert.strictEqual(lines[14], 'Yo, Ana, acepto acatarme a las reglas del campamento.');
+    });
+});
+
+describe('buildFormsubmitPayload', () => {
+    const record = {
+        nombre: 'Juan Pérez',
+        contactoEmergencia: 'María 555-1234',
+        condicionMedica: 'Asma',
+        alergias: 'Penicilina',
+        fecha: '2026-08-10T00:00:00.000Z'
+    };
+
+    it('returns _subject with the person name', () => {
+        const payload = buildFormsubmitPayload(record);
+        assert.strictEqual(payload._subject, 'Nueva Aceptación de Reglas - Juan Pérez');
+    });
+
+    it('sets _template to table', () => {
+        const payload = buildFormsubmitPayload(record);
+        assert.strictEqual(payload._template, 'table');
+    });
+
+    it('includes SECCION PERSONAL with all 4 fields in the reglas text', () => {
+        const payload = buildFormsubmitPayload(record);
+        const text = payload.reglas;
+        assert.match(text, /^SECCION PERSONAL$/m);
+        assert.ok(text.includes('Nombre: Juan Pérez'));
+        assert.ok(text.includes('Contacto de emergencia: María 555-1234'));
+        assert.ok(text.includes('Condicion medica: Asma'));
+        assert.ok(text.includes('Alergias: Penicilina'));
+    });
+
+    it('includes SECCION REGLAS with all 14 rules', () => {
+        const payload = buildFormsubmitPayload(record);
+        const text = payload.reglas;
+        assert.ok(text.includes('SECCION REGLAS'));
+        assert.ok(text.includes('1. No armas blancas, ni de fuego'));
+        assert.ok(text.includes('14. Colaborar con el equipo asignado'));
+    });
+
+    it('includes acceptance declaration and date', () => {
+        const payload = buildFormsubmitPayload(record);
+        const text = payload.reglas;
+        assert.ok(text.includes('Yo, Juan Pérez, acepto acatarme a las reglas del campamento.'));
+        assert.ok(text.includes('Fecha: 9/8/2026'));
+    });
+
+    it('SECCION PERSONAL comes before SECCION REGLAS', () => {
+        const payload = buildFormsubmitPayload(record);
+        const text = payload.reglas;
+        assert.ok(text.indexOf('SECCION PERSONAL') < text.indexOf('SECCION REGLAS'));
     });
 });

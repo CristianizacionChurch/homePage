@@ -1,6 +1,6 @@
 require('dotenv').config();
-const fs = require('fs');
-const { validateAcceptance, sanitizeName, formatReglasContent } = require('./lib/reglas');
+const { validateAcceptance, sanitizeName, buildFormsubmitPayload } = require('./lib/reglas');
+const { appendRecord, getRecords } = require('./lib/google-sheets');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -413,14 +413,17 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
             fecha: new Date().toISOString()
         };
 
-        const dir = path.join(__dirname, 'data');
-        const file = path.join(dir, 'aceptaciones.json');
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-        const records = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
-        records.push(record);
-        fs.writeFileSync(file, JSON.stringify(records, null, 2));
+        const sheetId = process.env.GOOGLE_SHEET_ID;
+        if (sheetId) {
+            try {
+                await appendRecord(sheetId, record);
+            } catch (err) {
+                console.error('[ReglasAccept] Google Sheets error:', err.message);
+                return res.status(500).json({ error: 'Error guardando la aceptación. Intenta de nuevo.' });
+            }
+        }
 
-        const endpoint = process.env.FORMSPREE_REGLAS_ENDPOINT;
+        const endpoint = process.env.FORMSUBMIT_REGLAS_ENDPOINT;
         if (endpoint) {
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), 10000);
@@ -431,28 +434,14 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    _subject: `Nueva Aceptación de Reglas - ${record.nombre}`,
-                    _template: 'table',
-                    reglas: [
-                        'SECCION PERSONAL',
-                        'Nombre: ' + record.nombre,
-                        'Contacto de emergencia: ' + record.contactoEmergencia,
-                        'Condicion medica: ' + record.condicionMedica,
-                        'Alergias: ' + record.alergias,
-                        '',
-                        'SECCION REGLAS',
-                        formatReglasContent(record.nombre),
-                        'Fecha: ' + new Date(record.fecha).toLocaleDateString('es-DO')
-                    ].join('\n')
-                }),
+                body: JSON.stringify(buildFormsubmitPayload(record)),
                 signal: controller.signal
             });
 
             clearTimeout(timeout);
 
             if (!response.ok) {
-                console.error('[ReglasAccept] Formspree error:', response.status);
+                console.error('[ReglasAccept] Formsubmit error:', response.status);
             }
         }
 
@@ -471,11 +460,11 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
     }
 });
 
-app.get('/api/reglas-acceptances', apiLimiter, (req, res) => {
+app.get('/api/reglas-acceptances', apiLimiter, async (req, res) => {
     try {
-        const file = path.join(__dirname, 'data', 'aceptaciones.json');
-        if (!fs.existsSync(file)) return res.json([]);
-        return res.json(JSON.parse(fs.readFileSync(file, 'utf8')));
+        const sheetId = process.env.GOOGLE_SHEET_ID;
+        if (!sheetId) return res.json([]);
+        return res.json(await getRecords(sheetId));
     } catch (error) {
         console.error('[ReglasAcceptances] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
