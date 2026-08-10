@@ -26,11 +26,30 @@
   var aceptoCheck = document.getElementById("acepto");
   var btn = document.getElementById("aceptarBtn");
   var msg = document.getElementById("msg");
-  var registroLink = document.getElementById("registroLink");
 
   function showMsg(text, ok) {
     msg.textContent = text;
     msg.className = "mt-6 text-center text-sm " + (ok ? "text-emerald-400" : "text-alert");
+  }
+
+  function savePdf(doc, filename) {
+    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      // Mobile: abrir en pestaña nueva (los navegadores bloquean el atributo download en callbacks async)
+      var url = doc.output("bloburl");
+      var win = window.open(url, "_blank");
+      if (!win) {
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () { document.body.removeChild(a); }, 100);
+      }
+    } else {
+      doc.save(filename);
+    }
   }
 
   function downloadPdf(nombre, contacto, condicion, alergias) {
@@ -78,7 +97,7 @@
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       doc.text("Fecha: " + new Date().toLocaleDateString("es-DO"), 15, y + 8);
-      doc.save("reglas-campamento-aceptacion.pdf");
+      savePdf(doc, "reglas-campamento-aceptacion.pdf");
     } catch (err) {
       showMsg("No se pudo generar el PDF. Revisa tu conexion o intentalo de nuevo.", false);
       return;
@@ -137,7 +156,6 @@
         if (data.success) {
           showMsg("Aceptacion registrada con exito.", true);
           downloadPdf(nombre, contacto, condicion, alergias);
-          registroLink.hidden = false;
         } else {
           showMsg(data.error || "Error al registrar. Intenta de nuevo.", false);
         }
