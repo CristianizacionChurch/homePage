@@ -1,4 +1,6 @@
 require('dotenv').config();
+const fs = require('fs');
+const { validateAcceptance, sanitizeName } = require('./lib/reglas');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -27,7 +29,7 @@ app.use(helmet({
             styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.tailwindcss.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "https://images.unsplash.com", "https://i.ytimg.com", "https://www.google.com", "https://maps.gstatic.com", "data:", "blob:"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://www.youtube.com"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://www.youtube.com", "https://cdn.jsdelivr.net"],
             connectSrc: [
                 "'self'",
                 "https://formspree.io",
@@ -72,7 +74,8 @@ app.use((req, res, next) => {
     const blocked = [
         '.env', '.env.example', '.env.local', '.env.production',
         '.gitignore', 'server.js', 'package.json', 'package-lock.json',
-        'vercel.json', 'landing.pen', 'nul', '.git', '.agents'
+        'vercel.json', 'landing.pen', 'nul', '.git', '.agents',
+        'aceptaciones.json'
     ];
     const reqFile = path.basename(req.path).toLowerCase();
     const reqPath = decodeURIComponent(req.path).toLowerCase();
@@ -385,6 +388,85 @@ app.post('/api/newsletter', formLimiter, async (req, res) => {
             return res.status(504).json({ error: 'Tiempo de espera agotado' });
         }
         console.error('[Newsletter] Error:', error.message);
+        return res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+app.post('/api/reglas-accept', formLimiter, async (req, res) => {
+    try {
+        const contentType = req.headers['content-type'];
+        if (!contentType || !contentType.includes('application/json')) {
+            return res.status(415).json({ error: 'Content-Type debe ser application/json' });
+        }
+
+        if (!validateAcceptance(req.body)) {
+            return res.status(400).json({ error: 'Escribe tu nombre completo y acepta las reglas' });
+        }
+
+        const nombre = sanitizeName(req.body.nombre);
+        const record = {
+            nombre,
+            acepto: true,
+            fecha: new Date().toISOString()
+        };
+
+        const dir = path.join(__dirname, 'data');
+        const file = path.join(dir, 'aceptaciones.json');
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        const records = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
+        records.push(record);
+        fs.writeFileSync(file, JSON.stringify(records, null, 2));
+
+        const endpoint = process.env.FORMSPREE_REGLAS_ENDPOINT;
+        if (endpoint) {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre: record.nombre,
+                    acepto: 'Sí',
+                    fecha: record.fecha,
+                    _subject: `Nueva Aceptación de Reglas - ${record.nombre}`,
+                    _template: 'table'
+                }),
+                signal: controller.signal
+            });
+
+            clearTimeout(timeout);
+
+            if (!response.ok) {
+                console.error('[ReglasAccept] Formspree error:', response.status);
+            }
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: 'Aceptación registrada'
+        });
+
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('[ReglasAccept] Timeout error');
+            return res.status(504).json({ error: 'Tiempo de espera agotado' });
+        }
+        console.error('[ReglasAccept] Error:', error.message);
+        return res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+app.get('/api/reglas-acceptances', apiLimiter, (req, res) => {
+    try {
+        const file = path.join(__dirname, 'data', 'aceptaciones.json');
+        if (!fs.existsSync(file)) return res.json([]);
+        return res.json(JSON.parse(fs.readFileSync(file, 'utf8')));
+    } catch (error) {
+        console.error('[ReglasAcceptances] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
