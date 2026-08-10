@@ -1,6 +1,6 @@
 require('dotenv').config();
 const fs = require('fs');
-const { validateAcceptance, sanitizeName } = require('./lib/reglas');
+const { validateAcceptance, sanitizeName, formatReglasContent } = require('./lib/reglas');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -432,6 +432,7 @@ app.post('/api/reglas-accept', formLimiter, async (req, res) => {
                     nombre: record.nombre,
                     acepto: 'Sí',
                     fecha: record.fecha,
+                    reglas: formatReglasContent(record.nombre),
                     _subject: `Nueva Aceptación de Reglas - ${record.nombre}`,
                     _template: 'table'
                 }),
