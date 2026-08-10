@@ -55,17 +55,36 @@
   }
 
   function downloadPdf(nombre, contacto, condicion, alergias) {
+    var logo = new Image();
+    logo.onload = function () {
+      var canvas = document.createElement("canvas");
+      canvas.width = 120;
+      canvas.height = Math.round(120 * (logo.height / logo.width));
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(logo, 0, 0, canvas.width, canvas.height);
+      renderPdf(nombre, contacto, condicion, alergias, canvas.toDataURL("image/png"));
+    };
+    logo.onerror = function () {
+      renderPdf(nombre, contacto, condicion, alergias, null);
+    };
+    logo.src = "../../img/favicon.svg";
+  }
+
+  function renderPdf(nombre, contacto, condicion, alergias, logoDataUrl) {
     try {
       var doc = new window.jspdf.jsPDF();
+      if (logoDataUrl) {
+        doc.addImage(logoDataUrl, "PNG", 95, 5, 20, 30);
+      }
       doc.setFont("helvetica", "bold");
       doc.setFontSize(16);
-      doc.text("MAYDAY 2026 - Reglas del Campamento", 105, 20, { align: "center" });
+      doc.text("MAYDAY 2026 - Reglas del Campamento", 105, 42, { align: "center" });
 
       doc.setFontSize(13);
-      doc.text("SECCION PERSONAL", 15, 34);
+      doc.text("SECCION PERSONAL", 15, 56);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
-      var y = 42;
+      var y = 64;
       var personalFields = [
         ["Nombre", nombre],
         ["Contacto de emergencia", contacto],
