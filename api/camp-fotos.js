@@ -1,5 +1,6 @@
 // Serverless Function - Fotos del Campamento (GET)
 import { listSections } from '../lib/google-drive.js';
+import SECTIONS from '../lib/camp-sections.js';
 
 const ALLOWED_ORIGINS = [
     'https://cristianizacionalcarrizos.vercel.app',
@@ -22,10 +23,8 @@ export default async function handler(req, res, deps = {}) {
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
     try {
-        const folderId = process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
-        if (!folderId) return res.status(200).json([]);
         const list = deps.listSections || listSections;
-        return res.status(200).json(await list(folderId));
+        return res.status(200).json(await list(SECTIONS));
     } catch (error) {
         console.error('[CampFotos] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });

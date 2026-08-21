@@ -23,14 +23,11 @@ describe('api/camp-fotos handler', () => {
         assert.strictEqual(res._status, 405);
     });
 
-    it('returns empty array when folder id not configured', async () => {
+    it('returns empty array when no sections configured', async () => {
         const mod = require('../api/camp-fotos');
         const handler = mod.default || mod;
-        const old = process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
-        delete process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
         const res = makeRes();
-        await handler({ method: 'GET', headers: {} }, res);
-        if (old) process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID = old;
+        await handler({ method: 'GET', headers: {} }, res, { listSections: async () => [] });
         assert.strictEqual(res._status, 200);
         assert.deepStrictEqual(res._json, []);
     });
@@ -38,11 +35,8 @@ describe('api/camp-fotos handler', () => {
     it('returns sections on success', async () => {
         const mod = require('../api/camp-fotos');
         const handler = mod.default || mod;
-        const old = process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
-        process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID = 'root';
         const res = makeRes();
         await handler({ method: 'GET', headers: {} }, res, mockDeps);
-        if (old) process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID = old;
         assert.strictEqual(res._status, 200);
         assert.strictEqual(res._json[0].seccion, 'Dia 1');
     });
