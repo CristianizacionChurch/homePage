@@ -23,9 +23,22 @@
     gallery.innerHTML = html;
   }
 
-  function openLightbox(url, id) {
+  function openLightbox(url, id, name) {
     lightboxImg.src = url;
-    lightboxDownload.href = "https://drive.google.com/uc?export=download&id=" + id;
+    // Configurar handler de descarga
+    var lightboxDownload = document.getElementById("lightboxDownload");
+    lightboxDownload.onclick = function(e) {
+        e.preventDefault();
+        fetch("https://drive.google.com/uc?export=download&id=" + id)
+            .then(r => r.blob())
+            .then(blob => {
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = name || "foto";
+                a.click();
+                URL.revokeObjectURL(a.href);
+            });
+    };
     lightbox.classList.add("lightbox-open");
     document.body.style.overflow = "hidden";
   }
@@ -33,13 +46,15 @@
   function closeLightbox() {
     lightbox.classList.remove("lightbox-open");
     lightboxImg.src = "";
-    lightboxDownload.href = "#";
+    // Reset download handler
+    var lightboxDownload = document.getElementById("lightboxDownload");
+    lightboxDownload.onclick = null;
     document.body.style.overflow = "";
   }
 
   gallery.addEventListener("click", function (e) {
     var item = e.target.closest(".gallery-item");
-    if (item) openLightbox(item.dataset.url, item.dataset.id);
+    if (item) openLightbox(item.dataset.url, item.dataset.id, item.dataset.name);
   });
   lightbox.addEventListener("click", closeLightbox);
   document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
