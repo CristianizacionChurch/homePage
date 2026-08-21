@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { validateAcceptance, sanitizeName, buildFormsubmitPayload } = require('./lib/reglas');
 const { appendRecord, getRecords } = require('./lib/google-sheets');
+const { listSections } = require('./lib/google-drive');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -28,7 +29,7 @@ app.use(helmet({
             defaultSrc: ["'self'"],
             styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.tailwindcss.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
-            imgSrc: ["'self'", "https://images.unsplash.com", "https://i.ytimg.com", "https://www.google.com", "https://maps.gstatic.com", "data:", "blob:"],
+            imgSrc: ["'self'", "https://images.unsplash.com", "https://i.ytimg.com", "https://www.google.com", "https://maps.gstatic.com", "https://lh3.googleusercontent.com", "https://drive.google.com", "data:", "blob:"],
             scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://www.youtube.com", "https://cdn.jsdelivr.net"],
             connectSrc: [
                 "'self'",
@@ -468,6 +469,17 @@ app.get('/api/reglas-acceptances', apiLimiter, async (req, res) => {
         return res.json(await getRecords(sheetId));
     } catch (error) {
         console.error('[ReglasAcceptances] Error:', error.message);
+        return res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+app.get('/api/camp-fotos', apiLimiter, async (req, res) => {
+    try {
+        const folderId = process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
+        if (!folderId) return res.json([]);
+        return res.json(await listSections(folderId));
+    } catch (error) {
+        console.error('[CampFotos] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
