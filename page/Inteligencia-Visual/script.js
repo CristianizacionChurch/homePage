@@ -6,6 +6,31 @@
   var lightboxImg = document.getElementById("lightboxImg");
   var lightboxDownload = document.getElementById("lightboxDownload");
 
+  var PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="120" fill="%23333"><rect width="160" height="120"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23777" font-size="12">Sin imagen</text></svg>');
+
+  function thumbUrl(id) {
+    return "https://lh3.googleusercontent.com/d/" + id + "=w1600";
+  }
+
+  function fallbackUrl(id) {
+    return "https://drive.google.com/thumbnail?id=" + id + "&sz=w1600";
+  }
+
+  function onImgError(e) {
+    var img = e.target;
+    var retries = parseInt(img.getAttribute("data-retries") || "0", 10);
+    var id = img.getAttribute("data-id");
+    if (retries === 0 && id) {
+      img.setAttribute("data-retries", "1");
+      img.src = fallbackUrl(id);
+    } else if (retries < 2 && id) {
+      img.setAttribute("data-retries", "2");
+      img.src = thumbUrl(id);
+    } else {
+      img.src = PLACEHOLDER;
+    }
+  }
+
   function render(sections) {
     if (!sections || sections.length === 0) {
       gallery.innerHTML = '<p class="empty-msg">Las fotos estarán disponibles próximamente.</p>';
@@ -13,8 +38,9 @@
     }
     var html = sections.map(function (s) {
       var photos = s.fotos.map(function (f) {
-        return '<div class="gallery-item" data-url="' + f.url + '" data-id="' + f.id + '" data-name="' + (f.name || '') + '">' +
-               '<img loading="lazy" src="' + f.url + '" alt="' + (f.name || 'Foto') + '"/>' +
+        var imgSrc = thumbUrl(f.id);
+        return '<div class="gallery-item" data-url="' + imgSrc + '" data-id="' + f.id + '" data-name="' + (f.name || '') + '">' +
+               '<img loading="lazy" data-id="' + f.id + '" data-retries="0" src="' + imgSrc + '" alt="' + (f.name || 'Foto') + '" onerror="(' + onImgError.toString() + ')(event)"/>' +
                '</div>';
       }).join("");
       return '<section class="gallery-section"><h2 class="gallery-title">' + s.seccion + '</h2>' +
@@ -25,20 +51,8 @@
 
   function openLightbox(url, id, name) {
     lightboxImg.src = url;
-    // Configurar handler de descarga
-    var lightboxDownload = document.getElementById("lightboxDownload");
-    lightboxDownload.onclick = function(e) {
-        e.preventDefault();
-        fetch("https://drive.google.com/uc?export=download&id=" + id)
-            .then(r => r.blob())
-            .then(blob => {
-                var a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
-                a.download = name || "foto";
-                a.click();
-                URL.revokeObjectURL(a.href);
-            });
-    };
+    lightboxDownload.href = "/api/camp-foto?id=" + id;
+    lightboxDownload.download = name || "foto";
     lightbox.classList.add("lightbox-open");
     document.body.style.overflow = "hidden";
   }
@@ -46,9 +60,6 @@
   function closeLightbox() {
     lightbox.classList.remove("lightbox-open");
     lightboxImg.src = "";
-    // Reset download handler
-    var lightboxDownload = document.getElementById("lightboxDownload");
-    lightboxDownload.onclick = null;
     document.body.style.overflow = "";
   }
 

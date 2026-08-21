@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { validateAcceptance, sanitizeName, buildFormsubmitPayload } = require('./lib/reglas');
 const { appendRecord, getRecords } = require('./lib/google-sheets');
-const { listSections } = require('./lib/google-drive');
+const { listSections, getFileStream, getFileName, getDrive } = require('./lib/google-drive');
 const SECTIONS = require('./lib/camp-sections');
 const express = require('express');
 const helmet = require('helmet');
@@ -480,6 +480,26 @@ app.get('/api/camp-fotos', apiLimiter, async (req, res) => {
     } catch (error) {
         console.error('[CampFotos] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+app.get('/api/camp-foto', apiLimiter, async (req, res) => {
+    const id = req.query.id;
+    if (!id || !/^[A-Za-z0-9_-]+$/.test(id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+    }
+    try {
+        const drive = getDrive();
+        if (!drive) return res.status(500).json({ error: 'Drive no configurado' });
+        const [stream, name] = await Promise.all([
+            getFileStream(id, drive),
+            getFileName(id, drive)
+        ]);
+        res.setHeader('Content-Disposition', `attachment; filename="${name || 'foto'}"`);
+        stream.pipe(res);
+    } catch (error) {
+        console.error('[CampFoto] Error:', error.message);
+        res.status(500).json({ error: 'Error descargando la foto' });
     }
 });
 
