@@ -26,12 +26,12 @@
   function openLightbox(url, id) {
     lightboxImg.src = url;
     lightboxDownload.href = "https://drive.google.com/uc?export=download&id=" + id;
-    lightbox.classList.remove("hidden");
+    lightbox.classList.add("lightbox-open");
     document.body.style.overflow = "hidden";
   }
 
   function closeLightbox() {
-    lightbox.classList.add("hidden");
+    lightbox.classList.remove("lightbox-open");
     lightboxImg.src = "";
     lightboxDownload.href = "#";
     document.body.style.overflow = "";

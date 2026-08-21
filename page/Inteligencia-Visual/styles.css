@@ -39,15 +39,18 @@
 .gallery-item:hover img { transform: scale(1.05); }
 
 #lightbox {
+    display: none;
     position: fixed;
     inset: 0;
     z-index: 100;
     background: rgba(0,0,0,0.92);
+    padding: 2rem;
+    cursor: zoom-out;
+}
+#lightbox.lightbox-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    cursor: zoom-out;
 }
 #lightbox img {
     max-width: 92vw;
