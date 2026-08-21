@@ -2,6 +2,7 @@ require('dotenv').config();
 const { validateAcceptance, sanitizeName, buildFormsubmitPayload } = require('./lib/reglas');
 const { appendRecord, getRecords } = require('./lib/google-sheets');
 const { listSections } = require('./lib/google-drive');
+const SECTIONS = require('./lib/camp-sections');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -475,9 +476,7 @@ app.get('/api/reglas-acceptances', apiLimiter, async (req, res) => {
 
 app.get('/api/camp-fotos', apiLimiter, async (req, res) => {
     try {
-        const folderId = process.env.GOOGLE_DRIVE_CAMP_FOLDER_ID;
-        if (!folderId) return res.json([]);
-        return res.json(await listSections(folderId));
+        return res.json(await listSections(SECTIONS));
     } catch (error) {
         console.error('[CampFotos] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
