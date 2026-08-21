@@ -65,4 +65,19 @@
     border: none;
     cursor: pointer;
 }
+.lightbox-download {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #F97316;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: background 0.2s ease;
+}
+.lightbox-download:hover { background: #C2410C; }
 #gallery .empty-msg { color: rgba(255,255,255,0.5); text-align: center; padding: 3rem 0; }
