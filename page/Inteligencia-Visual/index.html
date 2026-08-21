@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inteligencia Visual - Campamento 2026</title>
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg"/>
+<script>
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+        colors: {
+            fire: { 400:"#FB923C", 500:"#F97316", 600:"#EA580C", 700:"#C2410C" },
+            rescue: { 800:"#1C1917", 900:"#0C0A09", 950:"#070605" }
+        },
+        fontFamily: { display: ["Anton","sans-serif"], body: ["Poppins","sans-serif"] }
+    } }
+};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<link href="../Camp/trend.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="camp-bg" aria-hidden="true">
+    <div class="bg-layer bg-grid"></div>
+    <div class="bg-layer bg-crosshairs"></div>
+    <div class="bg-layer bg-compass"></div>
+    <div class="bg-layer bg-topo"></div>
+</div>
+
+<nav class="fixed w-full z-50 bg-rescue-900/80 backdrop-blur-md border-b border-fire-700/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 sm:h-20 items-center">
+            <div class="flex items-center space-x-3 min-w-0">
+                <a href="../../index.html" aria-label="Ir al inicio" class="flex-shrink-0">
+                    <img src="../../img/favicon.svg" alt="Iglesia Cristianización" class="h-12 sm:h-14 w-auto object-contain" />
+                </a>
+                <div class="flex flex-col leading-tight">
+                    <span class="font-display text-lg sm:text-2xl tracking-wider uppercase text-white truncate">Inteligencia Visual</span>
+                    <span class="text-[10px] sm:text-xs text-fire-400 tracking-widest uppercase">Campamento 2026</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../../index.html">Inicio</a>
+                <a class="hover:text-fire-400 transition-colors font-medium text-sm uppercase tracking-wider" href="../Camp/code.html">Campamento</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-fire-400 font-bold tracking-[4px] uppercase text-sm">Galería</span>
+            <h1 class="text-4xl md:text-6xl font-display mt-3 text-white">CAMPAMENTO 2026</h1>
+            <p class="text-white/50 mt-3 max-w-xl mx-auto">Revive cada momento del campamento.</p>
+        </div>
+        <div id="gallery"></div>
+    </div>
+</main>
+
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="Vista ampliada de la foto">
+    <img id="lightboxImg" alt="Foto ampliada del campamento"/>
+    <button id="lightboxClose" aria-label="Cerrar">✕</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
