@@ -39,27 +39,26 @@ describe('listAll', () => {
 });
 
 describe('listSections', () => {
-    const folderList = () => ({ data: { files: [
-        { id: 'f2', name: 'Noche Especial' },
-        { id: 'f1', name: 'Dia 1' }
-    ] } });
-    const filesFor = (id) => ({ data: { files: [
-        { id: 'f1-img2', name: 'b.jpg', thumbnailLink: 'https://lh3.googleusercontent.com/d/x=s220' },
-        { id: 'f1-img1', name: 'a.jpg', thumbnailLink: 'https://lh3.googleusercontent.com/d/y=s220' }
-    ] } });
-
-    it('builds sections sorted by folder name, then files by name', async () => {
-        const fakeDrive = {
-            files: {
-                list: async ({ q }) => {
-                    if (q.includes('folder')) return folderList();
-                    if (q.includes("'f1'")) return filesFor('f1');
-                    if (q.includes("'f2'")) return { data: { files: [] } };
-                    return { data: { files: [] } };
-                }
+    const SECTIONS = [
+        { seccion: 'Dia 1', folderId: 'f1' },
+        { seccion: 'Dia 2', folderId: '' },
+        { seccion: 'Juegos Extremos', folderId: 'f3' }
+    ];
+    const fakeDrive = {
+        files: {
+            list: async ({ q }) => {
+                if (q.includes("'f1'")) return { data: { files: [
+                    { id: 'b1', name: 'b.jpg', thumbnailLink: 'https://lh3.googleusercontent.com/d/x=s220' },
+                    { id: 'a1', name: 'a.jpg', thumbnailLink: 'https://lh3.googleusercontent.com/d/y=s220' }
+                ] } };
+                if (q.includes("'f3'")) return { data: { files: [] } };
+                return { data: { files: [] } };
             }
-        };
-        const sections = await listSections('root', fakeDrive);
+        }
+    };
+
+    it('builds sections from config, skips empty folderIds', async () => {
+        const sections = await listSections(SECTIONS, fakeDrive);
         assert.strictEqual(sections.length, 1);
         assert.strictEqual(sections[0].seccion, 'Dia 1');
         assert.strictEqual(sections[0].fotos.length, 2);
@@ -68,13 +67,7 @@ describe('listSections', () => {
     });
 
     it('skips folders with no images', async () => {
-        const fakeDrive = {
-            files: { list: async ({ q }) => {
-                if (q.includes('folder')) return folderList();
-                return { data: { files: [] } };
-            } }
-        };
-        const sections = await listSections('root', fakeDrive);
-        assert.strictEqual(sections.length, 0);
+        const sections = await listSections(SECTIONS, fakeDrive);
+        assert.ok(!sections.some(s => s.seccion === 'Juegos Extremos'));
     });
 });
