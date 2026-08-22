@@ -31,6 +31,22 @@
     }
   }
 
+  function toggleSection(idx) {
+    var sections = gallery.querySelectorAll(".gallery-section");
+    sections.forEach(function (sec, i) {
+      var grid = sec.querySelector(".gallery-grid");
+      var header = sec.querySelector(".gallery-header");
+      if (i === idx) {
+        var isOpen = grid.classList.contains("gallery-open");
+        grid.classList.toggle("gallery-open");
+        header.setAttribute("aria-expanded", !isOpen);
+      } else {
+        grid.classList.remove("gallery-open");
+        header.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   function render(sections) {
     if (!sections || sections.length === 0) {
       gallery.innerHTML = '<p class="empty-msg">Las fotos estarán disponibles próximamente.</p>';
@@ -43,7 +59,8 @@
                '<img loading="lazy" data-id="' + f.id + '" data-retries="0" src="' + imgSrc + '" alt="' + (f.name || 'Foto') + '" onerror="(' + onImgError.toString() + ')(event)"/>' +
                '</div>';
       }).join("");
-      return '<section class="gallery-section"><h2 class="gallery-title">' + s.seccion + '</h2>' +
+      return '<section class="gallery-section">' +
+             '<button class="gallery-header" aria-expanded="false"><h2 class="gallery-title">' + s.seccion + '</h2><span class="gallery-chevron"></span></button>' +
              '<div class="gallery-grid">' + photos + '</div></section>';
     }).join("");
     gallery.innerHTML = html;
@@ -64,6 +81,13 @@
   }
 
   gallery.addEventListener("click", function (e) {
+    var header = e.target.closest(".gallery-header");
+    if (header) {
+      var section = header.closest(".gallery-section");
+      var idx = Array.prototype.indexOf.call(gallery.querySelectorAll(".gallery-section"), section);
+      toggleSection(idx);
+      return;
+    }
     var item = e.target.closest(".gallery-item");
     if (item) openLightbox(item.dataset.url, item.dataset.id, item.dataset.name);
   });
