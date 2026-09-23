@@ -303,35 +303,6 @@ window.tailwind.config = {
         transform: translateY(-4px);
     }
 
-    .countdown-card {
-        background: rgba(0,0,128,0.15);
-        border: 1px solid rgba(0,0,128,0.3);
-        border-radius: 12px;
-        padding: 16px 20px;
-        text-align: center;
-        min-width: 80px;
-    }
-
-    .countdown-card .number {
-        font-family: "Anton", sans-serif;
-        font-size: 2.5rem;
-        line-height: 1;
-        color: #F97316;
-    }
-
-    .countdown-card .label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: rgba(255,255,255,0.5);
-        margin-top: 4px;
-    }
-
-    @media (max-width: 480px) {
-        .countdown-card { min-width: 60px; padding: 12px 12px; }
-        .countdown-card .number { font-size: 1.75rem; }
-    }
-
     .glow-border {
         box-shadow: 0 0 15px rgba(249,115,22,0.3), 0 0 30px rgba(249,115,22,0.1);
     }
@@ -644,16 +615,6 @@ window.tailwind.config = {
                 <span class="material-icons-outlined text-fire-400 text-4xl mb-3">phone</span>
                 <h3 class="font-display text-lg text-white uppercase tracking-wider">Contacto</h3>
                 <p class="text-white/70 text-sm mt-1">829-730-0446</p>
-            </div>
-        </div>
-
-        <div class="text-center mb-16">
-            <h3 class="text-2xl sm:text-3xl font-display text-white uppercase tracking-wider mb-6">Cuenta Regresiva</h3>
-            <div class="flex justify-center gap-3 sm:gap-6" id="countdown">
-                <div class="countdown-card"><div class="number" id="days">00</div><div class="label">Días</div></div>
-                <div class="countdown-card"><div class="number" id="hours">00</div><div class="label">Horas</div></div>
-                <div class="countdown-card"><div class="number" id="minutes">00</div><div class="label">Minutos</div></div>
-                <div class="countdown-card"><div class="number" id="seconds">00</div><div class="label">Segundos</div></div>
             </div>
         </div>
 
@@ -1767,32 +1728,6 @@ document.addEventListener('keydown', function(e) {
     }, { passive: true });
 })();
 
-function updateCountdown() {
-    const eventDate = new Date('2026-08-14T00:00:00').getTime();
-    const now = new Date().getTime();
-    const diff = eventDate - now;
-
-    if (diff <= 0) {
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-        return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
 </script>
 
 </body>
