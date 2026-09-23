@@ -391,9 +391,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ── Gallery Lightbox ────────────────────────────────────
-    const galleryItems = document.querySelectorAll('.camp-gallery-item img');
+    function initCampGalleryLightbox() {
+        if (document.querySelector('.gallery-lightbox')) return;
+        const galleryItems = document.querySelectorAll('.camp-gallery-item img');
+        if (galleryItems.length === 0) return;
 
-    if (galleryItems.length > 0) {
         const lightbox = document.createElement('div');
         lightbox.className = 'gallery-lightbox';
         lightbox.setAttribute('role', 'dialog');
@@ -454,6 +456,33 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'ArrowRight') navigate(1);
         });
     }
+
+    // ── Camp Gallery: load random photos from Drive ─────────
+    async function loadCampGallery() {
+        const grid = document.querySelector('.camp-gallery-grid');
+        if (!grid) return;
+        try {
+            const r = await fetch('/api/camp-fotos');
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            const sections = await r.json();
+            const all = sections.flatMap(s => s.fotos);
+            if (!all.length) throw new Error('sin fotos');
+            for (let i = all.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [all[i], all[j]] = [all[j], all[i]];
+            }
+            grid.innerHTML = all.slice(0, 16).map(f =>
+                `<div class="camp-gallery-item">
+                    <img src="https://lh3.googleusercontent.com/d/${f.id}=w800" alt="${(f.name || 'Foto del campamento').replace(/"/g, '&quot;')}" loading="lazy" decoding="async" width="400" height="300">
+                </div>`
+            ).join('');
+            initCampGalleryLightbox();
+        } catch (e) {
+            grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#999;">Fotos próximamente.</p>';
+        }
+    }
+
+    loadCampGallery();
 
     // ── Versículo del Día ───────────────────────────────────
     async function loadDailyVerse() {
