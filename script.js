@@ -273,45 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ── Newsletter Form ─────────────────────────────────────
-    const newsletterForm = document.getElementById('newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const email = emailInput.value.trim();
-
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Por favor, ingresa un correo electrónico válido.');
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Suscribiendo...';
-
-            try {
-                const response = await fetch('/api/newsletter', {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email })
-                });
-
-                if (response.ok) {
-                    alert('¡Gracias por suscribirte! Recibirás nuestro boletín semanal.');
-                    emailInput.value = '';
-                } else {
-                    alert('Hubo un error al suscribirte. Intenta de nuevo más tarde.');
-                }
-            } catch (error) {
-                alert('No se pudo conectar. Verifica tu conexión a internet.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Suscribirse';
-            }
-        });
-    }
-
     // ── YouTube Facade ─────────────────────────────────────
     document.querySelectorAll('.youtube-facade').forEach(facade => {
         function activateVideo() {
@@ -337,41 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // ── Live YouTube Player ─────────────────────────────────
-    const playLiveBtn = document.getElementById('play-live');
-    const livePlayer = document.getElementById('live-player');
-
-    if (playLiveBtn && livePlayer) {
-        playLiveBtn.addEventListener('click', function() {
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://www.youtube.com/embed/live_stream?channel=UCxxxxxxxxxxxxxxxxxxxxxxx&autoplay=1';
-            iframe.title = 'Transmisión en vivo - Iglesia Comunitaria de la Cristianización';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-            iframe.allowFullscreen = true;
-            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
-            livePlayer.innerHTML = '';
-            livePlayer.appendChild(iframe);
-        });
-
-        playLiveBtn.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                playLiveBtn.click();
-            }
-        });
-    }
-
-    // ── Live Viewers Counter ────────────────────────────────
-    const liveViewers = document.querySelector('.viewers span');
-    if (liveViewers) {
-        let viewers = 234;
-        setInterval(() => {
-            const change = Math.floor(Math.random() * 10) - 5;
-            viewers = Math.max(200, viewers + change);
-            liveViewers.textContent = `${viewers} viendo ahora`;
-        }, 5000);
-    }
 
     // ── Smooth Scroll ───────────────────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -1451,11 +1451,13 @@ img, video, iframe {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
+    max-width: 680px;
+    margin: 0 auto;
 }
 
 @media (min-width: 769px) {
     .virtual-content {
-        grid-template-columns: 1fr 320px;
+        grid-template-columns: 1fr;
         gap: 32px;
     }
 }
