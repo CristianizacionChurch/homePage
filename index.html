@@ -101,9 +101,7 @@
                 <li role="none"><a href="#eventos" role="menuitem">Eventos</a></li>
                 <li role="none"><a href="#nosotros" role="menuitem">Nosotros</a></li>
                 <li role="none"><a href="#predicas" role="menuitem">Prédicas</a></li>
-                <li role="none"><a href="page/cursos/index.html" role="menuitem">Cursos</a></li>
-                <li role="none"><a href="page/Inteligencia-Visual/index.html" role="menuitem">Inteligencia Visual</a></li>
-                <li role="none"><a href="#virtual" role="menuitem">Iglesia Virtual</a></li>
+                <li role="none"><a href="#oracion" role="menuitem">Oración</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 8px;">
                 <button class="theme-toggle" aria-label="Cambiar modo oscuro/claro" title="Cambiar tema">
@@ -535,40 +533,16 @@
             </div>
         </section>
 
-        <section id="virtual" class="section virtual" aria-label="Iglesia virtual">
+        <section id="oracion" class="section virtual" aria-label="Petición de oración">
             <div class="container">
                 <div class="section-header light">
                     <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color: white;">
-                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
-                    <h2>Iglesia Virtual</h2>
-                    <p>Únete a nuestra transmisión en vivo</p>
+                    <h2>Petición de Oración</h2>
+                    <p>Comparte tu petición. El ministerio de intercesión ora por cada una cada viernes.</p>
                 </div>
                 <div class="virtual-content">
-                    <div class="video-player-container">
-                        <div class="video-player" id="live-player">
-                            <div class="live-badge">
-                                <span class="live-dot"></span>
-                                <span>EN VIVO</span>
-                            </div>
-                            <div class="play-button-large" id="play-live" role="button" tabindex="0" aria-label="Reproducir transmisión en vivo">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <polygon points="5,3 19,12 5,21"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="video-controls">
-                            <div class="viewers">
-                                <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                <span>234 viendo ahora</span>
-                            </div>
-                            <span class="service-time">Domingos 9:00 AM y 11:00 AM</span>
-                        </div>
-                    </div>
                     <div class="prayer-panel">
                         <h3>Peticiones de Oración</h3>
                         <p>Comparte tu petición y nuestro equipo de intercesión orará por ti.</p>
@@ -596,21 +570,6 @@
                 </a>
             </div>
         </section>
-
-        <section class="newsletter" aria-label="Suscripción al boletín">
-            <div class="container">
-                <div class="newsletter-content">
-                    <div class="newsletter-text">
-                        <h3>📬 Boletín Semanal</h3>
-                        <p>Recibe versículos, devocionales y noticias de la iglesia en tu correo.</p>
-                    </div>
-                    <form class="newsletter-form" id="newsletter-form" action="/api/newsletter" method="POST">
-                        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email" aria-label="Tu correo electrónico">
-                        <button type="submit">Suscribirse</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer" role="contentinfo">
@@ -629,6 +588,7 @@
                         <li><a href="#eventos">Eventos</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#predicas">Prédicas</a></li>
+                        <li><a href="#oracion">Oración</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
