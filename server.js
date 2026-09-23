@@ -506,6 +506,28 @@ app.get('/api/camp-foto', apiLimiter, async (req, res) => {
     }
 });
 
+app.get('/api/yt-thumb', apiLimiter, async (req, res) => {
+    const id = req.query.id;
+    if (!id || !/^[A-Za-z0-9_-]{11}$/.test(id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+    }
+    const q = ['hqdefault', 'mqdefault', 'sddefault'].includes(req.query.q) ? req.query.q : 'hqdefault';
+    try {
+        const upstream = await fetch(`https://i.ytimg.com/vi/${id}/${q}.jpg`);
+        if (!upstream.ok) {
+            return res.status(404).json({ error: 'Miniatura no encontrada' });
+        }
+        const buf = Buffer.from(await upstream.arrayBuffer());
+        res.setHeader('Content-Type', 'image/jpeg');
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+        res.setHeader('Content-Disposition', `inline; filename="${id}.jpg"`);
+        return res.end(buf);
+    } catch (error) {
+        console.error('[YtThumb] Error:', error.message);
+        return res.status(500).json({ error: 'Error descargando la miniatura' });
+    }
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

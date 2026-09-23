@@ -9,7 +9,8 @@
     { "source": "/api/reglas-accept", "destination": "/api/reglas-accept" },
     { "source": "/api/reglas-acceptances", "destination": "/api/reglas-acceptances" },
     { "source": "/api/camp-fotos", "destination": "/api/camp-fotos" },
-    { "source": "/api/camp-foto", "destination": "/api/camp-foto" }
+    { "source": "/api/camp-foto", "destination": "/api/camp-foto" },
+    { "source": "/api/yt-thumb", "destination": "/api/yt-thumb" }
   ],
   "redirects": [
     { "source": "/server.js", "destination": "/", "statusCode": 301 },
