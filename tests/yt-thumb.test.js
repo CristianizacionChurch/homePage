@@ -48,7 +48,7 @@ describe('api/yt-thumb handler', () => {
         const res = makeRes();
         await handler({ method: 'GET', headers: {}, query: { id: 'Fpjdc32GMf4' } }, res, { fetchFn: okFetch() });
         assert.strictEqual(res._headers['Content-Type'], 'image/jpeg');
-        assert.ok(res._body && res._body.length > 0);
+        assert.deepStrictEqual(res._body, fakeJpeg);
     });
 
     it('returns 404 when upstream fails', async () => {
