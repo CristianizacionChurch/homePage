@@ -1457,7 +1457,6 @@ img, video, iframe {
 
 @media (min-width: 769px) {
     .virtual-content {
-        grid-template-columns: 1fr;
         gap: 32px;
     }
 }
