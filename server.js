@@ -495,7 +495,10 @@ app.get('/api/camp-foto', apiLimiter, async (req, res) => {
             getFileStream(id, drive),
             getFileName(id, drive)
         ]);
-        res.setHeader('Content-Disposition', `attachment; filename="${name || 'foto'}"`);
+        const ext = (name || '').split('.').pop().toLowerCase();
+        const types = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp' };
+        res.setHeader('Content-Type', types[ext] || 'image/jpeg');
+        res.setHeader('Content-Disposition', `inline; filename="${name || 'foto'}"`);
         stream.pipe(res);
     } catch (error) {
         console.error('[CampFoto] Error:', error.message);

@@ -471,9 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const j = Math.floor(Math.random() * (i + 1));
                 [all[i], all[j]] = [all[j], all[i]];
             }
-            grid.innerHTML = all.slice(0, 16).map(f =>
+            const web = all.filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f.name || ''));
+            grid.innerHTML = (web.length ? web : all).slice(0, 16).map(f =>
                 `<div class="camp-gallery-item">
-                    <img src="https://lh3.googleusercontent.com/d/${f.id}=w800" alt="${(f.name || 'Foto del campamento').replace(/"/g, '&quot;')}" loading="lazy" decoding="async" width="400" height="300">
+                    <img src="/api/camp-foto?id=${f.id}" alt="${(f.name || 'Foto del campamento').replace(/"/g, '&quot;')}" loading="lazy" decoding="async" width="400" height="300">
                 </div>`
             ).join('');
             initCampGalleryLightbox();
