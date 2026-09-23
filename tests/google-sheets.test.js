@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert');
-const { toSheetRow, fromSheetRow } = require('../lib/google-sheets');
+const { toSheetRow, fromSheetRow, toPrayerRow, appendPrayerRecord } = require('../lib/google-sheets');
 
 describe('toSheetRow', () => {
     it('builds a 6-column row', () => {
@@ -36,11 +36,8 @@ describe('fromSheetRow', () => {
     });
 });
 
-const { describe: describePrayer, it: itPrayer } = require('node:test');
-
-describePrayer('toPrayerRow', () => {
-    itPrayer('builds a [Fecha, Nombre, Peticion] row', () => {
-        const { toPrayerRow } = require('../lib/google-sheets');
+describe('toPrayerRow', () => {
+    it('builds a [Fecha, Nombre, Peticion] row', () => {
         const row = toPrayerRow({
             fecha: '2026-09-25T04:00:00.000Z',
             nombre: 'Ana',
@@ -50,9 +47,8 @@ describePrayer('toPrayerRow', () => {
     });
 });
 
-describePrayer('appendPrayerRecord', () => {
-    itPrayer('appends to A1 with USER_ENTERED', async () => {
-        const { appendPrayerRecord } = require('../lib/google-sheets');
+describe('appendPrayerRecord', () => {
+    it('appends to A1 with USER_ENTERED', async () => {
         let captured = null;
         const fakeSheets = {
             spreadsheets: {
@@ -73,11 +69,19 @@ describePrayer('appendPrayerRecord', () => {
         assert.deepStrictEqual(captured.requestBody.values, [['25/9/2026', 'Ana', 'Salud']]);
     });
 
-    itPrayer('throws when Sheets is not configured', async () => {
-        const { appendPrayerRecord } = require('../lib/google-sheets');
-        await assert.rejects(
-            appendPrayerRecord('SHEET123', { fecha: '2026-09-25T04:00:00.000Z', nombre: 'A', peticion: 'B' }),
-            /not configured/
-        );
+    it('throws when Sheets is not configured', async () => {
+        const prevJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+        const prevFile = process.env.GOOGLE_SERVICE_ACCOUNT_FILE;
+        delete process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+        delete process.env.GOOGLE_SERVICE_ACCOUNT_FILE;
+        try {
+            await assert.rejects(
+                appendPrayerRecord('SHEET123', { fecha: '2026-09-25T04:00:00.000Z', nombre: 'A', peticion: 'B' }),
+                /not configured/
+            );
+        } finally {
+            if (prevJson !== undefined) process.env.GOOGLE_SERVICE_ACCOUNT_JSON = prevJson;
+            if (prevFile !== undefined) process.env.GOOGLE_SERVICE_ACCOUNT_FILE = prevFile;
+        }
     });
 });
