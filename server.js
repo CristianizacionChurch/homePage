@@ -283,7 +283,7 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
         const safeMessage = sanitize(peticion);
 
         try {
-            // ponytail: fecha del servidor al enviar; el ministerio filtra por fecha cada viernes
+            // ponytail: fecha del servidor al enviar; el ministerio filtra por fecha cada sábado
             await appendPrayerRecord(PRAYER_SHEET_ID, {
                 fecha: new Date().toISOString(),
                 nombre: safeName,
