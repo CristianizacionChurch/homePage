@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { validateAcceptance, sanitizeName, buildFormsubmitPayload } = require('./lib/reglas');
-const { appendRecord, getRecords } = require('./lib/google-sheets');
+const { appendRecord, getRecords, appendPrayerRecord } = require('./lib/google-sheets');
 const { listSections, getFileStream, getFileName, getDrive } = require('./lib/google-drive');
 const SECTIONS = require('./lib/camp-sections');
 const express = require('express');
@@ -251,6 +251,8 @@ app.get('/api/daily-verse', apiLimiter, async (req, res) => {
     }
 });
 
+const PRAYER_SHEET_ID = process.env.PRAYER_SHEET_ID || '17USYH5qKocYAzYUlAGGWrZ_BbmNWSGDrPIWUBc-IYto';
+
 app.post('/api/prayer-request', formLimiter, async (req, res) => {
     try {
         const contentType = req.headers['content-type'];
@@ -280,31 +282,16 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
         const safeName = sanitize(nombre);
         const safeMessage = sanitize(peticion);
 
-        const formspreeEndpoint = process.env.FORMSPREE_PRAYER_ENDPOINT || 'https://formspree.io/f/xeelvgwb';
-
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 10000);
-
-        const response = await fetch(formspreeEndpoint, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        try {
+            // ponytail: fecha del servidor al enviar; el ministerio filtra por fecha cada viernes
+            await appendPrayerRecord(PRAYER_SHEET_ID, {
+                fecha: new Date().toISOString(),
                 nombre: safeName,
-                peticion: safeMessage,
-                _subject: `Nueva Petición de Oración - ${safeName}`,
-                _template: 'table'
-            }),
-            signal: controller.signal
-        });
-
-        clearTimeout(timeout);
-
-        if (!response.ok) {
-            console.error('[PrayerRequest] Formspree error:', response.status);
-            return res.status(502).json({ error: 'Error al procesar la petición' });
+                peticion: safeMessage
+            });
+        } catch (error) {
+            console.error('[PrayerRequest] Sheets error:', error.message);
+            return res.status(502).json({ error: 'Error al guardar la petición' });
         }
 
         return res.status(200).json({
@@ -313,10 +300,6 @@ app.post('/api/prayer-request', formLimiter, async (req, res) => {
         });
 
     } catch (error) {
-        if (error.name === 'AbortError') {
-            console.error('[PrayerRequest] Timeout error');
-            return res.status(504).json({ error: 'Tiempo de espera agotado' });
-        }
         console.error('[PrayerRequest] Error:', error.message);
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
