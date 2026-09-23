@@ -9,11 +9,11 @@
   var PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="120" fill="%23333"><rect width="160" height="120"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23777" font-size="12">Sin imagen</text></svg>');
 
   function thumbUrl(id) {
-    return "https://lh3.googleusercontent.com/d/" + id + "=w1600";
+    return "/api/camp-foto?id=" + id;
   }
 
   function fallbackUrl(id) {
-    return "https://drive.google.com/thumbnail?id=" + id + "&sz=w1600";
+    return "https://lh3.googleusercontent.com/d/" + id + "=w1600";
   }
 
   function onImgError(e) {
@@ -23,9 +23,9 @@
     if (retries === 0 && id) {
       img.setAttribute("data-retries", "1");
       img.src = fallbackUrl(id);
-    } else if (retries < 2 && id) {
+    } else if (retries === 1 && id) {
       img.setAttribute("data-retries", "2");
-      img.src = thumbUrl(id);
+      img.src = "https://drive.google.com/thumbnail?id=" + id + "&sz=w1600";
     } else {
       img.src = PLACEHOLDER;
     }
@@ -53,7 +53,9 @@
       return;
     }
     var html = sections.map(function (s) {
-      var photos = s.fotos.map(function (f) {
+      var photos = s.fotos.filter(function (f) {
+        return /\.(jpe?g|png|webp|gif)$/i.test(f.name || "");
+      }).map(function (f) {
         var imgSrc = thumbUrl(f.id);
         return '<div class="gallery-item" data-url="' + imgSrc + '" data-id="' + f.id + '" data-name="' + (f.name || '') + '">' +
                '<img loading="lazy" data-id="' + f.id + '" data-retries="0" src="' + imgSrc + '" alt="' + (f.name || 'Foto') + '" onerror="(' + onImgError.toString() + ')(event)"/>' +
