@@ -40,7 +40,7 @@ app.use(helmet({
                 "https://fonts.googleapis.com",
                 "https://fonts.gstatic.com"
             ],
-            frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com"],
+            frameSrc: ["'self'", "https://www.youtube.com", "https://youtube.com", "https://www.google.com"],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],
             formAction: ["'self'", "https://formspree.io"],
